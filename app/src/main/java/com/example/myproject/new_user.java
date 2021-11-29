@@ -63,8 +63,8 @@ public class new_user extends AppCompatActivity {
     }
 
     public void returnBack() {
-        Intent intent = new Intent(this, Exist_new_frame.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, Exist_new_frame.class);
+        //startActivity(intent);
     }
 
     public static boolean isValidPassword(String password) {
