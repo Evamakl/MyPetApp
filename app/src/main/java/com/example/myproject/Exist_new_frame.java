@@ -25,22 +25,23 @@ public class Exist_new_frame extends AppCompatActivity {
         New.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewActivityNew();
+              //  openNewActivityNew();
             }
         });
         exist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewActivityExist();
+                //openNewActivityExist();
             }
         });
         prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openNewActivityPrev();
+               // openNewActivityPrev();
             }
         });
     }
+    /*
    public void openNewActivityNew(){
         Intent intent = new Intent(this,new_user.class);
         startActivity(intent);
@@ -56,7 +57,7 @@ public class Exist_new_frame extends AppCompatActivity {
                startActivity(intent);
 
            }
-
+*/
 
 }
 
