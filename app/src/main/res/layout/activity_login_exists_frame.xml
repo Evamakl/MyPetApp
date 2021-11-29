@@ -15,14 +15,25 @@
         android:hint="שם משתמש: "
         android:textSize="30sp"
         android:layout_marginTop="150dp"
+        android:inputType="textPersonName"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="סיסמה: "
+        android:textSize="30sp"
+        android:layout_gravity="center"
+
         />
 
     <EditText
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
         android:id="@+id/etPassword"
         android:layout_gravity="center"
-        android:hint="סיסמה: "
+        android:inputType="textPassword"
         android:textSize="30sp"
         android:layout_marginTop="20dp"
         />

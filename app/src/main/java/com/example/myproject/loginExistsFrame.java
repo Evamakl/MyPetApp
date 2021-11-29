@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class loginExistsFrame extends AppCompatActivity implements View.OnClickListener {
 
     EditText etUserName, etPassword;
@@ -31,8 +34,11 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if(v==btnSignIn){
             if(etPassword.getText().toString().length()>0 && etUserName.getText().toString().length()>0) {
-                etUserName.setText("");
-                etPassword.setText("");
+                if(isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())){
+                    etUserName.setText("");
+                    etPassword.setText("");
+                    openNewActivity();
+                }
             }
         }
         if (v==btnBack){
@@ -48,6 +54,22 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     public void openPrevActivity() {
         Intent intent = new Intent(this, Exist_new_frame.class);
         startActivity(intent);
+    }
+
+    public static boolean isValidPassword(String password) {
+        final String PASSWORD_PATTERN =
+                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+        final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
+    public static boolean isValidUserName(String name) {
+        String expression = "^[a-zA-Z]*$";
+        CharSequence inputStr = name;
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
     }
 
 }
