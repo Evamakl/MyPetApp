@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".NewActivityFrame"
+            android:exported="false" />
+        <activity
+            android:name=".loginExistsFrame"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
