@@ -23,7 +23,7 @@ public class firstframe extends AppCompatActivity {
                 @Override
 
                 public void onClick(View v) {
-                   // openNewActivityPet_keeper();
+                    openNewActivityPet_keeper();
                 }
 
             });
@@ -32,7 +32,7 @@ public class firstframe extends AppCompatActivity {
                 @Override
 
                 public void onClick(View v) {
-                    //openNewActivityPet();
+                    openNewActivityPet();
                 }
 
             });
@@ -41,7 +41,7 @@ public class firstframe extends AppCompatActivity {
                 @Override
 
                 public void onClick(View v) {
-                   // openNewActivityBoss();
+                   openNewActivityBoss();
                 }
 
             });
