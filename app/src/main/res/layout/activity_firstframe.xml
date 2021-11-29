@@ -58,4 +58,21 @@
             android:textSize="34sp"
             android:textStyle="bold"
             android:translationY="205sp" />
-    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:linksClickable="true"
+        android:selectAllOnFocus="false"
+        android:text="WELCOME!"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_700"
+        android:textColorHighlight="#00BCD4"
+        android:textColorHint="@android:color/background_dark"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:translationX="110sp"
+        android:translationY="-250sp" />
+</LinearLayout>

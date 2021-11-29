@@ -23,7 +23,7 @@ public class firstframe extends AppCompatActivity {
                 @Override
 
                 public void onClick(View v) {
-                    // openNewActivity();
+                   // openNewActivityPet_keeper();
                 }
 
             });
@@ -32,7 +32,7 @@ public class firstframe extends AppCompatActivity {
                 @Override
 
                 public void onClick(View v) {
-                    // openNewActivity();
+                    //openNewActivityPet();
                 }
 
             });
@@ -41,15 +41,25 @@ public class firstframe extends AppCompatActivity {
                 @Override
 
                 public void onClick(View v) {
-                    //openNewActivity();
+                   // openNewActivityBoss();
                 }
 
             });
         }
 
-        public void openNewActivity(){
-            //Intent intent = new Intent(this, NewActivity.class);
-           // startActivity(intent);
+        public void openNewActivityPet_keeper (){
+            Intent intent = new Intent(this, Exist_new_frame.class);
+            startActivity(intent);
         }
 
-    }
+        public void openNewActivityPet(){
+        Intent intent = new Intent(this, Exist_new_frame.class);
+        startActivity(intent);
+        }
+
+        public void openNewActivityBoss(){
+         Intent intent = new Intent(this,LoginExistsFrame.class);
+         startActivity(intent);
+       }
+
+}
