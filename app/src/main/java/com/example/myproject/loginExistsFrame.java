@@ -41,20 +41,20 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                 }
             }
         }
-        if (v==btnBack){
-            openPrevActivity();
+      //  if (v==btnBack){
+      //      openPrevActivity();
         }
-    }
+
 
     public void openNewActivity(){
         Intent intent = new Intent(this,NewActivityFrame.class);
         startActivity(intent);
     }
 
-    public void openPrevActivity() {
-        Intent intent = new Intent(this, Exist_new_frame.class);
-        startActivity(intent);
-    }
+    //public void openPrevActivity() {
+    //    Intent intent = new Intent(this, Exist_new_frame.class);
+    //    startActivity(intent);
+    //}
 
     public static boolean isValidPassword(String password) {
         final String PASSWORD_PATTERN =
