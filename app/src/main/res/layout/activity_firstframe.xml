@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#EDE7F6"
+        android:backgroundTint="#E3F2FD"
+        android:foregroundTint="#FFF3E0"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/Pet_Button"
+            android:layout_width="316dp"
+            android:layout_height="94dp"
+            android:layout_gravity="center"
+            android:linksClickable="true"
+            android:selectAllOnFocus="false"
+            android:text="בעל חיית מחמד"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textColorHighlight="#00BCD4"
+            android:textColorHint="@android:color/background_dark"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:translationY="95sp" />
+
+        <Button
+            android:id="@+id/Pet_Keeper_Button"
+            android:layout_width="316dp"
+            android:layout_height="106dp"
+            android:layout_gravity="center"
+            android:linksClickable="true"
+            android:selectAllOnFocus="false"
+            android:text="Pet-Keeper"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textColorHighlight="#00BCD4"
+            android:textColorHint="@android:color/background_dark"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:translationY="150sp" />
+
+        <Button
+            android:id="@+id/Boss_Button"
+            android:layout_width="316dp"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:linksClickable="true"
+            android:selectAllOnFocus="false"
+            android:text="מנהל"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_700"
+            android:textColorHighlight="#00BCD4"
+            android:textColorHint="@android:color/background_dark"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            android:translationY="205sp" />
+    </LinearLayout>
