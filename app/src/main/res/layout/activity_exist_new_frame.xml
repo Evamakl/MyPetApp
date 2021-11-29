@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtdisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:gravity="center"
+        android:text="בחר:"
+        android:textSize="50sp" />
+
+    <Button
+        android:id="@+id/btExist"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="משתמש קיים"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btNew"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="משתמש חדש"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btprev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:insetTop="15sp"
+        android:text="אחורה"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btprev" />
+
+
+</LinearLayout>
