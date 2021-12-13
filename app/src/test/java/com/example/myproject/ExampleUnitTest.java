@@ -32,9 +32,9 @@ public class ExampleUnitTest {
         assertTrue(loginExistsFrame.isValidUserName("ron"));
         assertFalse(loginExistsFrame.isValidUserName("r0n"));
         assertFalse(loginExistsFrame.isValidUserName("123"));
-    //@Test
-    //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
-
+        //@Test
+        //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
+    }
     @Test
     public void isAlpha_test() {
         assertTrue(new_user.isAlpha("hadar"));
@@ -70,5 +70,3 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
      */
-
-}

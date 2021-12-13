@@ -9,22 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
-        <activity
+        <activity android:name=".firstframe">
 
-            android:name=".NewActivityFrame"
-            android:exported="false" />
-        <activity
-            android:name=".loginExistsFrame"
-            android:name=".End"
-            android:exported="false" />
-        <activity
-            android:name=".new_user"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity1"
-            android:name=".Exist_new_frame"
-            android:name=".firstframe"
-            android:exported="false" />
+        </activity>
+
+        <activity android:name=".loginExistsFrame"></activity>
+
+        <activity android:name=".Exist_new_frame"></activity>
+
+        <activity android:name=".new_user"></activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
