@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".End"
+            android:exported="false" />
+        <activity
+            android:name=".new_user"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity1"
             android:name=".Exist_new_frame"
             android:name=".firstframe"
             android:exported="false" />
