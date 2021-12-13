@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EDE7F6"
+    android:backgroundTint="#E3F2FD"
+    android:foregroundTint="#FFF3E0"
     android:orientation="vertical"
     tools:ignore="ExtraText">
 
@@ -12,31 +14,36 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:hint="שם משתמש: "
-        android:textSize="30sp"
         android:layout_marginTop="150dp"
+        android:hint="שם משתמש: "
         android:inputType="textPersonName"
-        />
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:translationX="95sp"
+        android:translationY="-10sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="סיסמה: "
-        android:textSize="30sp"
         android:layout_gravity="center"
+        android:text="סיסמה: "
+        android:textColor="@color/black"
 
-        />
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:translationX="-10sp" />
 
     <EditText
+        android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/etPassword"
         android:layout_gravity="center"
-        android:inputType="textPassword"
-        android:textSize="30sp"
         android:layout_marginTop="20dp"
-        />
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/btnSignIn"
@@ -45,9 +52,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:text="היכנס/י"
-        android:textSize="30sp"
+        android:textColor="#0F022C"
 
-        />
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"

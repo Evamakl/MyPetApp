@@ -12,13 +12,12 @@
         <activity android:name=".firstframe">
 
         </activity>
-
         <activity android:name=".loginExistsFrame"></activity>
 
         <activity android:name=".Exist_new_frame"></activity>
 
         <activity android:name=".new_user"></activity>
-
+        <activity android:name=".NewActivityFrame"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

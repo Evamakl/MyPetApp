@@ -3,17 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_end.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_exist_new_frame.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_firstframe.xml" value="0.1" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_login_exists_frame.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_new_frame.xml" value="0.16018518518518518" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_new_user.xml" value="0.16018518518518518" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/build/classes" />
-  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK" />
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK" />
 </project>

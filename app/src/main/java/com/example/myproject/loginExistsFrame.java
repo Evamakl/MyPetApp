@@ -1,5 +1,7 @@
 package com.example.myproject;
 
+import static com.example.myproject.new_user.isValidPassword;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -37,29 +39,29 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if(v==btnSignIn){
-            if(etPassword.getText().toString().length()>0 && etUserName.getText().toString().length()>0) {
-                if(isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())){
+        if (v == btnSignIn) {
+            if (etPassword.getText().toString().length() > 0 && etUserName.getText().toString().length() > 0) {
+                if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
                     etUserName.setText("");
                     etPassword.setText("");
                     openNewActivity();
                 }
             }
         }
-      //  if (v==btnBack){
-      //      openPrevActivity();
+        if (v == btnBack) {
+            openPrevActivity();
         }
 
-
+    }
     public void openNewActivity(){
         Intent intent = new Intent(this,NewActivityFrame.class);
         startActivity(intent);
     }
 
-    //public void openPrevActivity() {
-    //    Intent intent = new Intent(this, Exist_new_frame.class);
-    //    startActivity(intent);
-    //}
+    public void openPrevActivity() {
+        Intent intent = new Intent(this, Exist_new_frame.class);
+        startActivity(intent);
+    }
 
     public static boolean isValidPassword(String password) {
         final String PASSWORD_PATTERN =
@@ -69,12 +71,13 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         return matcher.matches();
     }
 
-    public static boolean isValidUserName(String name) {
-        String expression = "^[a-zA-Z]*$";
-        CharSequence inputStr = name;
-        Pattern pattern = Pattern.compile(expression);
-        Matcher matcher = pattern.matcher(inputStr);
-        return matcher.matches();
+        private boolean isValidUserName(String name){
+            String expression = "^[a-zA-Z]*$";
+            CharSequence inputStr = name;
+            Pattern pattern = Pattern.compile(expression);
+            Matcher matcher = pattern.matcher(inputStr);
+            return matcher.matches();
+        }
     }
 
-}
+
