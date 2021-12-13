@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".Exist_new_frame"
             android:name=".firstframe"
             android:exported="false" />
         <activity
