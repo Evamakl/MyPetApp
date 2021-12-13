@@ -2,6 +2,8 @@ package com.example.myproject;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+
+import com.example.myproject.loginExistsFrame;
 import com.example.myproject.new_user;
 
 import static org.junit.Assert.assertTrue;
@@ -24,6 +26,12 @@ import javax.xml.validation.Validator;
  */
 
 public class ExampleUnitTest {
+
+    @Test
+    public void isValidUserName_test() {
+        assertTrue(loginExistsFrame.isValidUserName("ron"));
+        assertFalse(loginExistsFrame.isValidUserName("r0n"));
+        assertFalse(loginExistsFrame.isValidUserName("123"));
     //@Test
     //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
 
@@ -36,9 +44,10 @@ public class ExampleUnitTest {
 
     @Test
     public void isValidPassword_test() {
-        assertFalse(new_user.isValidPassword("12345"));
-        assertFalse(new_user.isValidPassword("1234ab"));
-        assertFalse(new_user.isValidPassword("123456789"));
+        assertFalse(loginExistsFrame.isValidPassword("12345"));
+        assertFalse(loginExistsFrame.isValidPassword("1234ab"));
+        assertFalse(loginExistsFrame.isValidPassword("123456789"));
+
 
     }
 

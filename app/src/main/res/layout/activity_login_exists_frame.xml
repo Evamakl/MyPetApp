@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
+
+    <EditText
+        android:id="@+id/etUserName"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="שם משתמש: "
+        android:textSize="30sp"
+        android:layout_marginTop="150dp"
+        android:inputType="textPersonName"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="סיסמה: "
+        android:textSize="30sp"
+        android:layout_gravity="center"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/etPassword"
+        android:layout_gravity="center"
+        android:inputType="textPassword"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="היכנס/י"
+        android:textSize="30sp"
+
+        />
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="230dp"
+        android:text="חזור"
+        android:textSize="20sp"
+
+        />
+
+
+</LinearLayout>

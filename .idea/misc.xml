@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_firstframe.xml" value="0.1" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
       </map>
@@ -14,4 +15,5 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK" />
 </project>

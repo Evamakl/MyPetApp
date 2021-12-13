@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+
+            android:name=".NewActivityFrame"
+            android:exported="false" />
+        <activity
+            android:name=".loginExistsFrame"
             android:name=".End"
             android:exported="false" />
         <activity
