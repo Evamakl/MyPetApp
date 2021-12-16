@@ -9,15 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
-        <activity android:name=".firstframe">
-
-        </activity>
-        <activity android:name=".loginExistsFrame"></activity>
-
-        <activity android:name=".Exist_new_frame"></activity>
-
-        <activity android:name=".new_user"></activity>
-        <activity android:name=".NewActivityFrame"></activity>
+        <activity
+            android:name=".walk_info"
+            android:exported="false" />
+        <activity
+            android:name=".shampo_info"
+            android:exported="false" />
+        <activity
+            android:name=".food_info"
+            android:exported="false" />
+        <activity
+            android:name=".vaccines_info"
+            android:exported="false" />
+        <activity
+            android:name=".search_page"
+            android:exported="false" />
+        <activity android:name=".firstframe" />
+        <activity android:name=".loginExistsFrame" />
+        <activity android:name=".Exist_new_frame" />
+        <activity android:name=".new_user" />
+        <activity android:name=".NewActivityFrame" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
