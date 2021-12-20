@@ -8,20 +8,28 @@
     android:scrollbarDefaultDelayBeforeFade="300"
     android:scrollbarFadeDuration="250">
 
-    <EditText
-        android:id="@+id/username"
+    <TextView
+        android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="שם משתמש: "
+        android:layout_height="40dp"
+        android:text="Email:"
         android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:shadowColor="#C84336" />
+
 
     <TextView
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:text="סיסמה: " />
+
 
     <EditText
         android:id="@+id/editTextTextPassword7"
@@ -43,20 +51,6 @@
         android:ems="5"
         android:inputType="textPassword" />
 
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="Email:"
-        android:textSize="14sp" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:shadowColor="#C84336" />
 
     <TextView
         android:id="@+id/phone"
