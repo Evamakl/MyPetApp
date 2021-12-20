@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="שלום,">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/name"
+                    android:title=""
+                    android:enabled="false"
+                    android:layout_gravity="left">
+                </item>
+                <item
+                    android:id="@+id/type"
+                    android:title=""
+                    android:enabled="false"
+                    android:layout_gravity="left">
+                </item>
+            </group>
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/personal_file"
+            android:title="תיק אישי" />
+        <item
+            android:id="@+id/medical_file"
+            android:title="תיק רפואי" />
+
+        <item
+            android:id="@+id/med_information"
+            android:title="מידע רפואי" />
+        <item
+            android:id="@+id/about"
+            android:title=" ידיעון" />
+        <item
+            android:id="@+id/calendar"
+            android:title=" לוח שנה" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title=""
+            android:enabled="false"
+            android:layout_gravity="left">
+        </item>
+        <item
+            android:title=""
+            android:enabled="false"
+            android:layout_gravity="left">
+        </item>
+        <item
+            android:title=""
+            android:enabled="false"
+            android:layout_gravity="left">
+        </item>
+        <item
+            android:id="@+id/logout"
+            android:title="התנתק"/>
+
+    </group>
+</menu>
