@@ -87,7 +87,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                             });
 
 
-                    //openNewActivity();
+                    openNewActivity();
                 }
             //}
         }

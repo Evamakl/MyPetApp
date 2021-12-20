@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
-            android:name=".googleCalendar"
+            android:name=".Calendar"
             android:exported="false" />
         <activity
             android:name=".walk_info"
