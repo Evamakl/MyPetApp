@@ -62,9 +62,9 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v == btnSignIn) {
             if (etPassword.getText().toString().length() > 0 && etUserName.getText().toString().length() > 0) {
-                //if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
-                    //etUserName.setText("");
-                    //etPassword.setText("");
+                /*if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
+                    etUserName.setText("");
+                    etPassword.setText("");*/
 
                     mAuth.signInWithEmailAndPassword(etUserName.getText().toString(), etPassword.getText().toString())
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -87,7 +87,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                             });
 
 
-                    openNewActivity();
+                    //openNewActivity();
                 }
             //}
         }
