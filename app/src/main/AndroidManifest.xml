@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".vaccines_info_2"
+            android:exported="false" />
+        <activity
             android:name=".Calendar"
             android:exported="false" />
         <activity
