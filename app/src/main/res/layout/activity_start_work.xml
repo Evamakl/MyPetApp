@@ -19,8 +19,7 @@
         tools:layout_editor_absoluteY="35dp"
         android:id="@+id/TOOLBAR"
         android:layout_marginTop="15dp"
-        android:layout_marginRight="350dp"
-        />
+        android:layout_marginRight="350dp" />
 
     <TextView
         android:id="@+id/EXIST_NAME"
