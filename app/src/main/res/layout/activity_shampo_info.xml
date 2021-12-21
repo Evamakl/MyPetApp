@@ -10,10 +10,27 @@
 
     <TextView
         android:id="@+id/shampo_info"
-        android:layout_width="136dp"
+        android:layout_width="388dp"
         android:layout_height="wrap_content"
-        android:text="מידע על סוגי שמפו:"
+        android:text="מידע על מקלחות:"
         android:textSize="30sp"
-        android:translationX="250dp"
         android:translationY="20dp" />
+
+    <TextView
+        android:id="@+id/shower"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:text="אם כלבכם נקי הוא אינו זקוק למקלחת באופן קבוע. מקלחות תכופות פוגעות בשכבת ההגנה הטבעית של עור הכלב, ואף גורמות לנשירה מוגברת, קשקשים, גירודים, פריחות וריח לא נעים. מומלץ לרחוץ את הכלב פעם בחצי שנה ולהשתמש בשמפו מיוחד לכלבים. במידה ואין ברירה (למשל לאחר רחצה בים) שטפו את הכלב במים ללא שמפו.."
+        android:textSize="22sp"
+        android:translationX="10dp"
+        android:translationY="30dp" />
+
+    <Button
+        android:id="@+id/backbt"
+        android:layout_width="124dp"
+        android:layout_height="73dp"
+        android:text="אחורה"
+        android:textSize="25sp"
+        android:translationX="270dp"
+        android:translationY="200dp" />
 </LinearLayout>

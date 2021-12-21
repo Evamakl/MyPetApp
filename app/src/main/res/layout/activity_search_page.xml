@@ -56,9 +56,9 @@
         android:id="@+id/shampo_button"
         android:layout_width="170dp"
         android:layout_height="77dp"
-        android:text="סוג שמפו מומלץ"
+        android:text="מקלחות"
         android:textColor="#0F022C"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:translationX="220dp"
         android:translationY="-50dp" />
 
@@ -66,8 +66,8 @@
         android:id="@+id/walk_button"
         android:layout_width="170dp"
         android:layout_height="77dp"
-        android:text="מספר טיולים מומלץ"
-        android:textSize="20sp"
+        android:text="טיולים"
+        android:textSize="30sp"
         android:translationX="20dp"
         android:translationY="-127dp" />
 
@@ -77,7 +77,7 @@
         android:layout_height="61dp"
         android:text="אחורה"
         android:textSize="25sp"
-        android:translationX="10dp"
-        android:translationY="30dp" />
+        android:translationX="280sp"
+        android:translationY="40dp" />
 
 </LinearLayout>

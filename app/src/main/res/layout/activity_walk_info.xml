@@ -10,10 +10,29 @@
 
     <TextView
         android:id="@+id/walk_info"
-        android:layout_width="136dp"
+        android:layout_width="392dp"
         android:layout_height="wrap_content"
-        android:text="מידע על כמות טיולים ביום:"
+        android:text="מידע על טיולים:"
         android:textSize="30sp"
-        android:translationX="250dp"
         android:translationY="20dp" />
+
+    <TextView
+        android:id="@+id/vaccinesPEX"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:text=" טיול עם גור כלבים: משך הטיול איתו לא צריך להימשך יתר על המידה במיוחד כי תדירות הטיולים במשך היום היא גבוהה יותר(כדי להרגילו לעשות את צרכיו בחוץ).                               משך הטיול לכלב בוגר צריך להיות כ- 30-45 דקות לפחות, כך שהכלב יוכל להיחשף אל מגוון גירויים מעניינים שקיימים בחוץ וגם יספיק לפרוק אנרגיה.
+                                                                משך הטיול לכלבים מבוגרים, או כאלו הסובלים מבעיות בריאותיות שונות, יש צורך למתן את קצב ההליכה ולא לזרז ולהלחיץ אותם כדי שיוכלו ליהנות כמה שיותר בזמן הטיול בחוץ."
+        android:textSize="22sp"
+        android:translationX="10dp"
+        android:translationY="20dp" />
+
+    <Button
+        android:id="@+id/backbt"
+        android:layout_width="124dp"
+        android:layout_height="73dp"
+        android:text="אחורה"
+        android:textSize="25sp"
+        android:translationX="270dp"
+        android:translationY="80dp" />
+
 </LinearLayout>
