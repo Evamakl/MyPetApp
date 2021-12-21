@@ -10,10 +10,46 @@
 
     <TextView
         android:id="@+id/food_info"
-        android:layout_width="136dp"
+        android:layout_width="378dp"
         android:layout_height="wrap_content"
         android:text="מידע על האוכל:"
         android:textSize="30sp"
-        android:translationX="250dp"
+        android:translationX="20dp"
+        android:translationY="20dp" />
+
+    <TextView
+        android:id="@+id/food"
+        android:layout_width="385dp"
+        android:layout_height="wrap_content"
+        android:text="סוגי מזון מומלצים: סיאנס דיאט, רויאל קנין, פרו פלן, נוטרו צ'ויס."
+        android:textSize="21sp"
+        android:translationX="10dp"
+        android:translationY="20dp" />
+
+    <TextView
+        android:id="@+id/foodEX1"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:text="עד גיל חצי שנה מומלץ לתת לגור 4 ארוחות ביום, מגיל חצי שנה עד שנה 3 ארוחות, מגיל שנה ואילך 2 ארוחות.
+מזון כלבים מכיל את כל המרכיבים שכלבכם צריך, ולכן לא מומלץ לתת לו מזון מהמטבח."
+        android:textSize="20sp"
+        android:translationX="10dp"
+        android:translationY="20dp" />
+
+    <TextView
+        android:id="@+id/foodEX2"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:text="מזון לא מומלץ: מזון מתובל (גורם לבעיות עיכול), מוצרי חלב (גורמים לשלשולים), כרוב וכרובית (הגורמים לגזים), מאכלים עתירי סוכר, חמוצים, חריפים ועתירי שומן. מזון אסור בהחלט: בצל ושוקולד שמהווים סכנה אמיתית לחייו של הכלב מאחר ואין לו את האנזים הדרוש לפירוקם.לא מומלץ להאכיל כלבים בעצמות; הן עלולות להישבר והקצוות החדים של העצם השבורה עלולים לפצוע ואף לקרוע את המעיים והוושט של הכלב. "
+        android:textSize="20sp"
+        android:translationX="10dp"
+        android:translationY="20dp" />
+
+    <Button
+        android:id="@+id/backbt"
+        android:layout_width="124dp"
+        android:layout_height="73dp"
+        android:text="אחורה"
+        android:translationX="270dp"
         android:translationY="20dp" />
 </LinearLayout>

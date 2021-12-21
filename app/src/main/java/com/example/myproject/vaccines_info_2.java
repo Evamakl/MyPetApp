@@ -21,11 +21,11 @@ public class vaccines_info_2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                openNewActivityNew();
+                openNewActivityBack();
             }
         });
     }
-    public void openNewActivityNew() {
+    public void openNewActivityBack() {
         Intent intent = new Intent(this, vaccines_info.class);
         startActivity(intent);
     }

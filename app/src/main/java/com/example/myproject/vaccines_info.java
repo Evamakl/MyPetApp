@@ -25,14 +25,14 @@ public class vaccines_info extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                openNewActivityBack();
+                openNewActivityCon();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                openNewActivityCon();
+                openNewActivityBack();
             }
         });
     }
