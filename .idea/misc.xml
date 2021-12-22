@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/drawable/ic_home.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_about_us.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_app_update.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_blocking_user.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_create_feedback_mess.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_end.xml" value="0.10461956521739131" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_home_page_manager.xml" value="0.22" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_newsletter_update.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_reports.xml" value="0.165625" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/main_nav_drawer.xml" value="0.22" />
+        <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/main_toolbar.xml" value="0.22" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_end.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_exist_new_frame.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_firstframe.xml" value="0.1" />
