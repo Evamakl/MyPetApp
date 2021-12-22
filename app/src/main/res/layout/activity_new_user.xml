@@ -9,22 +9,22 @@
     android:scrollbarFadeDuration="250">
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/fullNameET"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="שם משתמש: "
+        android:text="שם מלא: "
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="41dp"
-        android:text="סיסמה: " />
+        android:text="סיסמא: " />
 
     <EditText
-        android:id="@+id/editTextTextPassword7"
+        android:id="@+id/passwordET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,10 +34,10 @@
         android:id="@+id/password2"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:text="אימות סיסמה: " />
+        android:text="אימות סיסמא: " />
 
     <EditText
-        android:id="@+id/editTextTextPassword6"
+        android:id="@+id/confirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="5"
@@ -51,7 +51,7 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/emailET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -65,7 +65,7 @@
         android:text="טלפון: " />
 
     <EditText
-        android:id="@+id/editTextPhone2"
+        android:id="@+id/phoneET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -79,7 +79,7 @@
         android:text="לסיום הרשמה לחצו למטה." />
 
     <Button
-        android:id="@+id/button_end"
+        android:id="@+id/registerbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="סיום הרשמה"
@@ -92,10 +92,10 @@
 
 
     <Button
-        android:id="@+id/button_goBack"
+        android:id="@+id/button_prev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="לחזרה אחורה"
+        android:text="אחורה"
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="25dp" />
 

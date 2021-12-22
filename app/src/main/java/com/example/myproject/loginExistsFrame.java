@@ -1,6 +1,6 @@
 package com.example.myproject;
 
-import static com.example.myproject.new_user.isValidPassword;
+//import static com.example.myproject.new_user.isValidPassword;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
