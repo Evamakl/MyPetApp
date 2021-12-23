@@ -33,7 +33,8 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     Button btnSignIn, btnBack;
 
     private String TAG = "loginExistsFrame";
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    ;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Users");
 
@@ -43,7 +44,6 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_login_exists_frame);
 
         // Initialize Firebase Auth
-
         etUserName = (EditText) findViewById(R.id.emailET);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
@@ -52,36 +52,46 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         btnBack.setOnClickListener((View.OnClickListener) this);
 
     }
-
+/*
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
             openNewActivity();
         }
     }
+ */
 
     @Override
     public void onClick(View v) {
         if (v == btnSignIn) {
             if (etPassword.getText().toString().length() > 0 && etUserName.getText().toString().length() > 0) {
-
-                //if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
-                //etUserName.setText("");
-                //etPassword.setText("");
+                /*if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
+                    etUserName.setText("");
+                    etPassword.setText("");*/
 
                 mAuth.signInWithEmailAndPassword(etUserName.getText().toString(), etPassword.getText().toString())
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "signInWithEmail:success");
+                                    reference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            Log.d(TAG, "signInWithEmail:success");
+                                            //User user = snapshot.getValue(User.class);
+                                            //Intent intent = new Intent(this,NewActivityFrame.class);
+                                            //intent.putExtra("user",user);
+                                            //startActivity(intent);
+                                        }
 
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    openNewActivity();
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                        }
+                                    });
+                                    // Sign in success, update UI with the signed-in user's information
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -93,56 +103,18 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                         });
 
 
-                openNewActivity();
+                //openNewActivity();
             }
-
-                /*if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
-                    etUserName.setText("");
-                    etPassword.setText("");*/
-
-                    mAuth.signInWithEmailAndPassword(etUserName.getText().toString(), etPassword.getText().toString())
-                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        reference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                Log.d(TAG, "signInWithEmail:success");
-                                                //User user = snapshot.getValue(User.class);
-                                                //Intent intent = new Intent(this,NewActivityFrame.class);
-                                                //intent.putExtra("user",user);
-                                                //startActivity(intent);
-                                            }
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) { }
-                                        });
-                                        // Sign in success, update UI with the signed-in user's information
-
-                                    } else {
-                                        // If sign in fails, display a message to the user.
-                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                        Toast.makeText(getApplicationContext(), "Authentication failed.",
-                                                Toast.LENGTH_SHORT).show();
-                                        //updateUI(null);
-                                    }
-                                }
-                            });
-
-
-                    //openNewActivity();
-                }
-
             //}
-
+        }
         if (v == btnBack) {
             openPrevActivity();
         }
 
     }
-    public void openNewActivity(){
 
-        Intent intent = new Intent(this,Start_work.class);
+    public void openNewActivity() {
+        Intent intent = new Intent(this, search_page.class);
         startActivity(intent);
     }
 
@@ -159,7 +131,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         return matcher.matches();
     }
 
-    private boolean isValidUserName(String name){
+    private boolean isValidUserName(String name) {
         String expression = "^[a-zA-Z]*$";
         CharSequence inputStr = name;
         Pattern pattern = Pattern.compile(expression);
