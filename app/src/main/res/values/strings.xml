@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MyPetApp</string>
     <string name="app_name">Myproject</string>
+    <string name="title_activity_blocking_user">BlockingUser</string>
+
     <string name="InvalidEmail">string</string>
     <string name="InvalidPhoneNumber">string</string>
     <string name="InvalidPassword">string</string>

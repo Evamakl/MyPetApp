@@ -9,6 +9,9 @@
         android:id="@+id/FirstFragment"
         android:name="com.example.myproject.FirstFragment"
         android:label="@string/first_fragment_label"
+
+        tools:layout="@layout/fragment_first" >
+
         tools:layout="@layout/fragment_first">
 
         <action
@@ -19,6 +22,8 @@
         android:id="@+id/SecondFragment"
         android:name="com.example.myproject.SecondFragment"
         android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_second" >
+
         tools:layout="@layout/fragment_second">
 
         <action

@@ -13,6 +13,7 @@ import com.example.myproject.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
 
+private FragmentSecondBinding binding;
     private FragmentSecondBinding binding;
 
     @Override
@@ -21,6 +22,8 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
 
+      binding = FragmentSecondBinding.inflate(inflater, container, false);
+      return binding.getRoot();
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
@@ -38,6 +41,7 @@ public class SecondFragment extends Fragment {
         });
     }
 
+@Override
     @Override
     public void onDestroyView() {
         super.onDestroyView();
