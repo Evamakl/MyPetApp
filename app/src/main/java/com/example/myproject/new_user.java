@@ -23,6 +23,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -43,10 +45,9 @@ public class new_user extends AppCompatActivity {
     EditText phone;
     Button register;
     Button back;
-    FirebaseAuth firebaseAuth;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference().child("Users");
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -62,7 +63,6 @@ public class new_user extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Register();
             }
         });
@@ -74,7 +74,6 @@ public class new_user extends AppCompatActivity {
         String password2 = confirmPass.getText().toString();
         String fName = fullName.getText().toString();
         String phoneNum = phone.getText().toString();
-
         if (TextUtils.isEmpty(mail)) {
             email.setError("Enter your email!");
             return;
@@ -113,7 +112,7 @@ public class new_user extends AppCompatActivity {
         else if (!isAlpha(fName)){
             fullName.setError("invalid name");
         }
-        firebaseAuth.createUserWithEmailAndPassword(mail,password1).addOnCompleteListener(new_user.this, new OnCompleteListener<AuthResult>() {
+         firebaseAuth.createUserWithEmailAndPassword(mail,password1).addOnCompleteListener(new_user.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -123,30 +122,7 @@ public class new_user extends AppCompatActivity {
                     user.put("password", password1);
                     user.put("Email", mail);
                     user.put("phone", phoneNum);
-
-                    db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess (DocumentReference documentReference) {
-                            Log.d(TAG,"DocumentSnapshot added with ID: " + documentReference.getId());
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error adding document", e);
-                        }
-                    });
-                    db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if(task.isSuccessful()){
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Log.d(TAG, document.getId() + " => " + document.getData());
-                                }
-                            }else{
-                                Log.w(TAG, "Error getting documents.", task.getException());
-                            }
-                        }
-                    });
+                    reference.child(firebaseAuth.getCurrentUser().getUid()).setValue(user);
                     finish();
                 }else{
                     Toast.makeText(new_user.this,"Sign up fail",Toast.LENGTH_LONG).show();

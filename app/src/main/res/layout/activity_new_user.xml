@@ -6,7 +6,8 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:scrollbarDefaultDelayBeforeFade="300"
-    android:scrollbarFadeDuration="250">
+    android:scrollbarFadeDuration="250"
+    tools:context=".new_user">
 
     <EditText
         android:id="@+id/fullNameET"

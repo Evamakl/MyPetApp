@@ -10,6 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".tips"
+            android:exported="false" />
+        <activity
+            android:name=".Reminder"
+            android:exported="false" />
+        <activity
+            android:name=".ToDoList"
+            android:exported="false" />
+        <activity
+            android:name=".DogList"
+            android:exported="false" />
+        <activity
+            android:name=".navigation_drawer"
+            android:exported="false" />
+        <activity
+            android:name=".main_toolbar"
+            android:exported="false" />
+        <activity
             android:name=".vaccines_info_2"
             android:exported="false" />
         <activity
