@@ -16,16 +16,15 @@ import javax.xml.validation.Validator;
  */
 
 public class ExampleUnitTest {
-
-
-    @Test
+/*
+ 
     public void isValidUserName_test() {
         assertTrue(loginExistsFrame.isValidUserName("ron"));
         assertFalse(loginExistsFrame.isValidUserName("r0n"));
         assertFalse(loginExistsFrame.isValidUserName("123"));
         //@Test
         //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
-    }
+    }*/
     @Test
     public void isAlpha_test() {
         assertTrue(new_user.isAlpha("hadar"));
@@ -44,10 +43,10 @@ public class ExampleUnitTest {
     }
 
     @Test
-    public void isEmailValid_test() {
-        assertFalse(new_user.isEmailValid("hadar"));
-        assertFalse(new_user.isEmailValid("hadar@hadar"));
-        assertTrue(new_user.isEmailValid("hadar@hadar.com"));
+    public static void isValidEmail_test() {
+        assertFalse(new_user.isValidEmail("hadar"));
+        assertFalse(new_user.isValidEmail("hadar@hadar"));
+        assertTrue(new_user.isValidEmail("hadar@hadar.com"));
     }
 
     @Test
@@ -57,14 +56,6 @@ public class ExampleUnitTest {
     }
 }
 
-    /*
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
-
-     */
-
-     */
 
 
 

@@ -1,6 +1,6 @@
 package com.example.myproject;
 
-import static com.example.myproject.new_user.isValidPassword;
+//import static com.example.myproject.new_user.isValidPassword;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,8 +33,9 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     Button btnSignIn, btnBack;
 
     private String TAG = "loginExistsFrame";
-    private FirebaseAuth mAuth;
-
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference().child("Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +43,8 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_login_exists_frame);
 
         // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
 
-        etUserName = (EditText) findViewById(R.id.etUserName);
+        etUserName = (EditText) findViewById(R.id.emailET);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnBack = (Button) findViewById(R.id.btnBack);
@@ -100,11 +105,20 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        reference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                Log.d(TAG, "signInWithEmail:success");
+                                                //User user = snapshot.getValue(User.class);
+                                                //Intent intent = new Intent(this,NewActivityFrame.class);
+                                                //intent.putExtra("user",user);
+                                                //startActivity(intent);
+                                            }
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) { }
+                                        });
                                         // Sign in success, update UI with the signed-in user's information
-                                        Log.d(TAG, "signInWithEmail:success");
 
-                                        FirebaseUser user = mAuth.getCurrentUser();
-                                        openNewActivity();
                                     } else {
                                         // If sign in fails, display a message to the user.
                                         Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -127,6 +141,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
     }
     public void openNewActivity(){
+
         Intent intent = new Intent(this,Start_work.class);
         startActivity(intent);
     }

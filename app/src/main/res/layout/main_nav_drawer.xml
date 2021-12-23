@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     
     <ImageView
         android:layout_width="match_parent"
@@ -17,6 +18,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Pet Keeper"
+
         android:text="מנהל מערכת"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -35,11 +38,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="ClickDogList">
         android:onClick="ClickHome">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="                                                                                  רשימת הכלבים"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:padding="12dp" />
+
             android:layout_weight="1"
             android:text="מסך בית"
             android:padding="12dp"
@@ -49,6 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_pets"/>
+
+
             android:src="@drawable/ic_home"/>
 
     </LinearLayout>
@@ -58,12 +70,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="ClickToDoList">
+
         android:onClick="ClickReports">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="To Do List"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
             android:text="הפקת דוחות"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
@@ -72,6 +90,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_todolist"/>
+
+    </LinearLayout>
+
+
+
             android:src="@drawable/ic_reports"/>
 
     </LinearLayout>
@@ -81,11 +105,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="ClickReminder">
+
         android:onClick="ClickNewsletterUpdate">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="                                                                                    יצירת תזכורות" />
+
             android:layout_weight="1"
             android:text="עדכון ידיעון"
             android:padding="12dp"
@@ -95,6 +126,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_reminder"/>
+
+    </LinearLayout>
+
+
+
             android:src="@drawable/ic_newsletter"/>
 
     </LinearLayout>
@@ -104,12 +141,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="Clicktips">
+
         android:onClick="ClickCreateFeedbackMess">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="                                                                               מרכז מידע-טיפים"
+
             android:text="יצירת הודעות פידבק"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
@@ -118,6 +159,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_info"/>
+
+    </LinearLayout>
+
+
             android:src="@drawable/ic_feedback"/>
 
     </LinearLayout>
@@ -127,12 +173,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:onClick="ClickLogOut">
+
         android:onClick="ClickBlockingUser">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:text="                                                                               התנתקות"
+
             android:text="חסימת משתמש"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
@@ -141,6 +191,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_logoff"/>
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+
             android:src="@drawable/ic_blocking"/>
 
     </LinearLayout>
