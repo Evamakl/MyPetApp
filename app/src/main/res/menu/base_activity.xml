@@ -24,21 +24,12 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/personal_file"
-            android:title="תיק אישי" />
-        <item
-            android:id="@+id/medical_file"
-            android:title="תיק רפואי" />
-
-        <item
-            android:id="@+id/med_information"
-            android:title="מידע רפואי" />
-        <item
             android:id="@+id/about"
             android:title=" ידיעון" />
         <item
             android:id="@+id/calendar"
             android:title=" לוח שנה" />
+
     </group>
 
     <group android:checkableBehavior="single">
