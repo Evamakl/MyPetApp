@@ -29,7 +29,6 @@
             android:translationY="25sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include" />
-
         <TextView
         android:id="@+id/dog_birth_day"
         android:layout_width="99dp"
@@ -39,9 +38,11 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:translationX="170sp"
-        android:translationY="275sp" />
+        android:translationY="275sp"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
+
+        <TextView
         android:id="@+id/city"
         android:layout_width="69dp"
         android:layout_height="26dp"
@@ -49,7 +50,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:translationX="100sp"
-        android:translationY="350sp" />
+        android:translationY="350sp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/dog_name"
@@ -61,7 +63,8 @@
             android:translationX="35sp"
             android:translationY="150sp"
             tools:layout_editor_absoluteX="201dp"
-            tools:layout_editor_absoluteY="198dp" />
+            tools:layout_editor_absoluteY="198dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
         android:id="@+id/dog_type"
@@ -71,7 +74,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:translationX="-20sp"
-        android:translationY="200sp" />
+        android:translationY="200sp"
+            tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/time_outside"
@@ -81,7 +85,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:translationX="-125sp"
-        android:translationY="400sp" />
+        android:translationY="400sp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/Sex"
@@ -91,7 +96,8 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:translationX="-195sp"
-        android:translationY="250sp" />
+        android:translationY="250sp"
+        tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -51,7 +51,7 @@
             android:exported="false" />
 
 
-
+        <activity
             android:name=".PetOwnerOptionsOfDog"
             android:exported="false" />
         <activity
@@ -61,7 +61,7 @@
             android:name=".Vaccines_and_Medicines_slide"
             android:exported="false" />
         <activity android:name=".Personal_File" />
-
+        <activity
             android:name=".vaccines_info_2"
             android:exported="false" />
         <activity

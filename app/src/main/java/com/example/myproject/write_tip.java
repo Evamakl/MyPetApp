@@ -14,7 +14,7 @@ public class write_tip extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_tip);
+        setContentView(R.layout.activity_tips);
         add = (Button) findViewById(R.id.button_add);
         add.setOnClickListener(new View.OnClickListener() {
             @Override

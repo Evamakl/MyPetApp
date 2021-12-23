@@ -15,7 +15,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import org.jsoup.Jsoup;
 import java.io.IOException;
 

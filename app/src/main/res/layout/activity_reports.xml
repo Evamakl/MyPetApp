@@ -33,7 +33,7 @@
         android:background="@android:color/white">
 
         <include
-            layout="@layout/main_nav_drawer"/>
+            layout="@layout/activity_nav_drawer_manager"/>
 
     </RelativeLayout>
 
