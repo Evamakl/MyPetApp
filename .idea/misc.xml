@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_calendar.xml" value="0.264" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_end.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_exist_new_frame.xml" value="0.13020833333333334" />
@@ -25,8 +26,27 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_login_exists_frame.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_menu_base.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_my_recycler_view_adapter.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_new_frame.xml" value="0.16018518518518518" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_new_user.xml" value="0.16018518518518518" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_personal_file.xml" value="0.2" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_pet_owner_options_of_dog.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_recyclerview_row.xml" value="0.25" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_start_work.xml" value="0.2" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines.xml" value="0.264" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_and_medicines_slide.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/addvaccine_dialog.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/app_bar_base.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dialog_search_spinner.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/drop_down.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dropdown_item.xml" value="0.264" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/header.xml" value="0.4" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/mede_item.xml" value="0.4" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/recyclerview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/base_activity.xml" value="0.536" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/recyclerview.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/scroling.xml" value="0.23854166666666668" />
       </map>
     </option>
   </component>
