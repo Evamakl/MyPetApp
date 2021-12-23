@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Start_work">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/Header"
+        layout="@layout/header"
+        />
+
+    <TextView
+        android:id="@+id/EXIST_NAME"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שם: "
+        android:textColor="#3F51B5"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:layout_constraintVertical_bias="0.161" />
+
+    <TextView
+        android:id="@+id/EXIST_MAIL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="מייל: "
+        android:textColor="#3F51B5"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/EXIST_NAME"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="@+id/EXIST_NAME"
+        app:layout_constraintTop_toBottomOf="@+id/EXIST_NAME"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <EditText
+        android:id="@+id/editTextTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="sadaas"
+        android:gravity="end"
+        android:textSize="18dp"
+        android:enabled="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/EXIST_NAME"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmail"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmail"
+        app:layout_constraintTop_toTopOf="@+id/EXIST_NAME" />
+
+    <EditText
+        android:id="@+id/editTextTextEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:textSize="18dp"
+        android:gravity="end"
+        android:enabled="false"
+        android:textColor="@color/black"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/EXIST_MAIL"
+        app:layout_constraintStart_toEndOf="@+id/EXIST_MAIL"
+        app:layout_constraintTop_toTopOf="@+id/EXIST_MAIL" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
+        android:layout_height="match_parent"
+        android:layout_width="220dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/base_activity">
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

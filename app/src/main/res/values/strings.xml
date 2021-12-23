@@ -1,6 +1,12 @@
 <resources>
+    <string name="app_name">MyPetApp</string>
     <string name="app_name">Myproject</string>
     <string name="title_activity_blocking_user">BlockingUser</string>
+
+    <string name="InvalidEmail">string</string>
+    <string name="InvalidPhoneNumber">string</string>
+    <string name="InvalidPassword">string</string>
+    <string name="title_activity_personal_information_center">personal_information_center</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
