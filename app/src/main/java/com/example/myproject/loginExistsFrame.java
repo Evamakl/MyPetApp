@@ -44,7 +44,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
         // Initialize Firebase Auth
 
-        etUserName = (EditText) findViewById(R.id.etUserName);
+        etUserName = (EditText) findViewById(R.id.emailET);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnBack = (Button) findViewById(R.id.btnBack);
