@@ -27,7 +27,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="textPassword"
         android:textSize="30sp"
         android:translationY="50dp" />
 
@@ -35,9 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:text="סיסמה: "
+        android:text="סיסמא: "
         android:textColor="@color/black"
-
         android:textSize="30sp"
         android:textStyle="bold"
         android:translationX="-10sp"
