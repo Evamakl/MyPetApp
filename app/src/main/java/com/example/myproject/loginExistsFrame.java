@@ -120,7 +120,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                 }
 
             //}
-        }
+
         if (v == btnBack) {
             openPrevActivity();
         }

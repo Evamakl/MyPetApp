@@ -15,7 +15,6 @@
         android:translationX="60dp"
         android:translationY="20dp" />
 
-
     <EditText
         android:id="@+id/titleEt"
         android:layout_width="356dp"

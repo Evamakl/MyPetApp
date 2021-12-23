@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import org.jsoup.Jsoup;
+//import org.jsoup.Jsoup;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-}
+/*}*/
 
 
     @Override
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openNewActivity() {
-        Intent intent = new Intent(this,NewActivityFrame.class);
+        Intent intent = new Intent(this,Start_work.class);
         startActivity(intent);
     }
 

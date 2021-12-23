@@ -17,7 +17,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
-
 import java.io.IOException;
 
 public class AppUpdate extends AppCompatActivity {

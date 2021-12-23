@@ -52,7 +52,6 @@
             android:name=".walk_info"
             android:exported="false" />
         <activity
-            android:name=".shampo_info"
 
             android:name=".reliability_form"
             android:exported="false" />
@@ -67,9 +66,6 @@
             android:exported="false" />
         <activity
             android:name=".write_tip"
-            android:exported="false" />
-        <activity
-            android:name=".add_tip"
             android:exported="false" />
         <activity
             android:name=".End"
@@ -91,11 +87,9 @@
         <activity android:name=".firstframe" />
         <activity android:name=".loginExistsFrame" />
         <activity android:name=".Exist_new_frame" />
-        <activity android:name=".new_user" />
 
 
         <activity android:name=".Start_work" />
-        <activity android:name=".NewActivityFrame" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
