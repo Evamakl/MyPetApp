@@ -10,11 +10,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import java.util.Calendar;
 
 public class HomePageManager extends AppCompatActivity {
 
     //Initialize variable
     DrawerLayout drawerLayout;
+    TextView greetings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,27 @@ public class HomePageManager extends AppCompatActivity {
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        greetings = (TextView) findViewById(R.id.greetings);
+
+        //greetings
+        Calendar calendar = Calendar.getInstance();
+        int time = calendar.get(Calendar.HOUR_OF_DAY);
+
+        if (time >= 0 && time < 12){
+            greetings.setText("בוקר טוב, ");
+        }
+        else if (time >= 12 && time < 16){
+            greetings.setText("צהריים טובים, ");
+        }
+        else if (time >= 16 && time < 21){
+            greetings.setText("ערב טוב, ");
+        }
+        else if (time >= 21 && time < 24){
+            greetings.setText("לילה טוב, ");
+        }
+        else {
+            greetings.setText("שלום, ");
+        }
     }
 
     public void ClickMenu(View view) {
