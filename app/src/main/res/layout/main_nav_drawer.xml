@@ -5,10 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_margin="16dp"
+        android:onClick="ClickLogo" />
+    /*android:src="@drawable/ac_logo"/>
+    להוסיף תמונה של לוגו
+    */
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pet Keeper"
+
+        android:text="מנהל מערכת"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -27,6 +39,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:onClick="ClickDogList">
+        android:onClick="ClickHome">
 
         <TextView
             android:layout_width="0dp"
@@ -36,12 +49,19 @@
             android:layout_weight="1"
             android:padding="12dp" />
 
+            android:layout_weight="1"
+            android:text="מסך בית"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="48dp"
             android:src="@drawable/ic_pets"/>
 
+
+            android:src="@drawable/ic_home"/>
 
     </LinearLayout>
 
@@ -52,6 +72,8 @@
         android:gravity="center_vertical"
         android:onClick="ClickToDoList">
 
+        android:onClick="ClickReports">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,6 +81,11 @@
             android:text="To Do List"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
+
+            android:text="הפקת דוחות"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,12 +95,19 @@
     </LinearLayout>
 
 
+
+            android:src="@drawable/ic_reports"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:onClick="ClickReminder">
+
+        android:onClick="ClickNewsletterUpdate">
 
         <TextView
             android:layout_width="0dp"
@@ -82,6 +116,11 @@
             android:layout_weight="1"
             android:padding="12dp"
             android:text="                                                                                    יצירת תזכורות" />
+
+            android:layout_weight="1"
+            android:text="עדכון ידיעון"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
 
         <ImageView
             android:layout_width="wrap_content"
@@ -92,6 +131,11 @@
     </LinearLayout>
 
 
+
+            android:src="@drawable/ic_newsletter"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,11 +143,15 @@
         android:gravity="center_vertical"
         android:onClick="Clicktips">
 
+        android:onClick="ClickCreateFeedbackMess">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="                                                                               מרכז מידע-טיפים"
+
+            android:text="יצירת הודעות פידבק"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
 
@@ -116,6 +164,10 @@
     </LinearLayout>
 
 
+            android:src="@drawable/ic_feedback"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -123,11 +175,15 @@
         android:gravity="center_vertical"
         android:onClick="ClickLogOut">
 
+        android:onClick="ClickBlockingUser">
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="                                                                               התנתקות"
+
+            android:text="חסימת משתמש"
             android:padding="12dp"
             android:layout_marginStart="16dp"/>
 
@@ -145,3 +201,55 @@
 
 </LinearLayout>
 
+
+            android:src="@drawable/ic_blocking"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickAppUpdate">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="עדכון תוכנה"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_update"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickLogout">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="התנתקות"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_logout"/>
+
+    </LinearLayout>
+
+</LinearLayout>

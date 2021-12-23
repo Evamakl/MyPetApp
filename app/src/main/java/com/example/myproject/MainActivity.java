@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import org.jsoup.Jsoup;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -11,17 +12,21 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        User user = new User("s","000","sss");
         Intent intent = new Intent(this,firstframe.class);
+        //intent.putExtra("user",user);
         startActivity(intent);
+
     }
+
+}
+
 
     @Override
     public void onStart() {
@@ -39,3 +44,4 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+

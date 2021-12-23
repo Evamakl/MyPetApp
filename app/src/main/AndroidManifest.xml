@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myproject">
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+
             android:name=".tips"
             android:exported="false" />
         <activity
@@ -28,6 +32,36 @@
             android:name=".main_toolbar"
             android:exported="false" />
         <activity
+            android:name=".BlockingUser"
+            android:exported="false" />
+        <activity
+            android:name=".CreateFeedbackMess"
+            android:exported="false" />
+        <activity
+            android:name=".NewsletterUpdate"
+            android:exported="false" />
+        <activity
+            android:name=".Reports"
+            android:exported="false" />
+        <activity
+            android:name=".HomePageManager"
+            android:exported="false" />
+        <activity
+            android:name=".AppUpdate"
+            android:exported="false" />
+
+
+
+            android:name=".PetOwnerOptionsOfDog"
+            android:exported="false" />
+        <activity
+            android:name=".Vaccines"
+            android:exported="false" />
+        <activity
+            android:name=".Vaccines_and_Medicines_slide"
+            android:exported="false" />
+        <activity android:name=".Personal_File" />
+
             android:name=".vaccines_info_2"
             android:exported="false" />
         <activity
@@ -38,6 +72,30 @@
             android:exported="false" />
         <activity
             android:name=".shampo_info"
+
+            android:name=".reliability_form"
+            android:exported="false" />
+        <activity
+            android:name=".creare_technical_support_page"
+            android:exported="false" />
+        <activity
+            android:name=".technical_support"
+            android:exported="false" />
+        <activity
+            android:name=".tips_list"
+            android:exported="false" />
+        <activity
+            android:name=".write_tip"
+            android:exported="false" />
+        <activity
+            android:name=".add_tip"
+            android:exported="false" />
+        <activity
+            android:name=".End"
+            android:exported="false" />
+        <activity
+            android:name=".new_user"
+
             android:exported="false" />
         <activity
             android:name=".food_info"
@@ -48,14 +106,19 @@
         <activity
             android:name=".search_page"
             android:exported="false" />
+
         <activity android:name=".firstframe" />
         <activity android:name=".loginExistsFrame" />
         <activity android:name=".Exist_new_frame" />
         <activity android:name=".new_user" />
+
+
+        <activity android:name=".Start_work" />
         <activity android:name=".NewActivityFrame" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

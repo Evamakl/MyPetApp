@@ -19,6 +19,13 @@
         android:translationX="250dp"
         android:translationY="50dp" />
 
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Email:"
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/fullNameET"
         android:layout_width="match_parent"
@@ -27,6 +34,7 @@
         android:inputType="textPersonName"
         android:textSize="14sp"
         android:translationY="50dp" />
+
 
     <TextView
         android:id="@+id/password"
@@ -37,6 +45,7 @@
         android:textStyle="bold"
         android:translationX="310dp"
         android:translationY="50dp" />
+
 
     <EditText
         android:id="@+id/passwordET"
@@ -82,7 +91,6 @@
         android:inputType="textEmailAddress"
         android:shadowColor="#C84336"
         android:translationY="50dp" />
-
 
     <TextView
         android:id="@+id/phone"

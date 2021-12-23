@@ -2,21 +2,11 @@ package com.example.myproject;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-
 import com.example.myproject.loginExistsFrame;
 import com.example.myproject.new_user;
 
 import static org.junit.Assert.assertTrue;
-
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
 import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import javax.xml.validation.Validator;
 
 /**
@@ -26,8 +16,8 @@ import javax.xml.validation.Validator;
  */
 
 public class ExampleUnitTest {
-
-   /* @Test
+/*
+ 
     public void isValidUserName_test() {
         assertTrue(loginExistsFrame.isValidUserName("ron"));
         assertFalse(loginExistsFrame.isValidUserName("r0n"));
@@ -41,6 +31,7 @@ public class ExampleUnitTest {
         assertFalse(new_user.isAlpha("ha123"));
         assertFalse(new_user.isAlpha("123"));
     }
+
 
     @Test
     public void isValidPassword_test() {
@@ -65,8 +56,6 @@ public class ExampleUnitTest {
     }
 }
 
-    /*
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-    }
-     */
+
+
+

@@ -67,6 +67,35 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v == btnSignIn) {
             if (etPassword.getText().toString().length() > 0 && etUserName.getText().toString().length() > 0) {
+
+                //if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
+                //etUserName.setText("");
+                //etPassword.setText("");
+
+                mAuth.signInWithEmailAndPassword(etUserName.getText().toString(), etPassword.getText().toString())
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    // Sign in success, update UI with the signed-in user's information
+                                    Log.d(TAG, "signInWithEmail:success");
+
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    openNewActivity();
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                    Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                    //updateUI(null);
+                                }
+                            }
+                        });
+
+
+                openNewActivity();
+            }
+
                 /*if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
                     etUserName.setText("");
                     etPassword.setText("");*/
@@ -103,6 +132,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
                     //openNewActivity();
                 }
+
             //}
         }
         if (v == btnBack) {
@@ -111,7 +141,8 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
     }
     public void openNewActivity(){
-        Intent intent = new Intent(this,search_page.class);
+
+        Intent intent = new Intent(this,Start_work.class);
         startActivity(intent);
     }
 
@@ -122,19 +153,17 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
     public static boolean isValidPassword(String password) {
         final String PASSWORD_PATTERN =
-                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+                "^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
         final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 
-        private boolean isValidUserName(String name){
-            String expression = "^[a-zA-Z]*$";
-            CharSequence inputStr = name;
-            Pattern pattern = Pattern.compile(expression);
-            Matcher matcher = pattern.matcher(inputStr);
-            return matcher.matches();
-        }
+    private boolean isValidUserName(String name){
+        String expression = "^[a-zA-Z]*$";
+        CharSequence inputStr = name;
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
     }
-
-
+}
