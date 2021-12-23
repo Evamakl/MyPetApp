@@ -25,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +44,8 @@ public class new_user extends AppCompatActivity {
     Button register;
     Button back;
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstance) {
@@ -58,10 +62,12 @@ public class new_user extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Register();
             }
         });
     }
+
     private void Register() {
         String mail = email.getText().toString();
         String password1 = password.getText().toString();
@@ -101,12 +107,46 @@ public class new_user extends AppCompatActivity {
             email.setError("Invalid email");
             return;
         }
+        else if (!isValidPhoneNumber(phoneNum)){
+            phone.setError("invalid phone number");
+        }
+        else if (!isAlpha(fName)){
+            fullName.setError("invalid name");
+        }
         firebaseAuth.createUserWithEmailAndPassword(mail,password1).addOnCompleteListener(new_user.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(new_user.this,"Successfully registered",Toast.LENGTH_LONG).show();
-                    //Intent intent = new Intent(new_user.this,)
+                    Map <String, Object> user = new HashMap<>();
+                    user.put("fullName", fName);
+                    user.put("password", password1);
+                    user.put("Email", mail);
+                    user.put("phone", phoneNum);
+
+                    db.collection("users").add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess (DocumentReference documentReference) {
+                            Log.d(TAG,"DocumentSnapshot added with ID: " + documentReference.getId());
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error adding document", e);
+                        }
+                    });
+                    db.collection("users").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Log.d(TAG, document.getId() + " => " + document.getData());
+                                }
+                            }else{
+                                Log.w(TAG, "Error getting documents.", task.getException());
+                            }
+                        }
+                    });
                     finish();
                 }else{
                     Toast.makeText(new_user.this,"Sign up fail",Toast.LENGTH_LONG).show();
@@ -116,13 +156,21 @@ public class new_user extends AppCompatActivity {
         });
 
     }
-    private Boolean isValidEmail (CharSequence target){
+    public static Boolean isValidEmail (CharSequence target){
         return (!TextUtils.isEmpty(target)&& Patterns.EMAIL_ADDRESS.matcher(target).matches());
 
-
+    }
+    public static boolean isValidPhoneNumber(String phone){
+        return  !(!phone.matches("(00972|0|\\+972)[5][0-9]{8}") && !phone.matches("(00970|0|\\+970)[5][0-9]{8}") && !phone.matches("(05[0-9]|0[12346789])([0-9]{7})") && !phone.matches("(00972|0|\\+972|0|)[2][0-9]{7}"));
     }
 
-
-
+    public static boolean isAlpha(String name) {
+        String expression = "^[a-zA-Z]*$";
+        CharSequence inputStr = name;
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(inputStr);
+        return matcher.matches();
+    }
 
 }
+
