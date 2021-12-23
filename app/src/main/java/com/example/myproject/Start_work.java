@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,6 +11,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
 public class Start_work extends AppCompatActivity {
     private TextView Title;
     private EditText editTextTextName,editTextTextEmail;
@@ -17,6 +24,9 @@ public class Start_work extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private User user;
     private Intent intent;
+
+    private FirebaseAuth mAuth;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_work);
@@ -28,6 +38,7 @@ public class Start_work extends AppCompatActivity {
         MenuIcon();
         BackIcon();
     }
+
     private void setID(){
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
