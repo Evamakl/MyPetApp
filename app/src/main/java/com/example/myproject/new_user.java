@@ -1,35 +1,35 @@
 package com.example.myproject;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.core.utilities.Validation;
+//import com.google.firebase.firestore.FieldValue;
+//import com.google.firebase.firestore.FirebaseFirestore;
+//import com.example.myproject.new_user.validation;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.example.myproject.validation;
 
-public class new_user extends AppCompatActivity {
+
+public class new_user extends AppCompatActivity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
+    private View binding;
 
     TextView password;
     TextView email;
@@ -37,11 +37,35 @@ public class new_user extends AppCompatActivity {
     Button end;
     Button goBack;
 
+    public static boolean isValidPassword(String password){
+        final String PASSWORD_PATTERN=
+                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+        final Pattern pattern=Pattern.compile(PASSWORD_PATTERN);
+        Matcher matcher=pattern.matcher(password);
+        return matcher.matches();
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public static boolean isEmailValid(String email) {
+        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public static boolean isValidPhoneNumber(String phone) {
+        return !(!phone.matches("(00972|0|\\+972)[5][0-9]{8}") && !phone.matches("(00970|0|\\+970)[5][0-9]{8}") && !phone.matches("(05[0-9]|0[12346789])([0-9]{7})") && !phone.matches("(00972|0|\\+972|0|)[2][0-9]{7}"));
+    }
+
+
+   // @Override
+    public View onCreateView(LayoutInflater inflater,
+                            ViewGroup container,
+                            Bundle savedInstanceState) {
+        binding = inflater.inflate(R.layout.activity_new_user, container, false);
+        View view = binding.getRootView();
         setContentView(R.layout.activity_new_user);
+
+        mAuth = FirebaseAuth.getInstance();
 
         password = (TextView) findViewById(R.id.password);
         password.addTextChangedListener(new TextWatcher() {
@@ -107,12 +131,12 @@ public class new_user extends AppCompatActivity {
                 returnBack();
             }
         });
-
+        return view;
     }
 
     public new_user() {
 
-        FirebaseApp.initializeApp(getContext());
+       // FirebaseApp.initializeApp(getContext());
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -128,26 +152,7 @@ public class new_user extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onClick(View v) {
 
-        if (checkValidation()) {
-            mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
-                    .addOnCompleteListener(getActivity(), task -> {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-                            Map<String, Object> userData = new HashMap<>();
-                            userData.put("Email", String.valueOf(email.getText().toString()));
-                            userData.put("PhoneNumber", Integer.parseInt(phone.getText().toString()));
-
-
-                        }
-                    }).addOnFailureListener(Throwable::printStackTrace);
-        }
-
-    }
 
 
     private boolean checkValidation() {
@@ -163,4 +168,9 @@ public class new_user extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
+
