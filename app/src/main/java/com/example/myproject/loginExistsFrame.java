@@ -62,6 +62,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v == btnSignIn) {
             if (etPassword.getText().toString().length() > 0 && etUserName.getText().toString().length() > 0) {
+
                 //if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
                 //etUserName.setText("");
                 //etPassword.setText("");
@@ -89,6 +90,35 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
                 openNewActivity();
             }
+
+                /*if (isValidUserName(etUserName.getText().toString()) && isValidPassword(etPassword.getText().toString())) {
+                    etUserName.setText("");
+                    etPassword.setText("");*/
+
+                    mAuth.signInWithEmailAndPassword(etUserName.getText().toString(), etPassword.getText().toString())
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d(TAG, "signInWithEmail:success");
+
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        openNewActivity();
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                                        Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                        //updateUI(null);
+                                    }
+                                }
+                            });
+
+
+                    //openNewActivity();
+                }
+
             //}
         }
         if (v == btnBack) {

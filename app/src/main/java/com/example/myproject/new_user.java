@@ -11,8 +11,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class new_user extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class new_user extends AppCompatActivity {
         name = (TextView) findViewById(R.id.username);
         phone = (TextView) findViewById(R.id.phone);
 
+
         end = (Button) findViewById(R.id.button_end);
         end.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +56,8 @@ public class new_user extends AppCompatActivity {
                 returnBack();
             }
         });
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     }
 

@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+
             android:name=".PetOwnerOptionsOfDog"
             android:exported="false" />
         <activity
@@ -20,11 +21,35 @@
             android:name=".Vaccines_and_Medicines_slide"
             android:exported="false" />
         <activity android:name=".Personal_File" />
+
+            android:name=".vaccines_info_2"
+            android:exported="false" />
+        <activity
+            android:name=".Calendar"
+            android:exported="false" />
+        <activity
+            android:name=".walk_info"
+            android:exported="false" />
+        <activity
+            android:name=".shampo_info"
+            android:exported="false" />
+        <activity
+            android:name=".food_info"
+            android:exported="false" />
+        <activity
+            android:name=".vaccines_info"
+            android:exported="false" />
+        <activity
+            android:name=".search_page"
+            android:exported="false" />
+
         <activity android:name=".firstframe" />
         <activity android:name=".loginExistsFrame" />
         <activity android:name=".Exist_new_frame" />
         <activity android:name=".new_user" />
+
         <activity android:name=".Start_work" />
+        <activity android:name=".NewActivityFrame" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

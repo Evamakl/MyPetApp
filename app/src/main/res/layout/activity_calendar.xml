@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/events"
+        android:layout_width="317dp"
+        android:layout_height="46dp"
+        android:text="יצירת אירוע:"
+        android:textSize="30dp"
+        android:translationX="60dp"
+        android:translationY="20dp" />
+
+
+    <EditText
+        android:id="@+id/titleEt"
+        android:layout_width="356dp"
+        android:layout_height="67dp"
+        android:text="כותרת"
+        android:textSize="25sp"
+        android:translationX="40dp"
+        android:translationY="70dp" />
+
+    <EditText
+        android:id="@+id/locationEt"
+        android:layout_width="356dp"
+        android:layout_height="67dp"
+        android:text="מיקום"
+        android:textSize="25sp"
+        android:translationX="40dp"
+        android:translationY="70dp" />
+
+    <EditText
+        android:id="@+id/descriptionEt"
+        android:layout_width="356dp"
+        android:layout_height="67dp"
+        android:text="פירוט"
+        android:textSize="25sp"
+        android:translationX="40dp"
+        android:translationY="70dp" />
+
+    <Button
+        android:id="@+id/saveEventbt"
+        android:layout_width="328dp"
+        android:layout_height="70dp"
+        android:text="שמירת אירוע"
+        android:textSize="25sp"
+        android:translationX="45dp"
+        android:translationY="100dp" />
+
+</LinearLayout>
