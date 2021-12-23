@@ -47,6 +47,21 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/base_activity.xml" value="0.536" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/recyclerview.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/scroling.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_add_tip.xml" value="0.1625" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_creare_technical_support_page.xml" value="0.2" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_end.xml" value="0.21739130434782608" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_information_center.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_new_user.xml" value="0.6" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_personal_infomation_center.xml" value="0.4" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_personal_information_center.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_reliability_form.xml" value="0.264" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_technical_support.xml" value="0.1765625" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips_list.xml" value="0.1765625" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_write_tip.xml" value="0.1765625" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/content_personal_information_center.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/personal_information_center.xml" value="0.4" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/tips.xml" value="0.13020833333333334" />
+
       </map>
     </option>
   </component>

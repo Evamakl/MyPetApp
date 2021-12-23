@@ -58,8 +58,13 @@ public class firstframe extends AppCompatActivity {
         }
 
         public void openNewActivityBoss(){
+
          Intent intent = new Intent(this,loginExistsFrame.class);
          startActivity(intent);
+
+        // Intent intent = new Intent(this,LoginExistsFrame.class);
+        // startActivity(intent);
+
        }
 
 }
