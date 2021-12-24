@@ -32,8 +32,7 @@
         android:layout_gravity="start"
         android:background="@android:color/white">
 
-        <include
-            layout = "@layout/activity_nav_drower_pet_keeper"/>
+        <include layout="@layout/activity_nav_drower_pet_keeper" />
 
 
     </RelativeLayout>

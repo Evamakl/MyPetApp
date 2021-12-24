@@ -1,138 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:scrollbarDefaultDelayBeforeFade="300"
-    android:scrollbarFadeDuration="250"
-    tools:context=".new_user">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/fName"
-        android:layout_width="153dp"
-        android:layout_height="wrap_content"
-        android:text="שם מלא: "
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:translationX="250dp"
-        android:translationY="50dp" />
-
-    <EditText
-        android:id="@+id/passwordET"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:translationY="50dp" />
-
-    <TextView
-        android:id="@+id/password2"
-        android:layout_width="203dp"
-        android:layout_height="wrap_content"
-        android:text="אימות סיסמא: "
-        android:textSize="25sp"
+        android:text="Pet Keeper"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:translationX="200dp"
-        android:translationY="50dp" />
+        android:textAlignment="center"
+        android:textColor="#636363"/>
 
-    <EditText
-        android:id="@+id/confirmPassword"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="#636363"/>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="5"
-        android:inputType="textPassword"
-        android:translationY="50dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickDogList">
 
-    <TextView
-        android:id="@+id/email"
-        android:layout_width="201dp"
-        android:layout_height="wrap_content"
-        android:text="דואר אלקטרוני:"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:translationX="200dp"
-        android:translationY="50dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="                                                                                  רשימת הכלבים"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:padding="12dp" />
 
-    <EditText
-        android:id="@+id/emailET"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_pets"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:shadowColor="#C84336"
-        android:translationY="50dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickToDoList">
 
-    <TextView
-        android:id="@+id/phone"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:text="טלפון: "
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:translationX="260dp"
-        android:translationY="60dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="To Do List"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_todolist"/>
 
-    <EditText
-        android:id="@+id/phoneET"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:translationY="70dp" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView14"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="לסיום הרשמה לחצו למטה."
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:translationY="70dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickReminder">
 
-    <Button
-        android:id="@+id/registerbt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="סיום הרשמה"
-        android:textStyle="bold"
-        android:translationX="10dp"
-        android:translationY="90dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView14" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:text="                                                                                    יצירת תזכורות" />
 
-    <EditText
-        android:id="@+id/fullNameET"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_reminder"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="14sp"
-        android:translationY="50dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="Clicktips">
 
-    <TextView
-        android:id="@+id/password"
-        android:layout_width="94dp"
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="                                                                               מרכז מידע-טיפים"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_info"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="סיסמא: "
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:translationX="310dp"
-        android:translationY="50dp" />
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickLogOut">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="                                                                               התנתקות"
+            android:padding="12dp"
+            android:layout_marginStart="16dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_logoff"/>
+
+    </LinearLayout>
 
 
-    <Button
-        android:id="@+id/button_prev"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:text="אחורה"
-        android:textStyle="bold"
-        android:translationX="300dp"
-        android:translationY="40dp"
-        tools:layout_editor_absoluteX="3dp"
-        tools:layout_editor_absoluteY="25dp" />
+
+
 
 </LinearLayout>
