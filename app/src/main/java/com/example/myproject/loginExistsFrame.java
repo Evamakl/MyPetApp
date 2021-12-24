@@ -33,8 +33,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     Button btnSignIn, btnBack;
 
     private String TAG = "loginExistsFrame";
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    ;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Users");
 
@@ -44,25 +43,24 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_login_exists_frame);
 
         // Initialize Firebase Auth
+
         etUserName = (EditText) findViewById(R.id.emailET);
         etPassword = (EditText) findViewById(R.id.etPassword);
         btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnBack = (Button) findViewById(R.id.btnBack);
         btnSignIn.setOnClickListener((View.OnClickListener) this);
         btnBack.setOnClickListener((View.OnClickListener) this);
-
     }
-/*
+
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
+        if(currentUser != null){
             openNewActivity();
         }
     }
- */
 
     @Override
     public void onClick(View v) {
@@ -86,10 +84,8 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                                             //intent.putExtra("user",user);
                                             //startActivity(intent);
                                         }
-
                                         @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-                                        }
+                                        public void onCancelled(@NonNull DatabaseError error) { }
                                     });
                                     // Sign in success, update UI with the signed-in user's information
                                 } else {
@@ -112,9 +108,8 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         }
 
     }
-
-    public void openNewActivity() {
-        Intent intent = new Intent(this, search_page.class);
+    public void openNewActivity(){
+        Intent intent = new Intent(this,search_page.class);
         startActivity(intent);
     }
 
@@ -125,13 +120,13 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
 
     public static boolean isValidPassword(String password) {
         final String PASSWORD_PATTERN =
-                "^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+                "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
         final Pattern pattern = Pattern.compile(PASSWORD_PATTERN);
         Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 
-    private boolean isValidUserName(String name) {
+    private boolean isValidUserName(String name){
         String expression = "^[a-zA-Z]*$";
         CharSequence inputStr = name;
         Pattern pattern = Pattern.compile(expression);
@@ -139,3 +134,6 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         return matcher.matches();
     }
 }
+
+
+

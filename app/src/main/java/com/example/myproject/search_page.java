@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class search_page extends AppCompatActivity {
     TextView first_title;
     TextView second_title;
@@ -16,6 +18,7 @@ public class search_page extends AppCompatActivity {
     Button shampo_button;
     Button walk_button;
     Button back_button;
+    Button logOff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,14 @@ public class search_page extends AppCompatActivity {
         shampo_button = (Button) findViewById(R.id.shampo_button);
         walk_button = (Button) findViewById(R.id.walk_button);
         back_button = (Button) findViewById(R.id.back_button);
+        logOff = (Button) findViewById(R.id.backbt);
+        logOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOut();
+                openNewActivityLogout();
+            }
+        });
         vaccin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +75,17 @@ public class search_page extends AppCompatActivity {
                 openNewActivityback_button();
             }
         });
+    }
+    public void signOut(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    }
+    public void openNewActivityLogout() {
+        Intent intent = new Intent(this, firstframe.class);
+        startActivity(intent);
     }
 
     public void openNewActivityvaccin_button() {
