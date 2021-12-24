@@ -23,12 +23,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +32,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class new_user extends AppCompatActivity {
-
     private static final String TAG = "TAG";
     EditText fullName;
     EditText password;
@@ -45,9 +40,8 @@ public class new_user extends AppCompatActivity {
     EditText phone;
     Button register;
     Button back;
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference = database.getReference().child("Users");
+    FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -67,13 +61,13 @@ public class new_user extends AppCompatActivity {
             }
         });
     }
-
     private void Register() {
         String mail = email.getText().toString();
         String password1 = password.getText().toString();
         String password2 = confirmPass.getText().toString();
         String fName = fullName.getText().toString();
         String phoneNum = phone.getText().toString();
+
         if (TextUtils.isEmpty(mail)) {
             email.setError("Enter your email!");
             return;
@@ -106,23 +100,12 @@ public class new_user extends AppCompatActivity {
             email.setError("Invalid email");
             return;
         }
-        else if (!isValidPhoneNumber(phoneNum)){
-            phone.setError("invalid phone number");
-        }
-        else if (!isAlpha(fName)){
-            fullName.setError("invalid name");
-        }
-         firebaseAuth.createUserWithEmailAndPassword(mail,password1).addOnCompleteListener(new_user.this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(mail,password1).addOnCompleteListener(new_user.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(new_user.this,"Successfully registered",Toast.LENGTH_LONG).show();
-                    Map <String, Object> user = new HashMap<>();
-                    user.put("fullName", fName);
-                    user.put("password", password1);
-                    user.put("Email", mail);
-                    user.put("phone", phoneNum);
-                    reference.child(firebaseAuth.getCurrentUser().getUid()).setValue(user);
+                    //Intent intent = new Intent(new_user.this,)
                     finish();
                 }else{
                     Toast.makeText(new_user.this,"Sign up fail",Toast.LENGTH_LONG).show();
@@ -130,23 +113,8 @@ public class new_user extends AppCompatActivity {
                 }
             }
         });
-
     }
-    public static Boolean isValidEmail (CharSequence target){
+    public static Boolean isValidEmail(CharSequence target){
         return (!TextUtils.isEmpty(target)&& Patterns.EMAIL_ADDRESS.matcher(target).matches());
-
     }
-    public static boolean isValidPhoneNumber(String phone){
-        return  !(!phone.matches("(00972|0|\\+972)[5][0-9]{8}") && !phone.matches("(00970|0|\\+970)[5][0-9]{8}") && !phone.matches("(05[0-9]|0[12346789])([0-9]{7})") && !phone.matches("(00972|0|\\+972|0|)[2][0-9]{7}"));
-    }
-
-    public static boolean isAlpha(String name) {
-        String expression = "^[a-zA-Z]*$";
-        CharSequence inputStr = name;
-        Pattern pattern = Pattern.compile(expression);
-        Matcher matcher = pattern.matcher(inputStr);
-        return matcher.matches();
-    }
-
 }
-

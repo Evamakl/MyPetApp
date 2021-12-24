@@ -25,8 +25,9 @@ public class write_tip extends AppCompatActivity {
 
         });
     }
+
     public void goTipsList() {
-        Intent intent = new Intent(this, tips_list.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, tips.class);
+        //startActivity(intent);
     }
 }

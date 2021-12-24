@@ -83,13 +83,7 @@
             android:name=".technical_support"
             android:exported="false" />
         <activity
-            android:name=".tips_list"
-            android:exported="false" />
-        <activity
             android:name=".write_tip"
-            android:exported="false" />
-        <activity
-            android:name=".End"
             android:exported="false" />
         <activity
             android:name=".new_user"

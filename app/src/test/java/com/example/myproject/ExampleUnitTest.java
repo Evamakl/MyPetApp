@@ -25,12 +25,6 @@ public class ExampleUnitTest {
         //@Test
         //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
     }*/
-    @Test
-    public void isAlpha_test() {
-        assertTrue(new_user.isAlpha("hadar"));
-        assertFalse(new_user.isAlpha("ha123"));
-        assertFalse(new_user.isAlpha("123"));
-    }
 
 
     @Test
@@ -48,12 +42,13 @@ public class ExampleUnitTest {
         assertFalse(new_user.isValidEmail("hadar@hadar"));
         assertTrue(new_user.isValidEmail("hadar@hadar.com"));
     }
-
+/*
     @Test
     public void isValidPhoneNumber_test() {
         assertFalse(new_user.isValidPhoneNumber("123456789"));
         assertTrue(new_user.isValidPhoneNumber("0523567122"));
     }
+    */
 }
 
 
