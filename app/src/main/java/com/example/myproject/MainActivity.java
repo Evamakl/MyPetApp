@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void openNewActivity() {
 
-        Intent intent = new Intent(this,Start_work.class);
+        Intent intent = new Intent(this,firstframe.class);
         startActivity(intent);
     }
 

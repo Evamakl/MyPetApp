@@ -10,81 +10,90 @@
 
 
     <TextView
-        android:id="@+id/first_title"
+        android:id="@+id/first_titleTV"
         android:layout_width="322dp"
         android:layout_height="91dp"
         android:background="#EDE7F6"
         android:backgroundTint="#E3F2FD"
         android:foregroundTint="#FFF3E0"
         android:text="ידיעון"
+        android:textStyle="bold"
         android:textColor="#0F022C"
         android:textSize="50sp"
         android:translationX="50dp"
         android:translationY="20dp" />
 
     <TextView
-        android:id="@+id/second_title"
+        android:id="@+id/second_titleTV"
         android:layout_width="324dp"
         android:layout_height="84dp"
         android:text="על מה תרצה לדעת?"
+        android:textStyle="bold"
         android:textColor="#0F022C"
         android:textSize="20sp"
         android:translationX="60dp"
         android:translationY="40dp" />
 
     <Button
-        android:id="@+id/vaccin_button"
+        android:id="@+id/vaccin_buttonBT"
         android:layout_width="170dp"
         android:layout_height="77dp"
         android:text="חיסונים"
         android:textColor="#0F022C"
-        android:textSize="35sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         android:translationX="220dp"
         android:translationY="20dp" />
 
     <Button
-        android:id="@+id/food_button"
+        android:id="@+id/food_buttonBT"
         android:layout_width="170dp"
         android:layout_height="77dp"
         android:text="אוכל"
+        android:textStyle="bold"
         android:textColor="#0F022C"
         android:textSize="40sp"
         android:translationX="20dp"
         android:translationY="-55dp" />
 
     <Button
-        android:id="@+id/shampo_button"
+        android:id="@+id/shampo_buttonBT"
         android:layout_width="170dp"
         android:layout_height="77dp"
         android:text="מקלחות"
+        android:textStyle="bold"
         android:textColor="#0F022C"
         android:textSize="30sp"
         android:translationX="220dp"
         android:translationY="-50dp" />
 
     <Button
-        android:id="@+id/walk_button"
+        android:id="@+id/walk_buttonBT"
         android:layout_width="170dp"
         android:layout_height="77dp"
         android:text="טיולים"
+        android:textStyle="bold"
+        android:textColor="#0F022C"
         android:textSize="30sp"
         android:translationX="20dp"
         android:translationY="-127dp" />
 
     <Button
-        android:id="@+id/back_button"
+        android:id="@+id/back_buttonBT"
         android:layout_width="120dp"
         android:layout_height="61dp"
         android:text="אחורה"
+        android:textStyle="bold"
         android:textSize="25sp"
         android:translationX="280sp"
         android:translationY="40dp" />
 
     <Button
-        android:id="@+id/backbt"
+        android:id="@+id/backbtBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="התנתקות"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
