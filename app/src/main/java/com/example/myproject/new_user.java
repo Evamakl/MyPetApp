@@ -23,6 +23,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -41,7 +46,8 @@ public class new_user extends AppCompatActivity {
     Button register;
     Button back;
     FirebaseAuth firebaseAuth;
-
+    Intent intent;
+    private String type;
     @Override
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
@@ -53,7 +59,17 @@ public class new_user extends AppCompatActivity {
         confirmPass = findViewById(R.id.confirmPassword);
         phone = findViewById(R.id.phoneET);
         register = findViewById(R.id.registerbt);
-
+        back = findViewById(R.id.button_prev);
+        intent = getIntent();
+        type = (String)intent.getSerializableExtra("type");
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(new_user.this,Exist_new_frame.class);
+                intent.putExtra("type",type);
+                startActivity(intent);
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +120,13 @@ public class new_user extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
+                    User user = new User(firebaseAuth.getCurrentUser().getUid(),mail, phoneNum,fName);
+                    user.setType(type);
+                    reference.child(firebaseAuth.getCurrentUser().getUid()).setValue(user);
                     Toast.makeText(new_user.this,"Successfully registered",Toast.LENGTH_LONG).show();
-                    //Intent intent = new Intent(new_user.this,)
+                    Intent intent = new Intent(new_user.this,loginExistsFrame.class);
+                    startActivity(intent);
                     finish();
                 }else{
                     Toast.makeText(new_user.this,"Sign up fail",Toast.LENGTH_LONG).show();

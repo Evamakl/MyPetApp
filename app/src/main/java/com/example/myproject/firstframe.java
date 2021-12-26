@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 
 public class firstframe extends AppCompatActivity {
 
@@ -17,6 +19,9 @@ public class firstframe extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
+            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                FirebaseAuth.getInstance().signOut();
+            }
             setContentView(R.layout.activity_firstframe);
             button_pet_keeper = (Button) findViewById(R.id.Pet_Keeper_Button);
             button_pet_keeper.setOnClickListener(new View.OnClickListener() {
@@ -49,18 +54,20 @@ public class firstframe extends AppCompatActivity {
 
         public void openNewActivityPet_keeper (){
             Intent intent = new Intent(this, Exist_new_frame.class);
+            intent.putExtra("type","PetKeeper");
             startActivity(intent);
         }
 
         public void openNewActivityPet(){
         Intent intent = new Intent(this, Exist_new_frame.class);
-        startActivity(intent);
+            intent.putExtra("type","Owner");
+            startActivity(intent);
         }
 
         public void openNewActivityBoss(){
-
          Intent intent = new Intent(this,loginExistsFrame.class);
-         startActivity(intent);
+            intent.putExtra("type","Manager");
+            startActivity(intent);
 
         // Intent intent = new Intent(this,LoginExistsFrame.class);
         // startActivity(intent);

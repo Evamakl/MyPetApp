@@ -58,7 +58,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            openNewActivity();
+            FirebaseAuth.getInstance().signOut();
         }
     }
 
@@ -79,10 +79,15 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             Log.d(TAG, "signInWithEmail:success");
-                                            //User user = snapshot.getValue(User.class);
-                                            //Intent intent = new Intent(this,NewActivityFrame.class);
-                                            //intent.putExtra("user",user);
-                                            //startActivity(intent);
+                                            User user = new User();
+                                            user = snapshot.getValue(User.class);
+                                            Intent intent = new Intent(loginExistsFrame.this,Start_work.class);;
+                                            if(user.getType().equals("PetKeeper"))
+                                                intent = new Intent(loginExistsFrame.this,navigation_drawer.class);
+                                            else if(user.getType().equals("Manager"))
+                                                intent = new Intent(loginExistsFrame.this,HomePageManager.class);
+                                            intent.putExtra("user",user);
+                                            startActivity(intent);
                                         }
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) { }

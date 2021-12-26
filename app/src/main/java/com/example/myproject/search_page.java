@@ -31,14 +31,14 @@ public class search_page extends AppCompatActivity {
         shampo_button = (Button) findViewById(R.id.shampo_buttonBT);
         walk_button = (Button) findViewById(R.id.walk_buttonBT);
         back_button = (Button) findViewById(R.id.back_buttonBT);
-        logOff = (Button) findViewById(R.id.backbt);
-        /*logOff.setOnClickListener(new View.OnClickListener() {
+        logOff = (Button) findViewById(R.id.backbtBT);
+        logOff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signOut();
-                openNewActivityLogout();
+                //openNewActivityLogout();
             }
-        });*/
+        });
         vaccin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,17 +76,20 @@ public class search_page extends AppCompatActivity {
             }
         });
     }
-    /*public void signOut(){
-        FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this,MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    public void signOut(){
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            FirebaseAuth.getInstance().signOut();
+            openNewActivityLogout();
+          //  Intent intent = new Intent(this, MainActivity.class);
+           // intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+           // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        }
     }
     public void openNewActivityLogout() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }*/
+    }
 
     public void openNewActivityvaccin_button() {
             Intent intent = new Intent(this, vaccines_info.class);

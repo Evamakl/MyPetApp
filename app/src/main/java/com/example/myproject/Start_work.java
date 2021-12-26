@@ -56,7 +56,7 @@ public class Start_work extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Start_work.this, Exist_new_frame.class);
-               // intent.putExtra("user",user);
+                intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
             }

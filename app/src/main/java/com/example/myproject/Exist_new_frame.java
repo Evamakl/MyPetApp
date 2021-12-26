@@ -13,11 +13,14 @@ public class Exist_new_frame extends AppCompatActivity {
     Button exist;
     Button prev;
     TextView display;
-
+    private Intent intent;
+    private String type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exist_new_frame);
+        intent = getIntent();
+        type = (String)intent.getSerializableExtra("type");
         New = (Button) findViewById(R.id.btNew);
         exist = (Button) findViewById(R.id.btExist);
         prev = (Button) findViewById(R.id.btprev);
@@ -45,6 +48,7 @@ public class Exist_new_frame extends AppCompatActivity {
 
     public void openNewActivityNew() {
         Intent intent = new Intent(this, new_user.class);
+        intent.putExtra("type",type);
         startActivity(intent);
     }
 
