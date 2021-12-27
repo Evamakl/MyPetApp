@@ -96,9 +96,9 @@ public class Vaccines extends AppCompatActivity {
         recyclerView.setAdapter(vaccineAdapter);
     }
     private void DogPick(){
-        String dog[] = new String[5];
+        ArrayList<String> dog = new ArrayList();
         for(int i=0; i<5 ; i++)
-            dog[i] = ""+i;
+            dog.add("t "+i);
         TextViewDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
