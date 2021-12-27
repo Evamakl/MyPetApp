@@ -12,14 +12,9 @@
         android:id="@+id/RemoveDog"/>
     <group android:id="@+id/group1"
         android:orderInCategory="999">
-        <item android:title="הכלבים שלי">
+        <item android:title="הכלבים שלי"
+            android:id="@+id/Dogs">
             <menu>
-                <item
-                    android:id="@+id/name2"
-                    android:title=""
-                    android:enabled="false"
-                    android:layout_gravity="left">
-                </item>
 
             </menu>
         </item>

@@ -73,14 +73,13 @@ public class Start_work extends AppCompatActivity {
             }
         });
     }
-    public void NavigationView()
-    {
+    public void NavigationView() {
         NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
                 if( id == R.id.AddDog){
-
+                    AddDog();
                 }
                 else if( id == R.id.RemoveDog){
 
@@ -105,9 +104,19 @@ public class Start_work extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+                else{
+                    Intent intent = new Intent(Start_work.this, PetOwnerOptionsOfDog.class);
+                    //intent.putExtra("user",user);
+                    startActivity(intent);
+                    finish();
+                }
                 return false;
             }
         });
+    }
+    private void AddDog(){
+        AddDogDialog addDogDialog = new AddDogDialog(Start_work.this,user);
+        addDogDialog.show(getSupportFragmentManager(),"show dialog");
     }
     public void openNewActivitybaseB (){
       //  Intent intent = new Intent(this, base_activity.class);

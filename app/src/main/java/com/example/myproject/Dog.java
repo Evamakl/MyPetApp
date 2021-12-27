@@ -9,14 +9,16 @@ public class Dog implements Serializable {
     private String Gender = "null";
     private String Image = "null";
     private String City = "null";
+    private String TimeOut = "null";
     private String BirthDay = null;
-    public Dog(String type, String name, String gender, String image, String city, String birthDay) {
+    public Dog(String type, String name, String gender, String image, String city, String birthDay,String TimeOut) {
         Type = type;
         Name = name;
         Gender = gender;
         Image = image;
         City = city;
         BirthDay = birthDay;
+        this.TimeOut =TimeOut;
     }
     public void AddDog(Dog dog, String size){
         id = size;
