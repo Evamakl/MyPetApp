@@ -15,17 +15,19 @@ public class Calendar extends AppCompatActivity {
     EditText location;
     EditText description;
     Button saveEvent;
+    Intent intent;
+    User User=new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
+        intent = getIntent();
+        User=(User)intent.getSerializableExtra("user");
         title = findViewById(R.id.titleEt);
         location = findViewById(R.id.locationEt);
         description = findViewById(R.id.descriptionEt);
         saveEvent = findViewById(R.id.saveEventbt);
-
         saveEvent.setOnClickListener(new View.OnClickListener()
         {
             @Override
