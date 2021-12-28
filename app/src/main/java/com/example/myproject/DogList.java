@@ -3,6 +3,8 @@ package com.example.myproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -51,4 +53,20 @@ public class DogList extends AppCompatActivity {
         //close drawer
         navigation_drawer.closeDrawer(drawerLayout);
     }
+    public void clickAddDog2PK(View view) {
+        DogList.redirectActivity(this,reliability_form.class);
+    }
+    public void ClickRemoveDogPK(View view) {
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        //initialize intent
+        Intent intent = new Intent(activity,aClass);
+        //set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //stat activity
+        activity.startActivity(intent);
+    }
+
+
 }

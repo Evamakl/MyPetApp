@@ -11,7 +11,7 @@ public class Reminder extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reminder);
+        setContentView(R.layout.activity_calendar);
         //assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
     }
