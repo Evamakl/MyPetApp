@@ -2,11 +2,17 @@ package com.example.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,43 +20,61 @@ import java.util.regex.Pattern;
 public class Personal_File extends AppCompatActivity  {
 
     ImageView dog_image;
-    TextView dog_birth_day;
-    TextView city;
-    TextView dog_name;
-    TextView dog_type;
-    TextView time_outside;
-    TextView Sex;
+    private TextInputLayout dog_name,city,Gender,BirthDay,type,timeOut;
     private FirebaseAuth mAuth;
+    private ImageView DogPic,addDogPic;
+    private Button Done;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_file);
-        dog_image = (ImageView) findViewById(R.id.dog_image);
-        dog_birth_day = (TextView) findViewById(R.id.dog_birth_day);
-        city = (TextView) findViewById(R.id.city);
-        dog_name = (TextView) findViewById(R.id.dog_name);
-        dog_type = (TextView) findViewById(R.id.dog_type);
-        time_outside = (TextView) findViewById(R.id.time_outside);
-        Sex = (TextView) findViewById(R.id.gender);
+        dog_name = findViewById(R.id.TextInputLayoutName);
+        city = findViewById(R.id.TextInputLayoutCity);
+        Gender = findViewById(R.id.TextInputLayoutGender);
+        BirthDay = findViewById(R.id.TextInputLayoutDate);
+        type = findViewById(R.id.TextInputLayoutType);
+        timeOut = findViewById(R.id.TextInputLayoutTime);
+        DogPic = findViewById(R.id.DogPic);
+        addDogPic = findViewById(R.id.addpicdog);
+        Done = findViewById(R.id.Done);
+        Done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(CheckValues()){
 
-
-        if (dog_birth_day.getText().toString().length() > 0 && city.getText().toString().length() > 0 && dog_name.getText().toString().length() > 0
-                && dog_type.getText().toString().length() > 0 && time_outside.getText().toString().length() > 0
-                && Sex.getText().toString().length() > 0) {
-            if (isValidName(dog_name.getText().toString()) && isValidDate(dog_birth_day.getText().toString())
-                    && isValidCity(city.getText().toString()) && isValidtime_out(time_outside.getText().toString())
-                    && isValidSex(Sex.getText().toString())) {
-                dog_birth_day.setText("");
-                city.setText("");
-                time_outside.setText("");
-                dog_type.setText("");
-                Sex.setText("");
+                }
             }
-        }
+        });
     }
-
+    private Boolean CheckValues(){
+        if(dog_name.getEditText().getText().length() == 0) {
+            dog_name.setHelperText("חובה להזין את שם הכלב");
+            return false;
+        }else
+        if (type.getEditText().getText().length() == 0){
+            type.setHelperText("חובה להזין את סוג הכלב");
+            return false;
+        }
+        if (Gender.getEditText().getText().length() == 0){
+            Gender.setHelperText("חובה להזין את מין הכלב");
+            return false;
+        }
+        if (BirthDay.getEditText().getText().length() == 0){
+            BirthDay.setHelperText("חובה להזין את תאריך לידה של הכלב");
+            return false;
+        }
+        if (timeOut.getEditText().getText().length() == 0){
+            timeOut.setHelperText("חובה להזין את זמני יציאה לטיול הכלב");
+            return false;
+        }
+        if (city.getEditText().getText().length() == 0){
+            city.setHelperText("חובה להזין את עיר הכלב");
+            return false;
+        }
+        return true;
+    }
 
     private boolean isValidName(String name) {
         String expression = "^[a-zA-Z]*$";

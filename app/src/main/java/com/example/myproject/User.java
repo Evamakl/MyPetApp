@@ -18,7 +18,7 @@ public class User implements Serializable {
         this.dogs = new ArrayList<>();
     }
 
-    public User() { }
+    public User() { this.dogs = new ArrayList<>(); }
 
     public void setEmail(String email) { Email = email; }
     public void setPhone(String phone) { Phone = phone; }
@@ -47,7 +47,7 @@ public class User implements Serializable {
     public void setDogs(ArrayList<Dog> dogs) {
         this.dogs = dogs; }
         public void AddDog(Dog dog){
-            dogs.add(dog);
-            dogs.get(dogs.size()-1).setId(String.valueOf(dogs.size()-1));
+            //dogs.add(dog);
+            //dogs.get(dogs.size()-1).setId(String.valueOf(dogs.size()-1));
         }
 }
