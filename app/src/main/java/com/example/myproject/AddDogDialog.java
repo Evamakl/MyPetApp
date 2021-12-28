@@ -71,7 +71,7 @@ public class AddDogDialog extends AppCompatDialogFragment {
         if(dog_name.getEditText().getText().length() == 0) {
             dog_name.setHelperText("חובה להזין את שם הכלב");
             return false;
-        }
+        }else
         if (type.getEditText().getText().length() == 0){
             type.setHelperText("חובה להזין את סוג הכלב");
             return false;

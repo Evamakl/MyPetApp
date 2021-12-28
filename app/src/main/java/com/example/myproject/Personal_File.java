@@ -1,23 +1,13 @@
 package com.example.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EdgeEffect;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +33,7 @@ public class Personal_File extends AppCompatActivity  {
         dog_name = (TextView) findViewById(R.id.dog_name);
         dog_type = (TextView) findViewById(R.id.dog_type);
         time_outside = (TextView) findViewById(R.id.time_outside);
-        Sex = (TextView) findViewById(R.id.Sex);
+        Sex = (TextView) findViewById(R.id.gender);
 
 
         if (dog_birth_day.getText().toString().length() > 0 && city.getText().toString().length() > 0 && dog_name.getText().toString().length() > 0
