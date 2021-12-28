@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".FeedbackReport"
+            android:exported="false" />
+        <activity
+            android:name=".dogsReport"
+            android:exported="false" />
+        <activity
+            android:name=".UsersReport"
+            android:exported="false" />
+        <activity
             android:name=".SecondFragment"
             android:exported="false" />
         <activity
