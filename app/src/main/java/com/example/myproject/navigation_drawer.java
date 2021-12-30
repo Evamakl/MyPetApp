@@ -20,7 +20,7 @@ public class navigation_drawer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
-    //assign variable
+        //assign variable
         drawerLayout =findViewById(R.id.drawer_layout) ;
 
     }

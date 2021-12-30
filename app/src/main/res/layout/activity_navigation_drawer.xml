@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
         <include
             android:id="@+id/Header"
             layout="@layout/header"
@@ -33,8 +32,7 @@
         android:layout_gravity="start"
         android:background="@android:color/white">
 
-        <include
-            layout="@layout/activity_nav_drower_pet_keeper"/>
+        <include layout="@layout/activity_nav_drower_pet_keeper" />
 
 
 
@@ -43,5 +41,4 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
 

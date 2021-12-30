@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".ChooseDogPK"
+            android:exported="false" />
+        <activity
             android:name=".SecondFragment"
             android:exported="false" />
         <activity
