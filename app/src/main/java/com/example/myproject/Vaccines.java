@@ -43,6 +43,9 @@ public class Vaccines extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private Dialog dialog;
     private Button buttonAddvaccine;
+    private User user;
+    private Dog dog;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +68,9 @@ public class Vaccines extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         Title = findViewById(R.id.Title);
         Title.setText("חיסונים");
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        dog = (Dog)intent.getSerializableExtra("dog");
     }
     private void MenuIcon(){
         MenuItem.setOnClickListener(new View.OnClickListener() {

@@ -38,6 +38,7 @@ public class Start_work extends AppCompatActivity {
         MenuIcon();
         BackIcon();
         NavigationView();
+        setDogs();
     }
     private void setID(){
         intent = getIntent();
@@ -143,6 +144,11 @@ public class Start_work extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    private void setDogs(){
+        menu = NavigationView.getMenu();
+        for(int i=0; i<user.getDogs().size();i++)
+            menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
     }
     private void AddDog(){
         AddDogDialog addDogDialog = new AddDogDialog(Start_work.this,user);

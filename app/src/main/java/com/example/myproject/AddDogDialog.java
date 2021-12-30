@@ -2,14 +2,18 @@ package com.example.myproject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyboardShortcutGroup;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,6 +21,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,7 +29,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AddDogDialog extends AppCompatDialogFragment {
+import java.util.List;
+
+public class AddDogDialog extends AppCompatDialogFragment{
     private TextInputLayout dog_name,city,Gender,BirthDay,type;
     private ImageView DogPic,addDogPic;
     private NavigationView navigationView;
@@ -44,6 +51,12 @@ public class AddDogDialog extends AppCompatDialogFragment {
         city = view.findViewById(R.id.TextInputLayoutCity);
         Gender = view.findViewById(R.id.TextInputLayoutGender);
         BirthDay = view.findViewById(R.id.TextInputLayoutDate);
+        BirthDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
         type = view.findViewById(R.id.TextInputLayoutType);
         DogPic = view.findViewById(R.id.DogPic);
         addDogPic = view.findViewById(R.id.addpicdog);
@@ -60,12 +73,17 @@ public class AddDogDialog extends AppCompatDialogFragment {
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());
                     reference.setValue(user);
                     dismiss();
+                    Intent intent = new Intent(context, Start_work.class);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
+                    ((Activity)context).finish();
                 }
             }
         });
         builder.setView(view).setTitle("הוסף כלב");
         return builder.create();
     }
+
     private Boolean CheckValues(){
         if(dog_name.getEditText().getText().length() == 0) {
             dog_name.setHelperText("חובה להזין את שם הכלב");
@@ -124,4 +142,5 @@ public class AddDogDialog extends AppCompatDialogFragment {
         }
         return true;
     }
+
 }
