@@ -88,7 +88,7 @@ public class UsersReport extends AppCompatActivity {
         //set animation
         barChart.animateY(5000);
         //set description text and color
-        barChart.getDescription().setText("Employees Chart");
+        barChart.getDescription().setText("Users Type Chart");
         barChart.getDescription().setTextColor(Color.BLUE);
     }
     public void ClickMenu(View view) {
