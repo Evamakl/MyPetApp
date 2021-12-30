@@ -5,11 +5,21 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateFeedbackMess extends AppCompatActivity {
 
     //Initialize variable
+    EditText editRank;
+    Button addRank;
     DrawerLayout drawerLayout;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference reference = database.getReference().child("Rank");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +28,17 @@ public class CreateFeedbackMess extends AppCompatActivity {
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        editRank=findViewById(R.id.rankText);
+        addRank=findViewById(R.id.addRankText);
+
+        addRank.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(editRank.getText().toString().length() > 0)
+                    reference.setValue(editRank.getText().toString());
+                Toast.makeText(CreateFeedbackMess.this, "rank updated", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void ClickMenu(View view) {

@@ -164,10 +164,9 @@ public class AppUpdate extends AppCompatActivity {
             }
         });
 
-        //Shov AlertDialog
+        //Show AlertDialog
         builder.show();
     }
-
 
 }
 

@@ -8,23 +8,42 @@
     android:id="@+id/drawer_layout"
     tools:context=".CreateFeedbackMess">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <include
-            layout="@layout/main_toolbar"/>
+            android:id="@+id/include3"
+            layout="@layout/main_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="יצירת הודעות פידבק"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+        <EditText
+            android:id="@+id/rankText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginEnd="32dp"
+            android:ems="10"
+            android:hint="הוספת הודעת פידבק"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include3" />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/addRankText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="אישור"
+            app:layout_constraintEnd_toEndOf="@+id/rankText"
+            app:layout_constraintStart_toStartOf="@+id/rankText"
+            app:layout_constraintTop_toBottomOf="@+id/rankText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
         android:layout_width="300dp"
@@ -32,8 +51,7 @@
         android:layout_gravity="start"
         android:background="@android:color/white">
 
-        <include
-            layout="@layout/activity_nav_drawer_manager"/>
+        <include layout="@layout/activity_nav_drawer_manager" />
 
     </RelativeLayout>
 

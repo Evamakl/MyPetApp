@@ -78,5 +78,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
 
     implementation 'org.jsoup:jsoup:1.14.3'
-
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

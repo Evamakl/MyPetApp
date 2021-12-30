@@ -19,12 +19,14 @@ public class HomePageManager extends AppCompatActivity {
     //Initialize variable
     DrawerLayout drawerLayout;
     TextView greetings;
-
+    User user = new User();
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_manager);
-
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
         greetings = (TextView) findViewById(R.id.greetings);
@@ -48,6 +50,7 @@ public class HomePageManager extends AppCompatActivity {
         else {
             greetings.setText("שלום, ");
         }
+        greetings.setText(greetings.getText() + user.getUsername());
     }
 
     public void ClickMenu(View view) {
