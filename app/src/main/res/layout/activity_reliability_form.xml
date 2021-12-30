@@ -8,8 +8,7 @@
 
     <include
         android:id="@+id/Header"
-        layout="@layout/header"
-        />
+        layout="@layout/header" />
 
     <TextView
         android:id="@+id/textView5"
@@ -18,7 +17,7 @@
         android:background="#673AB7"
         android:shadowColor="#673AB7"
         android:text="אני מתחייב/ת לא לפגוע/להתעלל בחיית המחמד.
-בנוסף אני מתחייב/ת להוציא את הכלב לסיבוב לפחות פעם אחת ביום, לתת לו את האוכל ואת התרופות המתאימות,
+בנוסף אני מתחייב/ת להוציא את הכלב לסיבוב לפחות 3 פעמים ביום, לתת לו את האוכל ואת התרופות המתאימות,
  ולהיות בקשר רציף עם בעל חיית המחמד."
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -60,16 +59,18 @@
         android:id="@+id/textView7"
         android:layout_width="407dp"
         android:layout_height="94dp"
+        android:layout_marginTop="69dp"
         android:layout_marginBottom="28dp"
         android:text="על מנת שאתה כpet keeper תוכל להוסיף כלב נוסף לרשימה שלך, אתה נדרש לחתום על טופס אמינות הכתוב למטה"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/nextBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="להוספת הכלב"

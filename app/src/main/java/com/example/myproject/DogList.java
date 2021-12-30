@@ -56,7 +56,7 @@ public class DogList extends AppCompatActivity {
     public void clickAddDog2PK(View view) {
         DogList.redirectActivity(this,reliability_form.class);
     }
-    public void ClickRemoveDogPK(View view) {
+    public void ClickRemoveDogPK(View view) {DogList.redirectActivity(this,ChooseDogPK.class);
     }
 
     public static void redirectActivity(Activity activity, Class aClass) {
