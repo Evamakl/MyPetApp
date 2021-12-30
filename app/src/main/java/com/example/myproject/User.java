@@ -9,6 +9,7 @@ public class User implements Serializable {
     private String Phone;
     private String Username;
     private String Type = "Owner";
+    private ArrayList<DogPK> dogsPK;
     private ArrayList<Dog> dogs;
     public User(String uid, String email, String phone, String username) {
         Uid = uid;
@@ -16,9 +17,17 @@ public class User implements Serializable {
         Phone = phone;
         Username = username;
         this.dogs = new ArrayList<>();
+        this.dogsPK = new ArrayList<>();
+    }
+    public User() { }
+
+    public ArrayList<DogPK> getDogsPK() {
+        return dogsPK;
     }
 
-    public User() { }
+    public void setDogsPK(ArrayList<DogPK> dogsPK) {
+        this.dogsPK = dogsPK;
+    }
 
     public void setEmail(String email) { Email = email; }
     public void setPhone(String phone) { Phone = phone; }

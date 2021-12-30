@@ -2,25 +2,55 @@ package com.example.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class DogList extends AppCompatActivity {
     //initialize variable
-    DrawerLayout drawerLayout;
+    DrawerLayout dogList_layout;
+    User user = new User();
+    Intent intent;
+    private ImageView MenuItem, BackItem;
+    RecyclerView sa;
+    TextView s, sd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dog_list);
-
         //assign variable
-        drawerLayout= findViewById(R.id.drawer_layout);
-
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
+        dogList_layout = findViewById(R.id.dogList_layout);
+        intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
+        MenuItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dogList_layout.open();
+            }
+        });
+        BackItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigation_drawer.redirectActivity(DogList.this,navigation_drawer.class);
+                Intent intent = new Intent(DogList.this, navigation_drawer.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
+
+
     public void ClickDogList(View view){
         //recreate activity
         recreate();
@@ -47,26 +77,13 @@ public class DogList extends AppCompatActivity {
         navigation_drawer.logout(this);
     }
 
-    @Override
-    protected void onPause(){
-        super.onPause();
-        //close drawer
-        navigation_drawer.closeDrawer(drawerLayout);
-    }
     public void clickAddDog2PK(View view) {
-        DogList.redirectActivity(this,reliability_form.class);
+        navigation_drawer.redirectActivity(this,reliability_form.class);
     }
-    public void ClickRemoveDogPK(View view) {DogList.redirectActivity(this,ChooseDogPK.class);
+    public void ClickRemoveDogPK(View view) {navigation_drawer.redirectActivity(this,ChooseDogPK.class);
     }
 
-    public static void redirectActivity(Activity activity, Class aClass) {
-        //initialize intent
-        Intent intent = new Intent(activity,aClass);
-        //set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //stat activity
-        activity.startActivity(intent);
-    }
+
 
 
 }
