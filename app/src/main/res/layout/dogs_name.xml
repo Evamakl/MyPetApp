@@ -173,41 +173,6 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/TextInputLayoutTime"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:gravity="start"
-        android:hint="זמני יציאה לטיול של הכלב"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="#25F4DC"
-        app:boxStrokeWidth="3dp"
-        app:boxStrokeWidthFocused="3dp"
-        app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:counterTextAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:counterTextColor="@color/black"
-        app:endIconMode="clear_text"
-        app:endIconTint="@color/white"
-        app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:helperTextTextColor="#FF0000"
-        app:hintTextColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutDate">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/TextInputEditTextInputTime"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:gravity="start"
-            android:inputType="textEmailAddress"
-            android:textAlignment="viewStart" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/TextInputLayoutCity"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
@@ -229,7 +194,7 @@
         app:hintTextColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutTime">
+        app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutDate">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/TextInputEditTextInputCity"
