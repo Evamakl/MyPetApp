@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +60,7 @@ public class Personal_File extends AppCompatActivity  {
         dog = (Dog)intent.getSerializableExtra("dog");
         dog_name = findViewById(R.id.TextInputLayoutName);
         dog_name.getEditText().setText(dog.getName());
-        city = findViewById(R.id.TextInputLayoutCity);
+        city = findViewById(R.id.TextInputLayoutMed_Backg);
         city.getEditText().setText(dog.getCity());
         Gender = findViewById(R.id.TextInputLayoutGender);
         Gender.getEditText().setText(dog.getGender());
@@ -210,23 +208,51 @@ public class Personal_File extends AppCompatActivity  {
         if(dog_name.getEditText().getText().length() == 0) {
             dog_name.setHelperText("חובה להזין את שם הכלב");
             return false;
+        }else if(!dog_name.getEditText().getText().toString().matches("[a-zA-Z ]+")) {
+            dog_name.setHelperText("ENTER ONLY ALPHABETICAL CHARACTER");
+            return  false;
         }else
+            dog_name.setHelperText("");
+
+
         if (type.getEditText().getText().length() == 0){
             type.setHelperText("חובה להזין את סוג הכלב");
             return false;
-        }
+        }else if(!type.getEditText().getText().toString().matches("[a-zA-Z ]+"))
+        {
+            type.setHelperText("ENTER ONLY ALPHABETICAL CHARACTER");
+            return false;
+        }else
+            type.setHelperText("");
+
+
         if (Gender.getEditText().getText().length() == 0){
             Gender.setHelperText("חובה להזין את מין הכלב");
             return false;
-        }
+        }else if(!Gender.getEditText().getText().toString().matches("[a-zA-Z ]+"))
+        {
+            Gender.setHelperText("ENTER ONLY ALPHABETICAL CHARACTER");
+            return false;
+        }else
+            Gender.setHelperText("");
+
+
         if (BirthDay.getEditText().getText().length() == 0){
             BirthDay.setHelperText("חובה להזין את תאריך לידה של הכלב");
             return false;
-        }
+        }else
+            BirthDay.setHelperText("");
+
         if (city.getEditText().getText().length() == 0){
             city.setHelperText("חובה להזין את עיר הכלב");
             return false;
-        }
+        }else if(!city.getEditText().getText().toString().matches("[a-zA-Z ]+"))
+        {
+            city.setHelperText("ENTER ONLY ALPHABETICAL CHARACTER");
+            return false;
+        }else
+            city.setHelperText("");
+
         return true;
     }
 

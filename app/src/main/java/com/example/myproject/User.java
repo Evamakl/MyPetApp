@@ -47,7 +47,7 @@ public class User implements Serializable {
     public void setDogs(ArrayList<Dog> dogs) {
         this.dogs = dogs; }
         public void AddDog(Dog dog){
-            //dogs.add(dog);
-            //dogs.get(dogs.size()-1).setId(String.valueOf(dogs.size()-1));
+            dogs.add(dog);
+            dogs.get(dogs.size()-1).setId(String.valueOf(dogs.size()-1));
         }
 }

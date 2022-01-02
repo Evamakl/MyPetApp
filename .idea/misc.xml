@@ -45,7 +45,7 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main_toolbar.xml" value="0.1841880341880342" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_medical_background.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_medical_background.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_menu_base.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_my_recycler_view_adapter.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_nav_drawer_manager.xml" value="0.1841880341880342" />
@@ -67,7 +67,7 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_tips.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_tips_list.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_to_do_list.xml" value="0.1841880341880342" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines.xml" value="0.264" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines.xml" value="0.176" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_and_medicines_slide.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_info.xml" value="0.1" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_info2.xml" value="0.1841880341880342" />
@@ -82,6 +82,7 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/drop_down.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dropdown_item.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/fragment_first.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/fragment_second.xml" value="0.13547008547008546" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/header.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/main_nav_drawer.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/main_toolbar.xml" value="0.264" />

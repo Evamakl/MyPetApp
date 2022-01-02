@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Dog implements Serializable {
     private String id = "0";
@@ -10,6 +11,7 @@ public class Dog implements Serializable {
     private String Image = "null";
     private String City = "null";
     private String BirthDay = "null";
+    private ArrayList<Vaccines> vaccines;
     public Dog(String type, String name, String gender, String image, String city, String birthDay) {
         Type = type;
         Name = name;
@@ -17,9 +19,9 @@ public class Dog implements Serializable {
         Image = image;
         City = city;
         BirthDay = birthDay;
+        vaccines = new ArrayList<>();
     }
-    public Dog(){};
-
+    public Dog(){ vaccines = new ArrayList<>(); };
     public String getId() {
         return id;
     }
@@ -35,6 +37,14 @@ public class Dog implements Serializable {
     public void setId(String id){ this.id = id; }
     public String getType() {
         return Type;
+    }
+
+    public ArrayList<Vaccines> getVaccines() {
+        return vaccines;
+    }
+
+    public void setVaccines(ArrayList<Vaccines> vaccines) {
+        this.vaccines = vaccines;
     }
 
     public void setType(String type) {

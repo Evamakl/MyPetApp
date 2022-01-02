@@ -6,12 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class PetOwnerOptionsOfDog extends AppCompatActivity {
     Button Personal_Dog_File;
     Button Med_dog_file;
     Button Med_dog_information;
-    private User user;
+    private User user = new User();
     private Dog dog;
     private Intent intent;
     @Override
@@ -21,6 +22,7 @@ public class PetOwnerOptionsOfDog extends AppCompatActivity {
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         dog = (Dog)intent.getSerializableExtra("dog");
+
         Personal_Dog_File = (Button) findViewById(R.id.Personal_F);
         Personal_Dog_File.setOnClickListener(new View.OnClickListener() {
             @Override
