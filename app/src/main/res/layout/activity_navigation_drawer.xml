@@ -35,17 +35,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:layout_width="300dp"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_height="match_parent"
+        android:layout_width="220dp"
         android:layout_gravity="start"
-        android:background="@android:color/white">
-
-        <include layout="@layout/activity_nav_drower_pet_keeper" />
-
-
-
-    </RelativeLayout>
+        android:fitsSystemWindows="true"
+        adroid:menu="@menu/pet_keeper_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 
 

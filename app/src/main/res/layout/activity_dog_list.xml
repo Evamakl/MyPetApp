@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/dogList_layout"
+    android:id="@+id/drawer_layout"
 
     tools:context=".DogList">
 
@@ -31,7 +31,6 @@
             android:padding="12dp"
             android:text="הוספת כלב"
             android:clickable="true"
-            android:onClick="clickAddDog2PK"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.837"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +46,6 @@
             android:drawableStart="@drawable/ic_removedogpk"
             android:padding="12dp"
             android:text="הסרת כלב"
-            android:onClick="ClickRemoveDogPK"
             app:layout_constraintEnd_toEndOf="@+id/add_dog"
             app:layout_constraintStart_toStartOf="@+id/add_dog"
             app:layout_constraintTop_toBottomOf="@+id/add_dog" />
@@ -90,17 +88,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <RelativeLayout
-        android:layout_width="300dp"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_height="match_parent"
+        android:layout_width="220dp"
         android:layout_gravity="start"
-        android:background="@android:color/white">
-
-        <include
-            layout = "@layout/activity_nav_drower_pet_keeper"/>
-
-
-    </RelativeLayout>
+        android:fitsSystemWindows="true"
+        app:menu="@menu/pet_keeper_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

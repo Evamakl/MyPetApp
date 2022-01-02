@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String Type = "Owner";
     private ArrayList<DogPK> dogsPK;
     private ArrayList<Dog> dogs;
+
     public User(String uid, String email, String phone, String username) {
         Uid = uid;
         Email = email;
@@ -19,7 +20,10 @@ public class User implements Serializable {
         this.dogs = new ArrayList<>();
         this.dogsPK = new ArrayList<>();
     }
-    public User() { }
+    public User() {
+        this.dogs = new ArrayList<>();
+        this.dogsPK = new ArrayList<>();
+    }
 
     public ArrayList<DogPK> getDogsPK() {
         return dogsPK;

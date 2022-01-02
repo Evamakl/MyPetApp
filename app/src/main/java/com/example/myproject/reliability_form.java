@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import static com.example.myproject.HomePageManager.openDrawer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -13,9 +14,12 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+
 public class reliability_form extends AppCompatActivity {
     Button next;
     DrawerLayout dogList_form;
+    NavigationView navigation;
     CheckBox checkBox;
     ImageView MenuIcon,BackIcon;
     User user = new User();
@@ -24,21 +28,17 @@ public class reliability_form extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reliability_form);
-        dogList_form =findViewById(R.id.reliability_form_layout) ;
+        dogList_form = findViewById(R.id.reliability_form_layout);
         intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
-
-        next = (Button)findViewById(R.id.nextBT);
+        user = (User) intent.getSerializableExtra("user");
+        next = (Button) findViewById(R.id.nextBT);
         checkBox = findViewById(R.id.checkBox);
-        MenuIcon = findViewById(R.id.MenuItem);
-        BackIcon = findViewById(R.id.BackItem);
-        next.setOnClickListener(new View.OnClickListener() {
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                if (checkBox.isChecked())
-                    openNewActivityNext();
-                else
-                    Toast.makeText(reliability_form.this, "Please click on the Check Box", Toast.LENGTH_SHORT).show();
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(reliability_form.this, item.getItemId(), user);
+                return false;
             }
         });
         MenuIcon.setOnClickListener(new View.OnClickListener() {
@@ -50,17 +50,27 @@ public class reliability_form extends AppCompatActivity {
         BackIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(reliability_form.this,DogList.class);
-                intent.putExtra("user",user);
+                Intent intent = new Intent(reliability_form.this, DogList.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
+                finish();
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBox.isChecked()) {
+                    Intent intent = new Intent(reliability_form.this, ChooseDogPK.class);
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                    finish();
+                }
+                else
+                    Toast.makeText(reliability_form.this, "click the check box!", Toast.LENGTH_LONG).show();
             }
         });
 
-    }
-    public void openNewActivityNext(){
-        Intent intent = new Intent(reliability_form.this,ChooseDogPK.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
+
     }
 
 
