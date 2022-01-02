@@ -21,7 +21,7 @@ public class reliability_form extends AppCompatActivity {
     DrawerLayout dogList_form;
     NavigationView navigation;
     CheckBox checkBox;
-    ImageView MenuIcon,BackIcon;
+    private ImageView MenuItem, BackItem;
     User user = new User();
     Intent intent;
     @Override
@@ -31,6 +31,8 @@ public class reliability_form extends AppCompatActivity {
         dogList_form = findViewById(R.id.reliability_form_layout);
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
         next = (Button) findViewById(R.id.nextBT);
         checkBox = findViewById(R.id.checkBox);
         navigation = findViewById(R.id.NavigationView);
@@ -41,13 +43,13 @@ public class reliability_form extends AppCompatActivity {
                 return false;
             }
         });
-        MenuIcon.setOnClickListener(new View.OnClickListener() {
+        MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dogList_form.open();
             }
         });
-        BackIcon.setOnClickListener(new View.OnClickListener() {
+        BackItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(reliability_form.this, DogList.class);
@@ -66,9 +68,10 @@ public class reliability_form extends AppCompatActivity {
                     finish();
                 }
                 else
-                    Toast.makeText(reliability_form.this, "click the check box!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(reliability_form.this, "Please click the check box!", Toast.LENGTH_LONG).show();
             }
         });
+
 
 
     }

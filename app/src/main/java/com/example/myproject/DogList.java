@@ -27,8 +27,6 @@ public class DogList extends AppCompatActivity {
     RecyclerView sa;
     TextView addDog, removeDog;
 
-    //public static void open() {
-    //}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

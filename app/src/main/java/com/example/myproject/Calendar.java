@@ -11,67 +11,65 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class Calendar extends AppCompatActivity {
     EditText title;
     EditText location;
     EditText description;
     //DrawerLayout ;
-    DrawerLayout drawer_form;
-    ImageView MenuIcon,BackIcon;
+    DrawerLayout drawerLayout;
+    private ImageView MenuItem, BackItem;
+    NavigationView navigation;
     Button saveEvent;
     User user = new User();
-    Intent intent1;
+    //Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        drawer_form =findViewById(R.id.drawer_layout) ;
-        //intent1 = getIntent();
-       // user = (User)intent1.getSerializableExtra("user");
-        MenuIcon = findViewById(R.id.MenuItem);
-        BackIcon = findViewById(R.id.BackItem);
+        drawerLayout =findViewById(R.id.drawer_layout) ;
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
         title = findViewById(R.id.titleEt);
         location = findViewById(R.id.locationEt);
         description = findViewById(R.id.descriptionEt);
         saveEvent = findViewById(R.id.saveEventbt);
-        MenuIcon.setOnClickListener(new View.OnClickListener() {
+        //user = (User) intent.getSerializableExtra("user");
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                //drawer_form.open();
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(Calendar.this,item.getItemId(),user);
+                return false;
             }
         });
-        BackIcon.setOnClickListener(new View.OnClickListener() {
+        MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawer_form.open();
+                drawerLayout.open();
             }
         });
-
-
-
-
+        BackItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Calendar.this, navigation_drawer.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         saveEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 if (!title.getText().toString().isEmpty() && !location.getText().toString().isEmpty()
                 && !description.getText().toString().isEmpty()) {
-                   /* Intent intent = new Intent(Intent.ACTION_INSERT);
-                    intent.setData(CalendarContract.Events.CONTENT_URI);
-                    intent.putExtra(CalendarContract.Events.TITLE, title.getText().toString());
-                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION,location.getText().toString());
-                    intent.putExtra(CalendarContract.Events.DESCRIPTION,description.getText().toString());
-                    intent.putExtra(CalendarContract.Events.ALL_DAY, "true");
-                    intent.putExtra(Intent.EXTRA_EMAIL, "test@yahoo.com, test2@yahoo.com, test3@yahoo.com");
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent);
-                    }else {
-                        Toast.makeText(Calendar.this, "There is no app that can support this action",
-                                Toast.LENGTH_SHORT).show();
-                    }*/
+
                     Intent intent = new Intent(Intent.ACTION_EDIT);
                     intent.setType("vnd.android.cursor.item/event");
                     intent.putExtra("allDay", true);
@@ -81,9 +79,6 @@ public class Calendar extends AppCompatActivity {
                     intent.putExtra("eventLocation", location.getText().toString());
                     startActivity(intent);
 
-//                    Intent intent1 = new Intent(Calendar.this,navigation_drawer.class);
-//                    intent1.putExtra("user",user);
-//                    startActivity(intent1);
                 }
                 else {
                     Toast.makeText(Calendar.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
