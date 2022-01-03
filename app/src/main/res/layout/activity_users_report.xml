@@ -6,27 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".HomePageManager">
+    tools:context=".UsersReport">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <include
             layout="@layout/main_toolbar"/>
 
         <TextView
-            android:id="@+id/greetings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0sp"
-            android:layout_marginTop="80sp"
-            android:gravity="center"
-            android:text="בוקר טוב"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:text="כמות משתמשים"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"/>
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/bar_chart"
+            android:layout_marginBottom="8dp"/>
 
     </LinearLayout>
 
@@ -36,10 +41,8 @@
         android:layout_gravity="start"
         android:background="@android:color/white">
 
-        <include
-            layout="@layout/activity_nav_drawer_manager"/>
+        <include layout="@layout/activity_nav_drawer_manager" />
 
     </RelativeLayout>
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

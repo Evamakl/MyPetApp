@@ -14,6 +14,19 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".FeedbackPage"
+            android:exported="false" />
+        <activity
+            android:name=".FeedbackReport"
+            android:exported="false" />
+        <activity
+            android:name=".dogsReport"
+            android:exported="false" />
+        <activity
+            android:name=".UsersReport"
+            android:exported="false" />
+        <activity
+            android:name=".SecondFragment"
 
             android:name=".Message"
             android:exported="false" />

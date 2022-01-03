@@ -12,6 +12,8 @@ public class User implements Serializable {
     private String Type = "Owner";
     private ArrayList<DogPK> dogsPK;
     private ArrayList<Dog> dogs;
+    private Boolean Block = false;
+
 
     private ArrayList<TodoListClass> listOfTodo;
     private ArrayList<tipsPKClass> listPKtip;
@@ -66,6 +68,14 @@ public class User implements Serializable {
     public String getPhone() { return Phone; }
     public String getUsername() { return Username; }
     public String getType() { return Type; }
+
+    public Boolean getBlock() {
+        return Block;
+    }
+
+    public void setBlock(Boolean block) {
+        Block = block;
+    }
 
     public String getUid() {
         return Uid;
