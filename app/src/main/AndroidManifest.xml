@@ -26,8 +26,6 @@
             android:name=".UsersReport"
             android:exported="false" />
         <activity
-            android:name=".SecondFragment"
-
             android:name=".Message"
             android:exported="false" />
         <activity
