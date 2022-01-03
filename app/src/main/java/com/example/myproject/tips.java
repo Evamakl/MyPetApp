@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,6 +26,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import android.widget.ImageView;
+
+import com.google.android.material.navigation.NavigationView;
+
+
 public class tips extends AppCompatActivity {
     private AddPKTipDialog dialog;
     Button addPKtip;
@@ -32,17 +39,25 @@ public class tips extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference().child("Tips");
     DrawerLayout drawerLayout;
-    private User user = new User();
-    private Intent intent;
+
+   
+ 
     private ArrayList<tipsPKClass> listTips;
+
+    NavigationView navigation;
+    ImageView MenuIcon,BackIcon;
+    User user = new User();
+    Intent intent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tips);
+
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         listTips = new ArrayList<>();
-        drawerLayout = findViewById(R.id.drawer_layout);
+       // drawerLayout = findViewById(R.id.drawer_layout);
         recyclerView = findViewById(R.id.RecyclerView);
         addPKtip = findViewById(R.id.PKtip);
         readTodo();
@@ -81,46 +96,41 @@ public class tips extends AppCompatActivity {
         dialog.show(getSupportFragmentManager(),"opendialog");
     }
 
-    public void ClickDogList(View view) {
-        //redirect activity to reminder
-        navigation_drawer.redirectActivity(this, DogList.class);
+   
+
+}
+
+        //assign variable
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        //assign variable
+        drawerLayout =findViewById(R.id.drawer_layout) ;
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                new PetKeeperNavigation(tips.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(tips.this, navigation_drawer.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
-
-    public void ClickToDoList(View view) {
-        //recreate activity
-        recreate();
-    }
-
-    public void ClickReminder(View view) {
-        //redirect activity to to do list
-        navigation_drawer.redirectActivity(this, ToDoList.class);
-
-    }
-
-    public void Clicktips(View view) {
-        //redirect activity to information and tips
-        navigation_drawer.redirectActivity(this, tips.class);
-
-    }
-
-    public void ClickLogOut(View view) {
-        //close app
-        navigation_drawer.logout(this);
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        if(firebaseAuth.getCurrentUser() != null){
-            firebaseAuth.signOut();
-        }
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //close drawer
-        navigation_drawer.closeDrawer(drawerLayout);
-    }
-
-
 
 }
 
