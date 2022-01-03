@@ -15,7 +15,7 @@ import javax.xml.validation.Validator;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 
-public class ExampleUnitTest {
+public class PasswordAndEmail_Test {
 /*
  
     public void isValidUserName_test() {
@@ -26,16 +26,17 @@ public class ExampleUnitTest {
         //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
     }*/
 
-
+    //Checks if the password is valid
     @Test
     public void isValidPassword_test() {
         assertFalse(loginExistsFrame.isValidPassword("12345"));
         assertFalse(loginExistsFrame.isValidPassword("1234ab"));
         assertFalse(loginExistsFrame.isValidPassword("123456789"));
-
+        assertTrue(loginExistsFrame.isValidPassword("A12345"));
 
     }
 
+    //Checks if the email is valid
     @Test
     public static void isValidEmail_test() {
         assertFalse(new_user.isValidEmail("hadar"));

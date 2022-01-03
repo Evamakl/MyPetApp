@@ -13,6 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".Message"
+            android:exported="false" />
+        <activity
+            android:name=".PetAppChat"
+            android:exported="false" />
+        <activity
+            android:name=".Activity_tipsPKList"
+            android:exported="false" />
+        <activity
+            android:name=".TipsPKAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".petKeepersTipsAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".technicalSupport"
+            android:exported="false" />
+        <activity
+            android:name=".running_messages"
+            android:exported="false" />
+        <activity
+            android:name=".new_task"
+            android:exported="false" />
+        <activity
             android:name=".SecondFragment"
             android:exported="false" />
         <activity
@@ -77,13 +101,7 @@
             android:name=".reliability_form"
             android:exported="false" />
         <activity
-            android:name=".creare_technical_support_page"
-            android:exported="false" />
-        <activity
             android:name=".technical_support"
-            android:exported="false" />
-        <activity
-            android:name=".write_tip"
             android:exported="false" />
         <activity
             android:name=".new_user"

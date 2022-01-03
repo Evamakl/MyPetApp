@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
 
 public class HomePageManager extends AppCompatActivity {
@@ -111,6 +113,10 @@ public class HomePageManager extends AppCompatActivity {
     }
 
     public static void logout(Activity activity) {
+       FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() != null){
+            firebaseAuth.signOut();
+        }
         //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set title
@@ -135,8 +141,7 @@ public class HomePageManager extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        //Show dialog
-        builder.show();
+
     }
 
     public static void redirectActivity(Activity activity,Class aclass) {

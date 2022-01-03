@@ -11,14 +11,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class navigation_drawer extends AppCompatActivity {
     //initialize veriables
     DrawerLayout drawerLayout;
-
+    private User user = new User();
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         setContentView(R.layout.activity_navigation_drawer);
     //assign variable
         drawerLayout =findViewById(R.id.drawer_layout) ;
@@ -57,8 +62,11 @@ public class navigation_drawer extends AppCompatActivity {
 
     public void ClickToDoList(View view){
         //redirect activity to to do list
-        redirectActivity(this,ToDoList.class);
-
+       // redirectActivity(this,ToDoList.class);
+        intent = new Intent(navigation_drawer.this,ToDoList.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+        finish();
     }
 
     public void ClickReminder(View view){
@@ -68,7 +76,10 @@ public class navigation_drawer extends AppCompatActivity {
     }
     public void Clicktips(View view){
         //redirect activity to information and tips
-        redirectActivity(this,tips.class);
+         intent = new Intent(navigation_drawer.this,tips.class);
+         intent.putExtra("user",user);
+         startActivity(intent);
+       // redirectActivity(this,tips.class);
 
     }
     public void ClickLogOut(View view){
@@ -77,6 +88,10 @@ public class navigation_drawer extends AppCompatActivity {
     }
 
     public static void logout(Activity activity) {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() != null){
+            firebaseAuth.signOut();
+        }
         //initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("LogOut");
