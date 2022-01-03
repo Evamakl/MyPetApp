@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MedicalBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/header"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxNO"
+                    android:layout_width="112dp"
+                    android:layout_height="53dp"
+                    android:layout_x="21dp"
+                    android:layout_y="530dp"
+                    android:checked="false"
+                    android:text="לא"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/allergies"
+                    app:layout_constraintEnd_toStartOf="@+id/checkBoxYES"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/allergies" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxYES"
+                    android:layout_width="112dp"
+                    android:layout_height="53dp"
+                    android:layout_marginEnd="128dp"
+                    android:layout_x="155dp"
+                    android:layout_y="532dp"
+                    android:checked="false"
+                    android:text="כן"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/allergies"
+                    app:layout_constraintEnd_toEndOf="@+id/allergies"
+                    app:layout_constraintTop_toTopOf="@+id/allergies" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxCastration"
+                    android:layout_width="112dp"
+                    android:layout_height="53dp"
+                    android:layout_x="24dp"
+                    android:layout_y="630dp"
+                    android:checked="false"
+                    android:text="סירוס"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/checkBoxNO"
+                    app:layout_constraintHorizontal_bias="0.553"
+                    app:layout_constraintStart_toStartOf="@+id/checkBoxNO"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxNO"
+                    app:layout_constraintVertical_bias="0.264" />
+
+                <CheckBox
+                    android:id="@+id/checkBoxSTERILIZATION"
+                    android:layout_width="112dp"
+                    android:layout_height="53dp"
+                    android:layout_marginEnd="136dp"
+                    android:layout_x="158dp"
+                    android:layout_y="634dp"
+                    android:checked="false"
+                    android:text="עיקור"
+                    android:textColor="@color/purple_700"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/checkBoxYES"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxYES"
+                    app:layout_constraintVertical_bias="0.266" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInputLayoutMed_Backg"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="142dp"
+                    android:layout_x="8dp"
+                    android:layout_y="83dp"
+                    android:gravity="start"
+                    android:hint="רקע רפואי"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="#25F4DC"
+                    app:boxStrokeWidth="3dp"
+                    app:boxStrokeWidthFocused="3dp"
+                    app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:counterTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:counterTextColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:helperTextTextColor="#FF0000"
+                    app:hintTextColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/TextInputLayoutMed_Procedure"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/TextInputLayoutMed_Procedure"
+                    app:layout_constraintTop_toBottomOf="@+id/include">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/TextInputEditTextInputMed_Backg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:gravity="start"
+                            android:textAlignment="viewStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInputLayoutMed_Procedure"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="142dp"
+                    android:layout_x="11dp"
+                    android:layout_y="275dp"
+                    android:gravity="start"
+                    android:hint="ניתוחים"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="#25F4DC"
+                    app:boxStrokeWidth="3dp"
+                    app:boxStrokeWidthFocused="3dp"
+                    app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:counterTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:counterTextColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:helperTextTextColor="#FF0000"
+                    app:hintTextColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.545"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutMed_Backg">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/TextInputEditTextInputProcedure"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:gravity="start"
+                            android:textAlignment="viewStart" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/allergies"
+                    android:layout_width="401dp"
+                    android:layout_height="111dp"
+                    android:layout_x="11dp"
+                    android:layout_y="511dp"
+                    android:text="אלרגיות"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.6"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutMed_Procedure"
+                    app:layout_constraintVertical_bias="0.087" />
+
+                <LinearLayout
+                    android:id="@+id/info_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/include">
+
+                </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/NavigationView"
+            android:layout_width="220dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/base_activity"></com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -52,6 +52,7 @@ public class User implements Serializable {
         this.dogsPK = new ArrayList<>();
     }
 
+
     public ArrayList<DogPK> getDogsPK() {
         return dogsPK;
     }
@@ -97,8 +98,7 @@ public class User implements Serializable {
         this.dogs = dogs; }
         public void AddDog(Dog dog){
             dogs.add(dog);
-            dogs.get(dogs.size()-1).AddDog(dog,String.valueOf(dogs.size()));
-
+            dogs.get(dogs.size()-1).setId(String.valueOf(dogs.size()-1));
         }
 
 }

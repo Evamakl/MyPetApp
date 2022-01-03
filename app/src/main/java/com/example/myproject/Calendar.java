@@ -26,12 +26,17 @@ public class Calendar extends AppCompatActivity {
     private ImageView MenuItem, BackItem;
     NavigationView navigation;
     Button saveEvent;
+    Intent intent;
+
     User user = new User();
     //Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        intent = getIntent();
+        User=(User)intent.getSerializableExtra("user");
+
         drawerLayout =findViewById(R.id.drawer_layout) ;
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
@@ -39,6 +44,10 @@ public class Calendar extends AppCompatActivity {
         location = findViewById(R.id.locationEt);
         description = findViewById(R.id.descriptionEt);
         saveEvent = findViewById(R.id.saveEventbt);
+/*
+        saveEvent.setOnClickListener(new View.OnClickListener()
+        {
+*/
         //user = (User) intent.getSerializableExtra("user");
         navigation = findViewById(R.id.NavigationView);
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -65,6 +74,7 @@ public class Calendar extends AppCompatActivity {
         });
 
         saveEvent.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v){
                 if (!title.getText().toString().isEmpty() && !location.getText().toString().isEmpty()

@@ -78,6 +78,7 @@
         app:layout_constraintTop_toTopOf="@+id/EXIST_MAIL" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/NavigationView"
         android:layout_height="match_parent"

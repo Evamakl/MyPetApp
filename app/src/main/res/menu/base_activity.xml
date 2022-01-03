@@ -3,60 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="שלום,">
-        <menu>
-            <group>
+    <item android:title="שלום," android:id="@+id/hello"/>
+    <item android:title="הוסף כלב"
+        android:icon="@drawable/add"
+        android:id="@+id/AddDog"/>
+    <item android:title="הסר כלב"
+        android:icon="@drawable/remove"
+        android:id="@+id/RemoveDog"/>
+    <group android:id="@+id/group1"
+        android:orderInCategory="999">
+        <item android:title="הכלבים שלי"
+            android:id="@+id/Dogs">
+            <menu>
+
+            </menu>
+        </item>
+        <item android:title="הגדרות">
+            <menu>
                 <item
-                    android:id="@+id/name"
-                    android:title=""
-                    android:enabled="false"
-                    android:layout_gravity="left">
-                </item>
+                    android:id="@+id/about"
+                    android:title=" ידיעון" />
                 <item
-                    android:id="@+id/type"
-                    android:title=""
-                    android:enabled="false"
-                    android:layout_gravity="left">
-                </item>
-            </group>
-        </menu>
-    </item>
+                    android:id="@+id/calendar"
+                    android:title=" לוח שנה" />
+                <item
+                    android:id="@+id/logout"
+                    android:title="התנתק"/>
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/about"
-            android:title=" ידיעון" />
-        <item
-            android:id="@+id/calendar"
-            android:title=" לוח שנה" />
-        <item
-            android:id="@+id/tips"
-            android:title="טיפים" />
-        <item
-            android:id="@+id/technical_support"
-            android:title="תמיכה טכנית" />
-
-    </group>
-
-    <group android:checkableBehavior="single">
-        <item
-            android:title=""
-            android:enabled="false"
-            android:layout_gravity="left">
+            </menu>
         </item>
-        <item
-            android:title=""
-            android:enabled="false"
-            android:layout_gravity="left">
-        </item>
-        <item
-            android:title=""
-            android:enabled="false"
-            android:layout_gravity="left">
-        </item>
-        <item
-            android:id="@+id/logout"
-            android:title="התנתק"/>
-
     </group>
 </menu>

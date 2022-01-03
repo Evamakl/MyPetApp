@@ -19,11 +19,15 @@ public class search_page extends AppCompatActivity {
     Button walk_button;
     Button back_button;
     Button logOff;
+    private User user = new User();
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         first_title = (TextView) findViewById(R.id.first_titleTV);
         second_title = (TextView) findViewById(R.id.second_titleTV);
         vaccin_button = (Button) findViewById(R.id.vaccin_buttonBT);

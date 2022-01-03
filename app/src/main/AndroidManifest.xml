@@ -14,6 +14,11 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Myproject">
         <activity
+            android:name=".MedicalBackground"
+            android:exported="false" />
+        <activity
+
+
             android:name=".FeedbackPage"
             android:exported="false" />
         <activity
