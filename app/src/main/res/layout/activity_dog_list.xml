@@ -1,41 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
+
     tools:context=".DogList">
 
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
 
         <include
-            layout="@layout/activity_main_toolbar"/>
+            android:id="@+id/Header"
+            layout="@layout/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/add_dog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/add"
+            android:padding="12dp"
+            android:text="הוספת כלב"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.837"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Header" />
+
+        <TextView
+            android:id="@+id/remove_dog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_removedogpk"
+            android:padding="12dp"
+            android:text="הסרת כלב"
+            app:layout_constraintEnd_toEndOf="@+id/add_dog"
+            app:layout_constraintStart_toStartOf="@+id/add_dog"
+            app:layout_constraintTop_toBottomOf="@+id/add_dog" />
+
+        <TextView
+            android:id="@+id/textView10"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="רשימת הכלבים"
-            android:textSize="50sp"
+            android:layout_height="wrap_content"
+            android:text="רשימת הכלבים:"
+            android:textAlignment="center"
+            android:textColor="#636363"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:gravity="center"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/remove_dog" />
 
-    </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#636363"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-    <RelativeLayout
-        android:layout_width="300dp"
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="5dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/see_dog_RV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_height="match_parent"
+        android:layout_width="220dp"
         android:layout_gravity="start"
-        android:background="@android:color/white">
-
-        <include
-            layout = "@layout/activity_nav_drower_pet_keeper"/>
-
-
-    </RelativeLayout>
+        android:fitsSystemWindows="true"
+        app:menu="@menu/pet_keeper_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
