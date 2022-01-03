@@ -35,8 +35,8 @@ public class ToDoList extends AppCompatActivity {
     private DatabaseReference databaseReference = firebaseDatabase.getReference().child("Users");
     DrawerLayout drawerLayout;
 
-    private User user = new User();
-    private Intent intent;
+    /*private User user = new User();
+    private Intent intent;*/
     private ArrayList<TodoListClass> list;
 
     NavigationView navigation;
@@ -63,61 +63,6 @@ public class ToDoList extends AppCompatActivity {
             }
         });
         readTodo();
-    }
-    public void readTodo() {
-        if(user.getListOfTodo().size() >0) {
-            for (int i = 0; i < user.getListOfTodo().size(); i++)
-                list.add(user.getListOfTodo().get(i));
-            toDoListAdapter = new ToDoListAdapter(ToDoList.this, list,user);
-            recyclerView.setLayoutManager(new GridLayoutManager(ToDoList.this, 1));
-            recyclerView.setAdapter(toDoListAdapter);
-        }
-    }
-    public void goAddNewTask() {
-        dialog = new AddTodoDialog(ToDoList.this,"הוספת מטלה חדשה",user);
-        dialog.show(getSupportFragmentManager(),"opendialog");
-    }
-
-    public void ClickDogList(View view) {
-        //redirect activity to reminder
-        navigation_drawer.redirectActivity(this, DogList.class);
-    }
-
-    public void ClickToDoList(View view) {
-        //recreate activity
-        recreate();
-    }
-
-    public void ClickReminder(View view) {
-        //redirect activity to to do list
-        navigation_drawer.redirectActivity(this, ToDoList.class);
-
-    }
-
-    public void Clicktips(View view) {
-        //redirect activity to information and tips
-        navigation_drawer.redirectActivity(this, tips.class);
-
-    }
-
-    public void ClickLogOut(View view) {
-        //close app
-        navigation_drawer.logout(this);
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //close drawer
-        navigation_drawer.closeDrawer(drawerLayout);
-    }
-
-
-
-}
-
-
         //assign variable
         drawerLayout =findViewById(R.id.drawer_layout) ;
         navigation = findViewById(R.id.NavigationView);
@@ -144,7 +89,34 @@ public class ToDoList extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });    }
+        });
+    }
+    public void readTodo() {
+        if(user.getListOfTodo().size() >0) {
+            for (int i = 0; i < user.getListOfTodo().size(); i++)
+                list.add(user.getListOfTodo().get(i));
+            toDoListAdapter = new ToDoListAdapter(ToDoList.this, list,user);
+            recyclerView.setLayoutManager(new GridLayoutManager(ToDoList.this, 1));
+            recyclerView.setAdapter(toDoListAdapter);
+        }
+    }
+    public void goAddNewTask() {
+        dialog = new AddTodoDialog(ToDoList.this,"הוספת מטלה חדשה",user);
+        dialog.show(getSupportFragmentManager(),"opendialog");
+    }
+
+
+
+
 
 }
+
+
+
+
+
+
+
+
+
 

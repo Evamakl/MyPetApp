@@ -62,6 +62,36 @@ public class tips extends AppCompatActivity {
         addPKtip = findViewById(R.id.PKtip);
         readTodo();
         PKtipButton();
+        //assign variable
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        //assign variable
+        drawerLayout =findViewById(R.id.drawer_layout) ;
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                new PetKeeperNavigation(tips.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(tips.this, navigation_drawer.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     public void PKtipButton(){
         addPKtip.setOnClickListener(new View.OnClickListener() {
@@ -100,37 +130,8 @@ public class tips extends AppCompatActivity {
 
 }
 
-        //assign variable
-        intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
-        //assign variable
-        drawerLayout =findViewById(R.id.drawer_layout) ;
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                new PetKeeperNavigation(tips.this,item.getItemId(),user);
-                return false;
-            }
-        });
-        MenuIcon = findViewById(R.id.MenuItem);
-        BackIcon = findViewById(R.id.BackItem);
-        MenuIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.open();
-            }
-        });
-        BackIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(tips.this, navigation_drawer.class);
-                intent.putExtra("user", user);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
 
-}
+
+
+
 

@@ -29,11 +29,6 @@ public class User implements Serializable {
         listPKtip = new ArrayList<>();
     }
 
-    public User() {
-        listOfTodo = new ArrayList<>();
-        dogs = new ArrayList<>();
-        listPKtip = new ArrayList<>();
-    }
     public ArrayList<TodoListClass> getListOfTodo() {
         return listOfTodo;
     }
