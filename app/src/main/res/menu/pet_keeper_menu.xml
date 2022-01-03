@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="שלום,"
+        android:id="@+id/FullName_item">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/name"
+                    android:title=""
+                    android:enabled="false"
+                    android:layout_gravity="left">
+                </item>
+                <item
+                    android:id="@+id/type"
+                    android:title=""
+                    android:enabled="false"
+                    android:layout_gravity="left">
+                </item>
+            </group>
+        </menu>
+    </item>
+        <item
+            android:id="@+id/DogListPK_item"
+            android:title="רשימת כלבים"
+            android:icon="@drawable/ic_pets"/>
+        <item
+            android:id="@+id/Todolist_item"
+            android:icon="@drawable/ic_todolist"
+            android:title="To Do List" />
+    <item
+        android:id="@+id/Reminder_item"
+        android:icon="@drawable/ic_reminder"
+        android:title=" יצירת תזכורות" />
+    <item
+        android:id="@+id/Tips_item"
+        android:icon="@drawable/ic_info"
+        android:title=" מרכז מידע-טיפים" />
+        <item
+            android:id="@+id/logout_item"
+            android:icon="@drawable/ic_logoff"
+            android:title="התנתק"/>
+
+</menu>
