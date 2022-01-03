@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -23,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -41,6 +43,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,6 +62,7 @@ public class Personal_File extends AppCompatActivity  {
     private StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Uri uri = null;
+    private DatePickerDialog datePickerDialog;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private com.google.android.material.navigation.NavigationView NavigationView;
     @Override
@@ -88,6 +92,23 @@ public class Personal_File extends AppCompatActivity  {
         Gender.getEditText().setText(dog.getGender());
         BirthDay = findViewById(R.id.TextInputLayoutDate);
         BirthDay.getEditText().setText(dog.getBirthDay());
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        int year = calendar.get(java.util.Calendar.YEAR);
+        int month = calendar.get(java.util.Calendar.MONTH) + 1 ;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        BirthDay.getEditText().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialog = new DatePickerDialog(Personal_File.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int day) {
+                        String date = day+"/"+(month+1)+"/"+year;
+                        BirthDay.getEditText().setText(date);
+                    }
+                }, year,month,day);
+                datePickerDialog.show();
+            }
+        });
         Done = findViewById(R.id.Done);
         type = findViewById(R.id.TextInputLayoutType);
         type.getEditText().setText(dog.getType());

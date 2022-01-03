@@ -47,8 +47,6 @@ public class Start_work extends AppCompatActivity {
         user = (User)intent.getSerializableExtra("user");
         editTextTextName = findViewById(R.id.editTextTextName);
         editTextTextEmail = findViewById(R.id.editTextTextEmail);
-        Title = findViewById(R.id.Title);
-        Title.setText("מסך ראשי");
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         drawerLayout = findViewById(R.id.drawerLayout);

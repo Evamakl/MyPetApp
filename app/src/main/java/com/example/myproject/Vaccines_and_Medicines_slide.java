@@ -2,45 +2,34 @@ package com.example.myproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Vaccines_and_Medicines_slide extends AppCompatActivity {
     Button vac;
     Button med;
     private User user = new User();
+    private ImageView MenuItem, BackItem;
     private Dog dog;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private Menu menu;
     private Intent intent;
+    private DrawerLayout drawerLayout;
+    private com.google.android.material.navigation.NavigationView NavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccines_and_medicines_slide);
-        intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
-        dog = (Dog)intent.getSerializableExtra("dog");
-        vac = (Button) findViewById(R.id.Vaccines);
-        vac.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                openNewActivityVaccines();
-            }
-
-        });
-        med = (Button) findViewById(R.id.Medicines);
-        med.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View v) {
-                openNewActivityMediccines();
-            }
-
-        });
+        init();
     }
     private void init(){
         setID();
@@ -54,9 +43,8 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         dog = (Dog)intent.getSerializableExtra("dog");
-        Med_dog_information=findViewById(R.id.Med_Info);
-        Med_dog_file = findViewById(R.id.Med_F);
-        Personal_Dog_File = findViewById(R.id.Personal_F);
+        vac = (Button) findViewById(R.id.Vaccines);
+        med = (Button) findViewById(R.id.Medicines);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         drawerLayout = findViewById(R.id.drawerLayout);
@@ -65,27 +53,22 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
         menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
     }
     private void setButtons(){
-        Personal_Dog_File.setOnClickListener(new View.OnClickListener() {
+        vac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StartActivity(Personal_File.class);
+                StartActivity(Vaccines.class);
             }
+
         });
-        Med_dog_file.setOnClickListener(new View.OnClickListener() {
+        med.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                StartActivity(Vaccines_and_Medicines_slide.class);
-            }
-        });
-        Med_dog_information.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                StartActivity(MedicalBackground.class);
+               // StartActivity();
             }
         });
     }
     private void StartActivity(Class Dest){
-        Intent intent = new Intent(PetOwnerOptionsOfDog.this, Dest);
+        Intent intent = new Intent(Vaccines_and_Medicines_slide.this, Dest);
         intent.putExtra("dog",dog);
         intent.putExtra("user",user);
         startActivity(intent);
@@ -103,8 +86,9 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
         BackItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PetOwnerOptionsOfDog.this, Start_work.class);
+                Intent intent = new Intent(Vaccines_and_Medicines_slide.this, PetOwnerOptionsOfDog.class);
                 intent.putExtra("user",user);
+                intent.putExtra("dog",dog);
                 startActivity(intent);
                 finish();
             }
@@ -115,7 +99,7 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
-                new OwnerNavigation(PetOwnerOptionsOfDog.this,id,user,item);
+                new OwnerNavigation(Vaccines_and_Medicines_slide.this,id,user,item);
                 return false;
             }
         });
