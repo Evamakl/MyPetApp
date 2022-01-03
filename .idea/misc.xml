@@ -117,6 +117,77 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/base_activity.xml" value="0.4" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/recyclerview.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/menu/scroling.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/drawable/reciver_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/drawable/sender_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_base.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_blocking_user.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_calendar.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_creare_technical_support_page.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_create_feedback_mess.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_dog_list.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_exist_new_frame.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_firstframe.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_food_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_home_page_manager.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_log_out_manager.xml" value="0.176" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_login_exists_frame.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_main.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_main_toolbar.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_nav_drawer_manager.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_nav_drower_pet_keeper.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_new_task.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_new_task2.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_new_user.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_newsletter_update.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_personal_file.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_pet_keepers_tips.xml" value="0.264" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_pet_keepers_tips_adapter.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_pet_owner_options_of_dog.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_reliability_form.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_reports.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_running_messages.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_shampo_info.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_start_work.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_technical_support.xml" value="0.264" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_technical_support2.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips_pkadapter.xml" value="0.22916666666666666" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips_pklist.xml" value="0.4" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_to_do_list.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_to_do_list2.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_vaccines.xml" value="0.4" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_vaccines_and_medicines_slide.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_vaccines_info.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_vaccines_info2.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_walk_info.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/addvaccine_dialog.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/app_bar_base.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/chat_item_receiver.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/chat_item_sender.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/check_list.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/dialog_search_spinner.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/dropdown_item.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_chat.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_dashboard.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_first.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_select_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_users.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/header.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/main_toolbar.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/mede_item.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/new_tip.xml" value="0.264" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/pet_keepers_tips_input.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/pet_keepers_tips_list.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/stam.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/to_do_list.xml" value="0.22871376811594202" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/todo_text_input.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/userbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/menu/base_activity.xml" value="0.264" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
@@ -127,7 +198,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.4" />
+        <option name="scale" value="0.23645833333333333" />
       </ProjectState>
     </option>
   </component>

@@ -29,6 +29,12 @@
         <item
             android:id="@+id/calendar"
             android:title=" לוח שנה" />
+        <item
+            android:id="@+id/tips"
+            android:title="טיפים" />
+        <item
+            android:id="@+id/technical_support"
+            android:title="תמיכה טכנית" />
 
     </group>
 

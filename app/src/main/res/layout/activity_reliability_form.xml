@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".navigation_drawer"
     android:id="@+id/reliability_form_layout">
@@ -25,21 +26,26 @@
         android:layout_height="153dp"
         android:layout_marginTop="41dp"
         android:background="#673AB7"
+
         android:shadowColor="#673AB7"
         android:text="אני מתחייב/ת לא לפגוע/להתעלל בחיית המחמד.
 בנוסף אני מתחייב/ת להוציא את הכלב לסיבוב לפחות 3 פעמים ביום, לתת לו את האוכל ואת התרופות המתאימות,
  ולהיות בקשר רציף עם בעל חיית המחמד."
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
+
         app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
+
         android:text="אני מסכימ/ה"
         android:textSize="17sp"
         android:textStyle="bold"
@@ -64,6 +70,7 @@
         app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
         android:id="@+id/textView7"
         android:layout_width="367dp"
@@ -72,7 +79,9 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
         android:text="על מנת שאתה כpet keeper תוכל להוסיף כלב נוסף לרשימה שלך, אתה נדרש לחתום על טופס אמינות הכתוב למטה"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="20sp"
+
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="@+id/textView5"
@@ -88,6 +97,7 @@
         app:layout_constraintEnd_toEndOf="@+id/checkBox"
         app:layout_constraintStart_toStartOf="@+id/checkBox"
         app:layout_constraintTop_toBottomOf="@+id/checkBox"
+
         tools:ignore="MissingConstraints" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

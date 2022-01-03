@@ -2,6 +2,7 @@ package com.example.myproject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class User implements Serializable {
     private String Uid;
@@ -12,11 +13,40 @@ public class User implements Serializable {
     private ArrayList<DogPK> dogsPK;
     private ArrayList<Dog> dogs;
 
+    private ArrayList<TodoListClass> listOfTodo;
+    private ArrayList<tipsPKClass> listPKtip;
+
+
+
     public User(String uid, String email, String phone, String username) {
         Uid = uid;
         Email = email;
         Phone = phone;
         Username = username;
+
+        dogs = new ArrayList<>();
+        listOfTodo = new ArrayList<>();
+        listPKtip = new ArrayList<>();
+    }
+
+    public User() {
+        listOfTodo = new ArrayList<>();
+        dogs = new ArrayList<>();
+        listPKtip = new ArrayList<>();
+    }
+    public ArrayList<TodoListClass> getListOfTodo() {
+        return listOfTodo;
+    }
+
+    public ArrayList<tipsPKClass> getListPKtip() { return listPKtip; }
+
+    public void setListOfTodo(ArrayList<TodoListClass> listOfTodo) {
+        this.listOfTodo = listOfTodo;
+    }
+
+    public void setListPKtip(ArrayList<tipsPKClass> listPKtip) {
+        this.listPKtip = listPKtip;
+
         this.dogs = new ArrayList<>();
         this.dogsPK = new ArrayList<>();
     }
@@ -31,6 +61,7 @@ public class User implements Serializable {
 
     public void setDogsPK(ArrayList<DogPK> dogsPK) {
         this.dogsPK = dogsPK;
+
     }
 
     public void setEmail(String email) { Email = email; }
@@ -64,4 +95,5 @@ public class User implements Serializable {
             dogs.get(dogs.size()-1).AddDog(dog,String.valueOf(dogs.size()));
 
         }
+
 }

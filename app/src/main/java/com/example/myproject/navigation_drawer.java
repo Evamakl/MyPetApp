@@ -19,25 +19,53 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class navigation_drawer extends AppCompatActivity {
     //initialize veriables
     DrawerLayout drawerLayout;
+
     NavigationView navigation;
     ImageView MenuIcon,BackIcon;
     User user = new User();
     Intent intent;
     TextView UserInfo;
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         setContentView(R.layout.activity_navigation_drawer);
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         //assign variable
         drawerLayout =findViewById(R.id.drawer_layout) ;
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+
+    /*public void ClickToDoList(View view){
+        //redirect activity to to do list
+       // redirectActivity(this,ToDoList.class);
+        intent = new Intent(navigation_drawer.this,ToDoList.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+        finish();
+    }*/
+
+    
+    /*public void Clicktips(View view){
+        //redirect activity to information and tips
+         intent = new Intent(navigation_drawer.this,tips.class);
+         intent.putExtra("user",user);
+         startActivity(intent);
+       // redirectActivity(this,tips.class);
+
+    }*/
+    
+
+    
+  
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 new PetKeeperNavigation(navigation_drawer.this,item.getItemId(),user);
