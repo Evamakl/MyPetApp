@@ -41,11 +41,12 @@ public class BlockingUser extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot temp : snapshot.getChildren()){
-                    //   User getUser = snapshot.getValue(User.class); ======
-                    String username = (String)temp.child("username").getValue().toString();
+                       User getUser = snapshot.getValue(User.class);
+                    /*String username = (String)temp.child("username").getValue().toString();
                     String email = (String)temp.child("email").getValue().toString();
                     String phone = (String)temp.child("phone").getValue().toString();
-                    list.add(new User("1", email, phone,username));
+                    list.add(new User("1",email,phone,username));*/
+                    list.add(getUser);
                 }
                 setAdapter();
             }
