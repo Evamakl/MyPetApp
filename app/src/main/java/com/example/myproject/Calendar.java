@@ -35,7 +35,7 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         intent = getIntent();
-        User=(User)intent.getSerializableExtra("user");
+        //User=(User)intent.getSerializableExtra("user");
 
         drawerLayout =findViewById(R.id.drawer_layout) ;
         MenuItem = findViewById(R.id.MenuItem);
