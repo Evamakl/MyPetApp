@@ -15,16 +15,16 @@ import javax.xml.validation.Validator;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 
-public class PasswordAndEmail_Test {
-/*
- 
+public class NewUser_Test {
+
+    //Checks if the user name is valid
     public void isValidUserName_test() {
-        assertTrue(loginExistsFrame.isValidUserName("ron"));
-        assertFalse(loginExistsFrame.isValidUserName("r0n"));
-        assertFalse(loginExistsFrame.isValidUserName("123"));
-        //@Test
-        //public void addition_isCorrect() { assertEquals(4, 2 + 2); }
-    }*/
+        assertTrue(new_user.isValidUserName("ron"));
+        assertTrue(new_user.isValidUserName("ron12"));
+        assertFalse(new_user.isValidUserName("r0n"));
+        assertFalse(new_user.isValidUserName("123"));
+
+    }
 
     //Checks if the password is valid
     @Test
@@ -43,13 +43,14 @@ public class PasswordAndEmail_Test {
         assertFalse(new_user.isValidEmail("hadar@hadar"));
         assertTrue(new_user.isValidEmail("hadar@hadar.com"));
     }
-/*
+
+    //Checks if the phone number is valid
     @Test
     public void isValidPhoneNumber_test() {
         assertFalse(new_user.isValidPhoneNumber("123456789"));
         assertTrue(new_user.isValidPhoneNumber("0523567122"));
     }
-    */
+
 }
 
 
