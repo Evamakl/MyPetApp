@@ -11,6 +11,7 @@ public class Dog implements Serializable {
     private String Image = "null";
     private String City = "null";
     private String BirthDay = "null";
+    private String AddedDate = "null";
     private ArrayList<Vaccines> vaccines;
     public Dog(String type, String name, String gender, String image, String city, String birthDay) {
         Type = type;
@@ -37,6 +38,14 @@ public class Dog implements Serializable {
     public void setId(String id){ this.id = id; }
     public String getType() {
         return Type;
+    }
+
+    public String getAddedDate() {
+        return AddedDate;
+    }
+
+    public void setAddedDate(String addedDate) {
+        AddedDate = addedDate;
     }
 
     public ArrayList<Vaccines> getVaccines() {

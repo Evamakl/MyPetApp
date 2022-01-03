@@ -21,13 +21,22 @@
         <item android:title="הגדרות">
             <menu>
                 <item
-                    android:id="@+id/about"
+                    android:id="@+id/about_item"
                     android:title=" ידיעון" />
                 <item
-                    android:id="@+id/calendar"
+                    android:id="@+id/calendar_item"
                     android:title=" לוח שנה" />
                 <item
-                    android:id="@+id/logout"
+                    android:id="@+id/chat_item"
+                    android:title=" צ'ט" />
+                <item
+                    android:id="@+id/Technical_item"
+                    android:title=" תמיכה טכנית" />
+                <item
+                    android:id="@+id/Feedback_item"
+                    android:title=" פידבקים" />
+                <item
+                    android:id="@+id/logout_item"
                     android:title="התנתק"/>
 
             </menu>

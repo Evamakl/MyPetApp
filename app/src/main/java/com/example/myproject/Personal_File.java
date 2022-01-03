@@ -2,27 +2,35 @@ package com.example.myproject;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.transition.Transition;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -37,11 +45,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Personal_File extends AppCompatActivity  {
-
     ImageView dog_image;
     private TextInputLayout dog_name,city,Gender,BirthDay,type;
-    private FirebaseAuth mAuth;
     private ImageView DogPic,addDogPic;
+    private ImageView MenuItem, BackItem;
+    private Menu menu;
+    private DrawerLayout drawerLayout;
     private Button Done;
     private User user;
     private Dog dog;
@@ -51,10 +60,23 @@ public class Personal_File extends AppCompatActivity  {
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Uri uri = null;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+    private com.google.android.material.navigation.NavigationView NavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_file);
+        init();
+    }
+    private void init(){
+        setID();
+        MenuIcon();
+        BackIcon();
+        NavigationView();
+        setDogs();
+        setButtons();
+        AddImage();
+    }
+    private void setID(){
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         dog = (Dog)intent.getSerializableExtra("dog");
@@ -66,18 +88,34 @@ public class Personal_File extends AppCompatActivity  {
         Gender.getEditText().setText(dog.getGender());
         BirthDay = findViewById(R.id.TextInputLayoutDate);
         BirthDay.getEditText().setText(dog.getBirthDay());
+        Done = findViewById(R.id.Done);
         type = findViewById(R.id.TextInputLayoutType);
         type.getEditText().setText(dog.getType());
         DogPic = findViewById(R.id.DogPic);
         if(dog.getImage().equals("null")){
-
+            DogPic.setImageResource(R.mipmap.ic_launcher);
         }
         else {
+            Glide.with(Personal_File.this).asBitmap().load(dog.getImage()).into(new CustomTarget<Bitmap>() {
+                @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+                @Override
+                public void onResourceReady(@NonNull Bitmap resource, @Nullable com.bumptech.glide.request.transition.Transition<? super Bitmap> transition) {
+                    DogPic.setBackground(new BitmapDrawable(getResources(), resource));
+                }
 
+                @Override
+                public void onLoadCleared(@Nullable Drawable placeholder) { }
+            });
         }
         addDogPic = findViewById(R.id.addpicdog);
-        AddImage();
-        Done = findViewById(R.id.Done);
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
+    }
+    private void setButtons(){
         Done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +124,44 @@ public class Personal_File extends AppCompatActivity  {
                 }
             }
         });
+    }
+    private void StartActivity(Class Dest){
+        Intent intent = new Intent(Personal_File.this, Dest);
+        intent.putExtra("dog",dog);
+        intent.putExtra("user",user);
+        startActivity(intent);
+        finish();
+    }
+    private void MenuIcon(){
+        MenuItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+    }
+    private void BackIcon(){
+        BackItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StartActivity(PetOwnerOptionsOfDog.class);
+            }
+        });
+    }
+    public void NavigationView() {
+        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                new OwnerNavigation(Personal_File.this,id,user,item);
+                return false;
+            }
+        });
+    }
+    private void setDogs(){
+        menu = NavigationView.getMenu();
+        for(int i=0; i<user.getDogs().size();i++)
+            menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
     }
     private void AddImage(){
         addDogPic.setOnClickListener(new View.OnClickListener() {
