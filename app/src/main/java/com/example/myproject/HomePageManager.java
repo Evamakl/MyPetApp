@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.Calendar;
 
 public class HomePageManager extends AppCompatActivity {
@@ -19,12 +21,14 @@ public class HomePageManager extends AppCompatActivity {
     //Initialize variable
     DrawerLayout drawerLayout;
     TextView greetings;
-
+    User user = new User();
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_manager);
-
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
         greetings = (TextView) findViewById(R.id.greetings);
@@ -48,6 +52,7 @@ public class HomePageManager extends AppCompatActivity {
         else {
             greetings.setText("שלום, ");
         }
+        greetings.setText(greetings.getText() + user.getUsername());
     }
 
     public void ClickMenu(View view) {
@@ -111,6 +116,10 @@ public class HomePageManager extends AppCompatActivity {
     }
 
     public static void logout(Activity activity) {
+       FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() != null){
+            firebaseAuth.signOut();
+        }
         //Initialize alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         //Set title
@@ -135,8 +144,7 @@ public class HomePageManager extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-        //Show dialog
-        builder.show();
+
     }
 
     public static void redirectActivity(Activity activity,Class aclass) {

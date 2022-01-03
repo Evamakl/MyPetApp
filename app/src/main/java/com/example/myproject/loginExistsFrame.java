@@ -81,13 +81,20 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                                             Log.d(TAG, "signInWithEmail:success");
                                             User user = new User();
                                             user = snapshot.getValue(User.class);
-                                            Intent intent = new Intent(loginExistsFrame.this,Start_work.class);;
-                                            if(user.getType().equals("PetKeeper"))
-                                                intent = new Intent(loginExistsFrame.this,navigation_drawer.class);
-                                            else if(user.getType().equals("Manager"))
-                                                intent = new Intent(loginExistsFrame.this,HomePageManager.class);
-                                            intent.putExtra("user",user);
-                                            startActivity(intent);
+                                            if(!user.getBlock()) {
+                                                Intent intent = new Intent(loginExistsFrame.this, Start_work.class);
+                                                ;
+                                                if (user.getType().equals("PetKeeper"))
+                                                    intent = new Intent(loginExistsFrame.this, navigation_drawer.class);
+                                                else if (user.getType().equals("Manager"))
+                                                    intent = new Intent(loginExistsFrame.this, HomePageManager.class);
+                                                intent.putExtra("user", user);
+                                                startActivity(intent);
+                                            }
+                                            else{
+                                                Toast.makeText(loginExistsFrame.this, "User is blocked!", Toast.LENGTH_SHORT).show();
+                                                mAuth.signOut();
+                                            }
                                         }
                                         @Override
                                         public void onCancelled(@NonNull DatabaseError error) { }

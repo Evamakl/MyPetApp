@@ -1,54 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
 
-    <TextView
-        android:id="@+id/events"
-        android:layout_width="317dp"
-        android:layout_height="46dp"
-        android:text="יצירת אירוע:"
-        android:textSize="30dp"
-        android:translationX="60dp"
-        android:translationY="20dp" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:context=".Calendar">
 
-    <EditText
-        android:id="@+id/titleEt"
-        android:layout_width="356dp"
-        android:layout_height="67dp"
-        android:text="כותרת"
-        android:textSize="25sp"
-        android:translationX="40dp"
-        android:translationY="70dp" />
+        <include
+            android:id="@+id/include2"
+            layout="@layout/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/locationEt"
-        android:layout_width="356dp"
-        android:layout_height="67dp"
-        android:text="מיקום"
-        android:textSize="25sp"
-        android:translationX="40dp"
-        android:translationY="70dp" />
+        <TextView
+            android:id="@+id/events"
+            android:layout_width="317dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="32dp"
+            android:text="יצירת אירוע:"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.758"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include2" />
 
-    <EditText
-        android:id="@+id/descriptionEt"
-        android:layout_width="356dp"
-        android:layout_height="67dp"
-        android:text="פירוט"
-        android:textSize="25sp"
-        android:translationX="40dp"
-        android:translationY="70dp" />
+        <EditText
+            android:id="@+id/titleEt"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="32dp"
+            android:hint="כותרת"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/events"
+            app:layout_constraintHorizontal_bias="0.128"
+            app:layout_constraintStart_toStartOf="@+id/events"
+            app:layout_constraintTop_toBottomOf="@+id/events" />
 
-    <Button
-        android:id="@+id/saveEventbt"
-        android:layout_width="328dp"
-        android:layout_height="70dp"
-        android:text="שמירת אירוע"
-        android:textSize="25sp"
-        android:translationX="45dp"
-        android:translationY="100dp" />
+        <EditText
+            android:id="@+id/locationEt"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="24dp"
+            android:hint="מיקום"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/titleEt"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/titleEt"
+            app:layout_constraintTop_toBottomOf="@+id/titleEt" />
 
-</LinearLayout>
+        <EditText
+            android:id="@+id/descriptionEt"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="33dp"
+            android:hint="פירוט"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="@+id/locationEt"
+            app:layout_constraintStart_toStartOf="@+id/locationEt"
+            app:layout_constraintTop_toBottomOf="@+id/locationEt" />
+
+        <Button
+            android:id="@+id/saveEventbt"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="28dp"
+            android:text="שמירת אירוע"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/descriptionEt"
+            app:layout_constraintStart_toStartOf="@+id/descriptionEt"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionEt"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
+        android:layout_height="match_parent"
+        android:layout_width="220dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/pet_keeper_menu">
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>
