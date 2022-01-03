@@ -6,12 +6,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +29,10 @@ public class NewsletterUpdate extends AppCompatActivity {
 
     //Initialize variable
     DrawerLayout drawerLayout;
+    private ImageView MenuIcon, BackIcon;
+    NavigationView navigation;
+    Intent intent;
+    User user = new User();
     Button addButton;
     ArrayList<String> list;
     RecyclerView recyclerView;
@@ -40,6 +47,33 @@ public class NewsletterUpdate extends AppCompatActivity {
         list = new ArrayList<>();
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(NewsletterUpdate.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(NewsletterUpdate.this, HomePageManager.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
         addButton=findViewById(R.id.addButton);
         newsText=findViewById(R.id.newsText);
         recyclerView = findViewById(R.id.newsletterRV);
@@ -66,73 +100,20 @@ public class NewsletterUpdate extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         recyclerView.setAdapter(newsLetterAdapter);
     }
-    public void AddButton(){
+    public void AddButton() {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(newsText.getEditText().getText().length() >0){
+                if (newsText.getEditText().getText().length() > 0) {
                     Random random = new Random();
-                    reference.child(random.nextInt(999999999)+ "").setValue(newsText.getEditText().getText().toString());
+                    reference.child(random.nextInt(999999999) + "").setValue(newsText.getEditText().getText().toString());
                     Toast.makeText(NewsletterUpdate.this, "text added", Toast.LENGTH_SHORT).show();
                     newsText.getEditText().setText("");
 
-                }
-                else{
+                } else {
                     Toast.makeText(NewsletterUpdate.this, "Need to add text", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-    }
-
-    public void ClickMenu(View view) {
-        //Open drawer
-        HomePageManager.openDrawer(drawerLayout);
-    }
-
-    public void ClickLogo(View view) {
-        //Close drawer
-        HomePageManager.closeDrawer(drawerLayout);
-    }
-
-    public void ClickHome(View view) {
-        //Redirect activity to home
-        HomePageManager.redirectActivity(this,HomePageManager.class);
-    }
-
-    public void ClickReports(View view) {
-        //Redirect activity to reports
-        HomePageManager.redirectActivity(this, Reports.class);
-    }
-
-    public void ClickNewsletterUpdate(View view) {
-        //Recreate activity
-        recreate();
-    }
-
-    public void ClickCreateFeedbackMess(View view) {
-        //Redirect activity to create feedback mess
-        HomePageManager.redirectActivity(this, CreateFeedbackMess.class);
-    }
-
-    public void ClickBlockingUser(View view) {
-        //Redirect activity to blocking user
-        HomePageManager.redirectActivity(this, BlockingUser.class);
-    }
-
-    public void ClickAppUpdate(View view) {
-        //Redirect activity to app update
-        HomePageManager.redirectActivity(this, AppUpdate.class);
-    }
-
-    public void ClickLogout(View view) {
-        //Close app
-        HomePageManager.logout(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //Close drawer
-        HomePageManager.closeDrawer(drawerLayout);
     }
 }

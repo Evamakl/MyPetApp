@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="שלום,"
+        android:id="@+id/FullName_item">
+        <menu>
+            <group>
+                <item
+                    android:id="@+id/name"
+                    android:title=""
+                    android:enabled="false"
+                    android:layout_gravity="left">
+                </item>
+                <item
+                    android:id="@+id/type"
+                    android:title=""
+                    android:enabled="false"
+                    android:layout_gravity="left">
+                </item>
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/Reports_item"
+        android:title="הפקת דוחות"
+        android:icon="@drawable/ic_reports"/>
+    <item
+        android:id="@+id/NewsletterUpdate_item"
+        android:icon="@drawable/ic_newsletter"
+        android:title="עדכון ידיעון" />
+    <item
+        android:id="@+id/FeedbackMess_item"
+        android:icon="@drawable/ic_feedback"
+        android:title="יצירת הודעות פידבק" />
+    <item
+        android:id="@+id/BlockingUser_item"
+        android:icon="@drawable/ic_blocking"
+        android:title="חסימת משתמש" />
+    <item
+        android:id="@+id/AppUpdate_item"
+        android:icon="@drawable/ic_update"
+        android:title="עדכון תוכנה" />
+    <item
+        android:id="@+id/logout_item"
+        android:icon="@drawable/ic_logoff"
+        android:title="התנתק"/>
+
+</menu>
