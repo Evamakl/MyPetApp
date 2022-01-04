@@ -43,6 +43,10 @@
         android:icon="@drawable/ic_update"
         android:title="עדכון תוכנה" />
     <item
+        android:id="@+id/TechnicalSupport_item"
+        android:icon="@drawable/ic_support"
+        android:title="תמיכה טכנית" />
+    <item
         android:id="@+id/logout_item"
         android:icon="@drawable/ic_logoff"
         android:title="התנתק"/>
