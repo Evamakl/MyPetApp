@@ -40,7 +40,7 @@ public class UsersReport extends AppCompatActivity {
     BarChart barChart;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Users");
-    int petKeeper=0, owner=0, NumberOfUsers = 2;
+    int petKeeper = 0, owner = 0, NumberOfUsers = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,12 @@ public class UsersReport extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("user");
         navigation = findViewById(R.id.NavigationView);
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(UsersReport.this,item.getItemId(),user);
+                new PetKeeperNavigation(UsersReport.this, item.getItemId(), user);
                 return false;
             }
         });
@@ -80,34 +80,37 @@ public class UsersReport extends AppCompatActivity {
         //initialize array list
         GetUserStatistic();
     }
-    public void GetUserStatistic(){
+
+    public void GetUserStatistic() {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot temp : snapshot.getChildren()){
+                for (DataSnapshot temp : snapshot.getChildren()) {
                     String type = (String) temp.child("type").getValue();
-                    if(type.equals("PetKeeper"))
+                    if (type.equals("PetKeeper"))
                         petKeeper++;
-                    else if(type.equals("Owner"))
+                    else if (type.equals("Owner"))
                         owner++;
                 }
                 SetChart();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
-    public void SetChart(){
+
+    public void SetChart() {
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         //Add Owner statistic
         //initialize bar chart entry
-        BarEntry barEntry = new BarEntry(0,owner);
+        BarEntry barEntry = new BarEntry(0, owner);
         //add value in array list
         barEntries.add(barEntry);
         //Add PetKeeper statistic
         //initialize bar chart entry
-        barEntry = new BarEntry(1,petKeeper);
+        barEntry = new BarEntry(1, petKeeper);
         //add value in array list
         barEntries.add(barEntry);
         //initialize bar data set
@@ -124,5 +127,4 @@ public class UsersReport extends AppCompatActivity {
         barChart.getDescription().setText("Users Type Chart");
         barChart.getDescription().setTextColor(Color.BLUE);
     }
-
 }
