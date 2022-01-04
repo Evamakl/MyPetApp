@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -34,6 +35,7 @@ public class ToDoList extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference().child("Users");
     DrawerLayout drawerLayout;
+
 
     /*private User user = new User();
     private Intent intent;*/
@@ -50,7 +52,6 @@ public class ToDoList extends AppCompatActivity {
         setContentView(R.layout.activity_to_do_list);
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
-
         list = new ArrayList<>();
         drawerLayout = findViewById(R.id.drawer_layout);
         recyclerView = findViewById(R.id.RecyclerView);
@@ -104,10 +105,6 @@ public class ToDoList extends AppCompatActivity {
         dialog = new AddTodoDialog(ToDoList.this,"הוספת מטלה חדשה",user);
         dialog.show(getSupportFragmentManager(),"opendialog");
     }
-
-
-
-
 
 }
 

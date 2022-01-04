@@ -14,10 +14,8 @@
         android:orientation="vertical">
 
         <include
-
             android:id="@+id/include2"
-            layout="@layout/activity_main_toolbar"
-            app:layout_constraintBottom_toBottomOf="parent"
+            layout="@layout/header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -52,7 +50,14 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
+        android:layout_height="match_parent"
+        android:layout_width="220dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/pet_keeper_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
