@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.myproject.ui.OwnerNavigation;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -29,6 +31,7 @@ public class Start_work extends AppCompatActivity {
     private User user;
     private  FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Intent intent;
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_work);
@@ -73,7 +76,6 @@ public class Start_work extends AppCompatActivity {
                 if(firebaseAuth.getCurrentUser() != null)
                     firebaseAuth.signOut();
                 Intent intent = new Intent(Start_work.this, Exist_new_frame.class);
-                intent.putExtra("user",user);
                 startActivity(intent);
                 finish();
             }

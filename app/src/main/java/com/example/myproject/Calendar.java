@@ -29,7 +29,6 @@ public class Calendar extends AppCompatActivity {
     Intent intent;
 
     User user = new User();
-    //Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +43,7 @@ public class Calendar extends AppCompatActivity {
         location = findViewById(R.id.locationEt);
         description = findViewById(R.id.descriptionEt);
         saveEvent = findViewById(R.id.saveEventbt);
-/*
-        saveEvent.setOnClickListener(new View.OnClickListener()
-        {
-*/
-        //user = (User) intent.getSerializableExtra("user");
+
         navigation = findViewById(R.id.NavigationView);
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

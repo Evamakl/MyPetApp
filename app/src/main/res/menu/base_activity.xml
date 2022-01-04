@@ -27,6 +27,7 @@
                     android:id="@+id/calendar_item"
                     android:title=" לוח שנה" />
                 <item
+
                     android:id="@+id/chat_item"
                     android:title=" צ'ט" />
                 <item
@@ -35,6 +36,16 @@
                 <item
                     android:id="@+id/Feedback_item"
                     android:title=" פידבקים" />
+
+                    android:id="@+id/support_item"
+                    android:title="תמיכה טכנית" />
+                <item
+                    android:id="@+id/chat_item"
+                    android:title="צ'ט" />
+                <item
+                    android:id="@+id/feedback_item"
+                    android:title="פידבקים" />
+
                 <item
                     android:id="@+id/logout_item"
                     android:title="התנתק"/>
