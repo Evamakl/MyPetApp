@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,6 +48,8 @@ public class ManagerTipsAdapter extends RecyclerView.Adapter<ManagerTipsAdapter.
     public void onBindViewHolder(@NonNull ManagerTipsAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.textView.setText("* "+list.get(position));
         if(user.getType().equals("Manager")) {
+            holder.textView.setFocusable(true);
+            holder.textView.setEnabled(true);
             holder.DeleteTip.setVisibility(View.VISIBLE);
             holder.DeleteTip.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,9 +66,6 @@ public class ManagerTipsAdapter extends RecyclerView.Adapter<ManagerTipsAdapter.
                                     temp.getRef().removeValue();
 
                             }
-                            Intent intent = new Intent(context,context.getClass());
-                            intent.putExtra("user",user);
-                            ((Activity)context).startActivity(intent);
                         }
 
                         @Override
@@ -76,6 +76,14 @@ public class ManagerTipsAdapter extends RecyclerView.Adapter<ManagerTipsAdapter.
                 }
             });
 
+        }
+        else {
+            holder.textView.setFocusable(false);
+            holder.textView.setEnabled(false);
+            holder.textView.setCursorVisible(false);
+            holder.textView.setKeyListener(null);
+            holder.textView.setTextColor(context.getResources().getColor(R.color.black));
+            holder.DeleteTip.setVisibility(View.GONE);
         }
 
     }
