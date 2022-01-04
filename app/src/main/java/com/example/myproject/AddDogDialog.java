@@ -41,6 +41,10 @@ public class AddDogDialog extends AppCompatDialogFragment{
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dogs_name,null);
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        int year = calendar.get(java.util.Calendar.YEAR);
+        int month = calendar.get(java.util.Calendar.MONTH) + 1 ;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
         dog_name = view.findViewById(R.id.TextInputLayoutName);
         city = view.findViewById(R.id.TextInputLayoutMed_Backg);
         Gender = view.findViewById(R.id.TextInputLayoutGender);
@@ -48,14 +52,10 @@ public class AddDogDialog extends AppCompatDialogFragment{
         BirthDay.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                java.util.Calendar calendar = java.util.Calendar.getInstance();
-                int year = calendar.get(java.util.Calendar.YEAR);
-                int month = calendar.get(java.util.Calendar.MONTH) + 1 ;
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
                 datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        String date = day+"/"+month+"/"+year;
+                        String date = day+"/"+(month+1)+"/"+year;
                         BirthDay.getEditText().setText(date);
                     }
                 }, year,month,day);
@@ -73,6 +73,7 @@ public class AddDogDialog extends AppCompatDialogFragment{
                     navigationView = ((Activity)context).findViewById(R.id.NavigationView);
                     menu = navigationView.getMenu();
                     Dog dog = new Dog(type.getEditText().getText().toString(),dog_name.getEditText().getText().toString(),Gender.getEditText().getText().toString(),"",city.getEditText().getText().toString(),BirthDay.getEditText().getText().toString());
+                    dog.setAddedDate(day+"/"+month+"/"+year);
                     menu.findItem(R.id.Dogs).getSubMenu().add(dog_name.getEditText().getText().toString());
                     user.AddDog(dog);
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(user.getUid());

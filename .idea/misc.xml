@@ -103,6 +103,7 @@
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/main_toolbar.xml" value="0.10666666666666667" />
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/mede_item.xml" value="0.1796875" />
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/layout/news_letter.xml" value="0.16666666666666666" />
+
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/menu/manager_menu.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/menu/pet_keeper_menu.xml" value="0.1796875" />
@@ -156,6 +157,7 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_shampo_info.xml" value="0.2" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_start_work.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_technical_support.xml" value="0.4" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_technical_support2.xml" value="0.2029535864978903" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_tips.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_tips_list.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_to_do_list.xml" value="0.1841880341880342" />
@@ -171,6 +173,10 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dialog_search_spinner.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/drop_down.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dropdown_item.xml" value="0.264" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/fragment_first.xml" value="0.20854700854700856" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/fragment_second.xml" value="0.13547008547008546" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/get_dogs_name_to_delete.xml" value="0.2029535864978903" />
+
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/header.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/main_nav_drawer.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/main_toolbar.xml" value="0.264" />

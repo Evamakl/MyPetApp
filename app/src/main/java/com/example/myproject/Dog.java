@@ -1,5 +1,7 @@
 package com.example.myproject;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,7 +13,8 @@ public class Dog implements Serializable {
     private String Image = "null";
     private String City = "null";
     private String BirthDay = "null";
-    private ArrayList<Vaccines> vaccines;
+    private String AddedDate = "null";
+    private ArrayList<vaccine> vaccines;
     public Dog(String type, String name, String gender, String image, String city, String birthDay) {
         Type = type;
         Name = name;
@@ -39,11 +42,26 @@ public class Dog implements Serializable {
         return Type;
     }
 
-    public ArrayList<Vaccines> getVaccines() {
+    public String getAddedDate() {
+        return AddedDate;
+    }
+
+    public void setAddedDate(String addedDate) {
+        AddedDate = addedDate;
+    }
+
+    public ArrayList<vaccine> getVaccines() {
         return vaccines;
     }
 
-    public void setVaccines(ArrayList<Vaccines> vaccines) {
+    public boolean equals( Dog dog) {
+        return this.getName().equals(dog.getName()) && this.getId().equals(dog.getId()) && this.getGender().equals(dog.getGender());
+    }
+
+    public void AddVaccine(vaccine vaccine) {
+        this.vaccines.add(vaccine);
+    }
+    public void setVaccines(ArrayList<vaccine> vaccines) {
         this.vaccines = vaccines;
     }
 

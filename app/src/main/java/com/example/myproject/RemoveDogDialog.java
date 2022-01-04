@@ -36,9 +36,9 @@ public class RemoveDogDialog  extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.dogs_name,null);
+        View view = inflater.inflate(R.layout.get_dogs_name_to_delete,null);
         dog_name = view.findViewById(R.id.TextInputLayoutName);
-        builder.setView(view).setTitle("הוסף כלב").setNegativeButton("אישור", new DialogInterface.OnClickListener() {
+        builder.setView(view).setTitle("מחק כלב").setNegativeButton("אישור", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 navigationView = ((Activity)context).findViewById(R.id.NavigationView);
@@ -47,7 +47,7 @@ public class RemoveDogDialog  extends AppCompatDialogFragment {
                     if (menu.findItem(R.id.Dogs).getSubMenu().getItem(i).getTitle().equals(dog_name.getEditText().getText().toString())) {
                         menu.findItem(R.id.Dogs).getSubMenu().removeItem(menu.findItem(R.id.Dogs).getSubMenu().getItem(i).getItemId());
                         for(int j=0; j<user.getDogs().size();j++){
-                            if(user.getDogs().get(j).getName().equals(dog_name)){
+                            if(user.getDogs().get(j).getName().equals(dog_name.getEditText().getText().toString())){
                                 user.getDogs().remove(user.getDogs().get(j));
                                 reference.child(user.getUid()).setValue(user);
                                 return;

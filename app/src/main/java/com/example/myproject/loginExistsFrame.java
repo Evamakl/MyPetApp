@@ -83,7 +83,6 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
                                             user = snapshot.getValue(User.class);
                                             if(!user.getBlock()) {
                                                 Intent intent = new Intent(loginExistsFrame.this, Start_work.class);
-                                                ;
                                                 if (user.getType().equals("PetKeeper"))
                                                     intent = new Intent(loginExistsFrame.this, navigation_drawer.class);
                                                 else if (user.getType().equals("Manager"))
