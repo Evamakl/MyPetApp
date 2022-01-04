@@ -63,9 +63,7 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.MyView
                 }
                 user.setListOfTodo(list);
                 reference.child(user.getUid()).setValue(user);
-                Intent intent = new Intent(context,ToDoList.class);
-                intent.putExtra("user",user);
-                ((Activity)context).startActivity(intent);
+
             }
         });
     }

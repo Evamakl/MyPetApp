@@ -90,6 +90,10 @@ public class search_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(search_page.this, navigation_drawer.class);
+                if(user.getType().equals("Owner"))
+                    intent = new Intent(search_page.this, Start_work.class);
+                else if(user.getType().equals("Manager"))
+                    intent = new Intent(search_page.this, HomePageManager.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();

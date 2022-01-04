@@ -62,7 +62,11 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Calendar.this, navigation_drawer.class);
-                //intent.putExtra("user", user);
+                if(user.getType().equals("Owner"))
+                    intent = new Intent(Calendar.this, Start_work.class);
+                else if(user.getType().equals("Manager"))
+                    intent = new Intent(Calendar.this, HomePageManager.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
             }

@@ -16,10 +16,8 @@ public class ManagerNavigation {
     private TextView UserFullName;
     private NavigationView navigation;
     public ManagerNavigation(Context context, int id, User user){
-        navigation = ((Activity)context).findViewById(R.id.NavigationView);
-        //UserFullName = navigation.getHeaderView(0).findViewById(R.id.FullName_item);
-        //UserFullName.setText(user.getUsername());
-        if(id == R.id.Reports_item)
+        if(id == R.id.FullName_item) {}
+        else if(id == R.id.Reports_item)
             StartActivity(context,Reports.class, user);
         else if(id == R.id.NewsletterUpdate_item)
             StartActivity(context, NewsletterUpdate.class, user);
@@ -29,6 +27,8 @@ public class ManagerNavigation {
             StartActivity(context, BlockingUser.class, user);
         else if(id == R.id.AppUpdate_item)
             StartActivity(context, AppUpdate.class, user);
+        else if(id == R.id.TechnicalSupport_item)
+            StartActivity(context, technicalSupport.class, user);
         else if(id == R.id.logout_item) {
             //initialize alert dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(((Activity)context));

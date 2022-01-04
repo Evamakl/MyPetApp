@@ -50,7 +50,6 @@ public class RemoveDogDialog  extends AppCompatDialogFragment {
                             if(user.getDogs().get(j).getName().equals(dog_name.getEditText().getText().toString())){
                                 user.getDogs().remove(user.getDogs().get(j));
                                 reference.child(user.getUid()).setValue(user);
-                                return;
                             }
                         }
                     }

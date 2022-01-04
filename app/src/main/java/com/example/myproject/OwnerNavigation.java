@@ -34,9 +34,9 @@ public class OwnerNavigation {
             StartActivity(context, Calendar.class, user);
         else if(id == R.id.chat_item)
             StartActivity(context, PetAppChat.class, user);
-        else if(id == R.id.Technical_item)
+        else if (id == R.id.Support_item)
             StartActivity(context, technicalSupport.class, user);
-        else if(id == R.id.Feedback_item)
+        else if(id == R.id.feedback_item)
             StartActivity(context, FeedbackPage.class, user);
         else if(id == R.id.logout_item) {
             //initialize alert dialog

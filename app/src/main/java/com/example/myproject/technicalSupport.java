@@ -12,6 +12,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -39,7 +40,7 @@ public class technicalSupport extends AppCompatActivity {
     private ArrayList<String> list;
     NavigationView navigation;
     private ImageView MenuItem, BackItem;
-
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +54,17 @@ public class technicalSupport extends AppCompatActivity {
         recyclerView = findViewById(R.id.RecyclerView);
         addNewtip = (Button) findViewById(R.id.button_addNewTask);
         navigation = findViewById(R.id.NavigationView);
+        menu = navigation.getMenu();
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(technicalSupport.this,item.getItemId(),user);
+                if(user.getType().equals("Manager"))
+                    new ManagerNavigation(technicalSupport.this,item.getItemId(),user);
+                else
+                    new PetKeeperNavigation(technicalSupport.this,item.getItemId(),user);
+
                 return false;
             }
         });
@@ -70,6 +78,10 @@ public class technicalSupport extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(technicalSupport.this, navigation_drawer.class);
+                if(user.getType().equals("Owner"))
+                    intent = new Intent(technicalSupport.this, Start_work.class);
+                else if(user.getType().equals("Manager"))
+                    intent = new Intent(technicalSupport.this, HomePageManager.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
@@ -93,10 +105,10 @@ public class technicalSupport extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for(DataSnapshot s : snapshot.getChildren()) {
                     String temp = (String)s.getValue();
-                    if(!list.contains(temp))
-                        list.add(temp);
+                    list.add(temp);
                 }
                 managerTipsAdapter = new ManagerTipsAdapter(technicalSupport.this,list,user);
                 recyclerView.setLayoutManager(new GridLayoutManager(technicalSupport.this, 1));

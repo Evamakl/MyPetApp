@@ -60,7 +60,7 @@
         android:layout_width="220dp"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:menu="@menu/pet_keeper_menu">
+        app:menu="@menu/manager_menu">
     </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
