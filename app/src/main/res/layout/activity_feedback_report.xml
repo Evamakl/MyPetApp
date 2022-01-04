@@ -8,41 +8,45 @@
     android:id="@+id/drawer_layout"
     tools:context=".FeedbackReport">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <include
-            layout="@layout/main_toolbar"/>
+            android:id="@+id/Header"
+            layout="@layout/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0sp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
             android:text="דירוג פידבקים"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"/>
+            app:layout_constraintTop_toBottomOf="@+id/Header" />
 
         <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/bar_chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:id="@+id/bar_chart"
-            android:layout_marginBottom="8dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Header" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:layout_width="300dp"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_height="match_parent"
+        android:layout_width="220dp"
         android:layout_gravity="start"
-        android:background="@android:color/white">
-
-        <include layout="@layout/activity_nav_drawer_manager" />
-
-    </RelativeLayout>
+        android:fitsSystemWindows="true"
+        app:menu="@menu/manager_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -9,10 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,52 +45,64 @@ public class BlockUserAdapter  extends RecyclerView.Adapter<BlockUserAdapter.MyV
     public void onBindViewHolder(@NonNull BlockUserAdapter.MyViewHolder holder, int position) {
         holder.userName.setText(list.get(position).getUsername());
         holder.userInfo.setText(list.get(position).getEmail()+", "+list.get(position).getPhone());
-        if(list.get(position).getBlock()){
+        boolean flag = false;
+        if(!list.get(position).getBlock()){
             holder.unblock.setVisibility(View.INVISIBLE);
             holder.block.setVisibility(View.VISIBLE);
-            holder.block.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot temp : snapshot.getChildren()){
-                                User getUser = snapshot.getValue(User.class);
-                                if((getUser.getEmail()+", "+getUser.getPhone()).equals(holder.userInfo.getText()))
-                                    getUser.setBlock(true);
-                                reference.child((String)temp.getKey()).setValue(getUser);
+            if(flag !=true) {
+                flag = true;
+                list.get(position).setBlock(true);
+                holder.block.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot temp : snapshot.getChildren()) {
+                                    User getUser = temp.getValue(User.class);
+                                    if ((getUser.getEmail() + ", " + getUser.getPhone()).equals(holder.userInfo.getText())) {
+                                        getUser.setBlock(true);
+                                        reference.child(getUser.getUid()).setValue(getUser);
+                                    }
+                                }
                             }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) { }
-                    });
-                }
-            });
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                    }
+                });
+            }
         }
         else{
             holder.unblock.setVisibility(View.VISIBLE);
             holder.block.setVisibility(View.INVISIBLE);
-            holder.unblock.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    reference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot temp : snapshot.getChildren()){
-                                User getUser = snapshot.getValue(User.class);
-                                if((getUser.getEmail()+", "+getUser.getPhone()).equals(holder.userInfo.getText()))
-                                    getUser.setBlock(false);
-                                reference.child((String)temp.getKey()).setValue(getUser);
+            if(flag != true) {
+                flag = true;
+                list.get(position).setBlock(false);
+                holder.unblock.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot temp : snapshot.getChildren()) {
+                                    User getUser = temp.getValue(User.class);
+                                    if ((getUser.getEmail() + ", " + getUser.getPhone()).equals(holder.userInfo.getText())) {
+                                        getUser.setBlock(false);
+                                        reference.child(getUser.getUid()).setValue(getUser);
+                                    }
+                                }
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-            });
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                    }
+                });
+            }
         }
     }
 

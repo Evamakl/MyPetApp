@@ -1,6 +1,6 @@
 package com.example.myproject;
 
-import static com.example.myproject.HomePageManager.openDrawer;
+//import static com.example.myproject.HomePageManager.openDrawer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

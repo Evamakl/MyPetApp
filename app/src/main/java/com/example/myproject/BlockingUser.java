@@ -6,10 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +25,10 @@ public class BlockingUser extends AppCompatActivity {
 
     //Initialize variable
     DrawerLayout drawerLayout;
+    private ImageView MenuIcon, BackIcon;
+    NavigationView navigation;
+    Intent intent;
+    User user = new User();
     RecyclerView recyclerView;
     ArrayList<User> list;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -33,6 +40,33 @@ public class BlockingUser extends AppCompatActivity {
         list = new ArrayList<>();
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(BlockingUser.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(BlockingUser.this, HomePageManager.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
         recyclerView=findViewById(R.id.UsersRV);
         getUsers();
     }
@@ -40,15 +74,13 @@ public class BlockingUser extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
                 for(DataSnapshot temp : snapshot.getChildren()){
-                       User getUser = snapshot.getValue(User.class);
-                    /*String username = (String)temp.child("username").getValue().toString();
-                    String email = (String)temp.child("email").getValue().toString();
-                    String phone = (String)temp.child("phone").getValue().toString();
-                    list.add(new User("1",email,phone,username));*/
+                    User getUser = temp.getValue(User.class);
+
                     list.add(getUser);
                 }
-                setAdapter();
+                setAdapter(list);
             }
 
             @Override
@@ -57,60 +89,10 @@ public class BlockingUser extends AppCompatActivity {
             }
         });
     }
-    public void setAdapter(){
-        BlockUserAdapter blockUserAdapter = new BlockUserAdapter(BlockingUser.this,list);
+    public void setAdapter(ArrayList<User>arrayList){
+        BlockUserAdapter blockUserAdapter = new BlockUserAdapter(BlockingUser.this,arrayList);
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         recyclerView.setAdapter(blockUserAdapter);
     }
-    public void ClickMenu(View view) {
-        //Open drawer
-        HomePageManager.openDrawer(drawerLayout);
-    }
 
-    public void ClickLogo(View view) {
-        //Close drawer
-        HomePageManager.closeDrawer(drawerLayout);
-    }
-
-    public void ClickHome(View view) {
-        //Redirect activity to home
-        HomePageManager.redirectActivity(this,HomePageManager.class);
-    }
-
-    public void ClickReports(View view) {
-        //Redirect activity to reports
-        HomePageManager.redirectActivity(this, Reports.class);
-    }
-
-    public void ClickNewsletterUpdate(View view) {
-        //Redirect activity to newsletter update
-        HomePageManager.redirectActivity(this, NewsletterUpdate.class);
-    }
-
-    public void ClickCreateFeedbackMess(View view) {
-        //Redirect activity to create feedback mess
-        HomePageManager.redirectActivity(this, CreateFeedbackMess.class);
-    }
-
-    public void ClickBlockingUser(View view) {
-        //Recreate activity
-        recreate();
-    }
-
-    public void ClickAppUpdate(View view) {
-        //Redirect activity to app update
-        HomePageManager.redirectActivity(this, AppUpdate.class);
-    }
-
-    public void ClickLogout(View view) {
-        //Close app
-        HomePageManager.logout(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //Close drawer
-        HomePageManager.closeDrawer(drawerLayout);
-    }
 }

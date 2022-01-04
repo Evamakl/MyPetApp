@@ -13,8 +13,6 @@ public class User implements Serializable {
     private ArrayList<DogPK> dogsPK;
     private ArrayList<Dog> dogs;
     private Boolean Block = false;
-
-
     private ArrayList<TodoListClass> listOfTodo;
     private ArrayList<tipsPKClass> listPKtip;
 
@@ -35,7 +33,9 @@ public class User implements Serializable {
         return listOfTodo;
     }
 
-    public ArrayList<tipsPKClass> getListPKtip() { return listPKtip; }
+    public ArrayList<tipsPKClass> getListPKtip() {
+        return listPKtip;
+    }
 
     public void setListOfTodo(ArrayList<TodoListClass> listOfTodo) {
         this.listOfTodo = listOfTodo;
@@ -43,13 +43,14 @@ public class User implements Serializable {
 
     public void setListPKtip(ArrayList<tipsPKClass> listPKtip) {
         this.listPKtip = listPKtip;
-
-        this.dogs = new ArrayList<>();
-        this.dogsPK = new ArrayList<>();
+       /* this.dogs = new ArrayList<>();
+        this.dogsPK = new ArrayList<>();*/
     }
     public User() {
         this.dogs = new ArrayList<>();
         this.dogsPK = new ArrayList<>();
+        this.listOfTodo = new ArrayList<>();
+        this.listPKtip = new ArrayList<>();
     }
 
 
