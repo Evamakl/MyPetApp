@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -14,13 +15,21 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
+
 import org.jsoup.Jsoup;
 import java.io.IOException;
 
 public class AppUpdate extends AppCompatActivity {
     //Initialize variable
     DrawerLayout drawerLayout;
+    private ImageView MenuIcon, BackIcon;
+    NavigationView navigation;
+    Intent intent;
+    User user = new User();
     TextView tvCurrentVersion, tvLatestVersion;
     String sCurrentVersion, sLatestVersion;
 
@@ -31,64 +40,40 @@ public class AppUpdate extends AppCompatActivity {
 
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         tvCurrentVersion = findViewById(R.id.tv_current_version);
         tvLatestVersion = findViewById(R.id.tv_latest_version);
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(AppUpdate.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(AppUpdate.this, HomePageManager.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         //Get latest version from play store
         new GetLatestVersion().execute();
    }
 
-    public void ClickMenu(View view) {
-        //Open drawer
-        HomePageManager.openDrawer(drawerLayout);
-    }
-
-    public void ClickLogo(View view) {
-        //Close drawer
-        HomePageManager.closeDrawer(drawerLayout);
-    }
-
-    public void ClickHome(View view) {
-        //Redirect activity to home
-        HomePageManager.redirectActivity(this,HomePageManager.class);
-    }
-
-    public void ClickReports(View view) {
-        //Redirect activity to reports
-        HomePageManager.redirectActivity(this, Reports.class);
-    }
-
-    public void ClickNewsletterUpdate(View view) {
-        //Redirect activity to newsletter update
-        HomePageManager.redirectActivity(this, NewsletterUpdate.class);
-    }
-
-    public void ClickCreateFeedbackMess(View view) {
-        //Redirect activity to create feedback mess
-        HomePageManager.redirectActivity(this, CreateFeedbackMess.class);
-    }
-
-    public void ClickBlockingUser(View view) {
-        //Redirect activity to blocking user
-        HomePageManager.redirectActivity(this, BlockingUser.class);
-    }
-
-    public void ClickAppUpdate(View view) {
-        //Recreate activity
-        recreate();
-    }
-
-    public void ClickLogout(View view) {
-        //Close app
-        HomePageManager.logout(this);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //Close drawer
-        HomePageManager.closeDrawer(drawerLayout);
-    }
 
    private class GetLatestVersion extends AsyncTask<String,Void,String> {
 

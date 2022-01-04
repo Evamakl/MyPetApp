@@ -8,13 +8,22 @@
     android:id="@+id/drawer_layout"
     tools:context=".Reports">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/Header"
+        layout="@layout/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            layout="@layout/main_toolbar"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -22,7 +31,8 @@
             android:layout_marginLeft="105sp"
             android:text="הפקת דוחות"
             android:textSize="35sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="70dp"/>
 
         <Button
             android:id="@+id/usersReport"
@@ -63,17 +73,16 @@
             android:textSize="20dp"
             android:textStyle="bold" />
 
-
     </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:layout_width="300dp"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_height="match_parent"
+        android:layout_width="220dp"
         android:layout_gravity="start"
-        android:background="@android:color/white">
-
-        <include layout="@layout/activity_nav_drawer_manager" />
-
-    </RelativeLayout>
+        android:fitsSystemWindows="true"
+        app:menu="@menu/manager_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

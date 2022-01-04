@@ -1,6 +1,5 @@
 package com.example.myproject;
 
-import static com.example.myproject.HomePageManager.openDrawer;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +27,7 @@ public class Calendar extends AppCompatActivity {
     Button saveEvent;
     Intent intent;
 
-    User user = new User();
+    //User user = new User();
     //Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class Calendar extends AppCompatActivity {
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(Calendar.this,item.getItemId(),user);
+                //new PetKeeperNavigation(Calendar.this,item.getItemId(),user);
                 return false;
             }
         });
@@ -67,7 +66,7 @@ public class Calendar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Calendar.this, navigation_drawer.class);
-                intent.putExtra("user", user);
+                //intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
             }
