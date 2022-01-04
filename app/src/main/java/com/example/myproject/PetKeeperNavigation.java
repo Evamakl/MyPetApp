@@ -29,6 +29,10 @@ public class PetKeeperNavigation {
             StartActivity(context, Calendar.class, user);
         else if(id == R.id.Tips_item)
             StartActivity(context, tips.class, user);
+        else if (id == R.id.Chat_item)
+            StartActivity(context, PetAppChat.class, user);
+        else if (id == R.id.Support_item)
+            StartActivity(context, technicalSupport.class, user);
         else if(id == R.id.logout_item) {
             //initialize alert dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(((Activity)context));
