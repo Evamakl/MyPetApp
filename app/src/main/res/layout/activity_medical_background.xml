@@ -160,7 +160,7 @@
                     android:layout_height="111dp"
                     android:layout_x="11dp"
                     android:layout_y="511dp"
-                    android:text="אלרגיות"
+                    android:text="     אלרגיות"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold"

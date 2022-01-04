@@ -17,7 +17,7 @@
         android:text="שם מלא: "
         android:textSize="25sp"
         android:textStyle="bold"
-        android:translationX="250dp"
+        android:translationX="230dp"
         android:translationY="30dp" />
 
     <EditText
@@ -37,8 +37,8 @@
         android:text="סיסמא: "
         android:textSize="25sp"
         android:textStyle="bold"
-        android:translationX="310dp"
-        android:translationY="20dp" />
+        android:translationX="290dp"
+        android:translationY="30dp" />
 
 
     <EditText
@@ -56,7 +56,7 @@
         android:text="אימות סיסמא: "
         android:textSize="25sp"
         android:textStyle="bold"
-        android:translationX="200dp"
+        android:translationX="180dp"
         android:translationY="30dp" />
 
     <EditText
@@ -74,7 +74,7 @@
         android:text="דואר אלקטרוני:"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:translationX="200dp"
+        android:translationX="180dp"
         android:translationY="50dp" />
 
     <EditText
@@ -93,7 +93,7 @@
         android:text="טלפון: "
         android:textSize="25sp"
         android:textStyle="bold"
-        android:translationX="260dp"
+        android:translationX="240dp"
         android:translationY="50dp" />
 
     <EditText
@@ -106,11 +106,12 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="לסיום הרשמה לחצו למטה."
         android:textSize="25dp"
         android:textStyle="bold"
+        android:translationX="80dp"
         android:translationY="80dp" />
 
     <Button
@@ -119,7 +120,7 @@
         android:layout_height="wrap_content"
         android:text="סיום הרשמה"
         android:textStyle="bold"
-        android:translationX="10dp"
+        android:translationX="30dp"
         android:translationY="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,7 +134,7 @@
         android:layout_height="wrap_content"
         android:text="אחורה"
         android:textStyle="bold"
-        android:translationX="300dp"
+        android:translationX="280dp"
         android:translationY="40dp"
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="25dp" />
