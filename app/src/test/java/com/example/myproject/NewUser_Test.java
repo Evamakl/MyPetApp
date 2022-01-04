@@ -16,16 +16,14 @@ import javax.xml.validation.Validator;
  */
 
 public class NewUser_Test {
-
     //Checks if the user name is valid
+    @Test
     public void isValidUserName_test() {
         assertTrue(new_user.isValidUserName("ron"));
         assertTrue(new_user.isValidUserName("ron12"));
         assertFalse(new_user.isValidUserName("r0n"));
         assertFalse(new_user.isValidUserName("123"));
-
     }
-
     //Checks if the password is valid
     @Test
     public void isValidPassword_test() {
@@ -33,9 +31,7 @@ public class NewUser_Test {
         assertFalse(loginExistsFrame.isValidPassword("1234ab"));
         assertFalse(loginExistsFrame.isValidPassword("123456789"));
         assertTrue(loginExistsFrame.isValidPassword("A12345"));
-
     }
-
     //Checks if the email is valid
     @Test
     public static void isValidEmail_test() {
@@ -43,14 +39,12 @@ public class NewUser_Test {
         assertFalse(new_user.isValidEmail("hadar@hadar"));
         assertTrue(new_user.isValidEmail("hadar@hadar.com"));
     }
-
     //Checks if the phone number is valid
     @Test
     public void isValidPhoneNumber_test() {
         assertFalse(new_user.isValidPhoneNumber("123456789"));
         assertTrue(new_user.isValidPhoneNumber("0523567122"));
     }
-
 }
 
 

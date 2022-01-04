@@ -57,7 +57,6 @@ public class Calendar extends AppCompatActivity {
             public void onClick(View v) {
                 drawerLayout.open();
             }
-
         });
         BackItem.setOnClickListener(new View.OnClickListener() {
             @Override

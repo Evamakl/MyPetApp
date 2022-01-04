@@ -10,7 +10,5 @@ public class Tips_Test {
     public void isValidTip_test(String tip) {
         assertFalse(tip.length() == 0); //If the tip's length == 0 (it is empty), return False
         assertTrue(tip.length() > 0); //If the tip's length == 0 (it is empty), return False
-
-
     }
 }
