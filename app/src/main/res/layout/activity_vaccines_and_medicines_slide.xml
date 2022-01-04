@@ -1,38 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Vaccines_and_Medicines_slide">
 
-    <Button
-        android:id="@+id/Vaccines"
-        android:layout_width="227dp"
-        android:layout_height="137dp"
-        android:layout_marginBottom="452dp"
-        android:text="פנקס חיסונים"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.442" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/Medicines"
-        android:layout_width="227dp"
-        android:layout_height="137dp"
-        android:layout_marginBottom="196dp"
-        android:text="תרופות"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Vaccines"
-        app:layout_constraintVertical_bias="0.504" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            android:id="@+id/include"
+            layout="@layout/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/Vaccines"
+            android:layout_width="227dp"
+            android:layout_height="137dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="452dp"
+            android:text="פנקס חיסונים"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintVertical_bias="0.185" />
+
+        <Button
+            android:id="@+id/Medicines"
+            android:layout_width="227dp"
+            android:layout_height="137dp"
+            android:layout_marginBottom="196dp"
+            android:text="תרופות"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Vaccines"
+            app:layout_constraintVertical_bias="0.509" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
+        android:layout_height="match_parent"
+        android:layout_width="220dp"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/base_activity">
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

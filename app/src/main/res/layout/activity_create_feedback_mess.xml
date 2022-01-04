@@ -12,26 +12,28 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/include3"
-            layout="@layout/main_toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/Header"
+        layout="@layout/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
         <EditText
             android:id="@+id/rankText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="212dp"
             android:layout_marginEnd="32dp"
             android:ems="10"
             android:hint="הוספת הודעת פידבק"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/include3" />
+            app:layout_constraintTop_toBottomOf="@+id/Header" />
 
         <Button
             android:id="@+id/addRankText"
@@ -45,14 +47,13 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:layout_width="300dp"
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/NavigationView"
         android:layout_height="match_parent"
+        android:layout_width="220dp"
         android:layout_gravity="start"
-        android:background="@android:color/white">
-
-        <include layout="@layout/activity_nav_drawer_manager" />
-
-    </RelativeLayout>
+        android:fitsSystemWindows="true"
+        app:menu="@menu/manager_menu">
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -18,6 +19,7 @@ import android.text.TextWatcher;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +32,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -50,6 +59,9 @@ public class Vaccines extends AppCompatActivity {
     private User user = new User();
     private Dog dog;
     private Intent intent;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
+    private com.google.android.material.navigation.NavigationView NavigationView;
+    private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +74,8 @@ public class Vaccines extends AppCompatActivity {
         addVaccine();
         MenuIcon();
         BackIcon();
+        setDogs();
+        NavigationView();
     }
     private void setID(){
         select = new ArrayList<>();
@@ -73,8 +87,9 @@ public class Vaccines extends AppCompatActivity {
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         drawerLayout = findViewById(R.id.drawerLayout);
-        Title = findViewById(R.id.Title);
-        Title.setText("חיסונים");
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
     }
     private void MenuIcon(){
         MenuItem.setOnClickListener(new View.OnClickListener() {
@@ -97,8 +112,8 @@ public class Vaccines extends AppCompatActivity {
         });
     }
     private void getInfo(){
-        for(int i=0; i<3;i++) //vaccine from dogs
-            select.add(new vaccine("SIMBA", "1/1/2020"));
+        for(int i=0; i<dog.getVaccines().size();i++)
+            select.add(dog.getVaccines().get(i));
         ShowVaccine(select);
     }
     private void ShowVaccine(List<vaccine> selects){
@@ -107,9 +122,24 @@ public class Vaccines extends AppCompatActivity {
         recyclerView.setAdapter(vaccineAdapter);
     }
     private void DogPick(){
-        ArrayList<String> dog = new ArrayList();
-        for(int i=0; i < user.getDogs().size() ; i++)
-            dog.add(user.getDogs().get(i).getName());
+        ArrayList<String> vaccine_name = new ArrayList();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference("Vaccine");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot temp : snapshot.getChildren()){
+                    String vac = (String)temp.getValue().toString();
+                    vaccine_name.add(vac);
+                }
+                DogClick(vaccine_name);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
+    }
+    private void DogClick(ArrayList<String> vaccine_name){
         TextViewDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,7 +151,7 @@ public class Vaccines extends AppCompatActivity {
                 EditTextSearch = dialog.findViewById(R.id.EditTextSearch);
                 ListViewSearch = dialog.findViewById(R.id.ListViewSearch);
                 TextViewSearch = dialog.findViewById(R.id.TextViewSearch);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(Vaccines.this, R.layout.dropdown_item, dog);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Vaccines.this, R.layout.dropdown_item, vaccine_name);
                 ListViewSearch.setAdapter(adapter);
                 EditTextSearch.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -154,7 +184,7 @@ public class Vaccines extends AppCompatActivity {
                 datePickerDialog = new DatePickerDialog(Vaccines.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
-                        String date = day+"/"+month+"/"+year;
+                        String date = day+"/"+(month+1)+"/"+year;
                         TextViewVaccineDate.setText(date);
                     }
                 }, year,month,day);
@@ -184,8 +214,14 @@ public class Vaccines extends AppCompatActivity {
                     public void onClick(View v) {
                         if(TextViewVaccineDate.getText().length() > 0 && TextViewDog.getText().length() > 0) {
                             alertDialog.cancel();
-                            //save vaccine in dog and firebase
-                            select.add(new vaccine(TextViewDog.getText().toString(), TextViewVaccineDate.toString()));
+                            for(int i=0; i<user.getDogs().size();i++){
+                                if(user.getDogs().get(i).equals(dog)){
+                                    user.getDogs().get(i).AddVaccine(new vaccine(TextViewDog.getText().toString(), TextViewVaccineDate.getText().toString()));
+                                    dog.AddVaccine(new vaccine(TextViewDog.getText().toString(), TextViewVaccineDate.getText().toString()));
+                                    databaseReference.child(user.getUid()).setValue(user);
+                                }
+                            }
+                            select.add(new vaccine(TextViewDog.getText().toString(), TextViewVaccineDate.getText().toString()));
                             ShowVaccine(select);
                         }
                         else{
@@ -195,5 +231,27 @@ public class Vaccines extends AppCompatActivity {
                 });
             }
         });
+    }
+    private void StartActivity(Class Dest){
+        Intent intent = new Intent(Vaccines.this, Dest);
+        intent.putExtra("dog",dog);
+        intent.putExtra("user",user);
+        startActivity(intent);
+        finish();
+    }
+    public void NavigationView() {
+        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                new OwnerNavigation(Vaccines.this,id,user,item);
+                return false;
+            }
+        });
+    }
+    private void setDogs(){
+        menu = NavigationView.getMenu();
+        for(int i=0; i<user.getDogs().size();i++)
+            menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
     }
 };

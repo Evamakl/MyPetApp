@@ -17,17 +17,13 @@
         android:orientation="vertical">
 
         <include
-
             android:id="@+id/include2"
-            layout="@layout/activity_main_toolbar"
-            app:layout_constraintBottom_toBottomOf="parent"
+            layout="@layout/header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-            android:id="@+id/Header"
-            layout="@layout/header"
-            />
+
 
 
         <Button
