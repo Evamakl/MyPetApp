@@ -13,6 +13,7 @@
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_firstframe.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_food_info.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_fragment_first.xml" value="0.1765625" />
+        <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_home_page_manager.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_login_exists_frame.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Ester/Documents/GitHub/MyPetApp/app/src/main/res/layout/activity_nav_drawer_manager.xml" value="0.4" />
@@ -105,6 +106,7 @@
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/menu/manager_menu.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/User/Documents/GitHub/MyPetApp/app/src/main/res/menu/pet_keeper_menu.xml" value="0.1796875" />
+
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26615384615384613" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/drawable/add.xml" value="0.2189873417721519" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/drawable/back.xml" value="0.20897435897435898" />
@@ -136,7 +138,6 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main1.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_main_toolbar.xml" value="0.1841880341880342" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_medical_background.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_menu_base.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_my_recycler_view_adapter.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_nav_drawer_manager.xml" value="0.1841880341880342" />
@@ -158,7 +159,7 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_tips.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_tips_list.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_to_do_list.xml" value="0.1841880341880342" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines.xml" value="0.176" />
+        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_and_medicines_slide.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_info.xml" value="0.1" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/activity_vaccines_info2.xml" value="0.1841880341880342" />
@@ -167,13 +168,9 @@
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/addvaccine_dialog.xml" value="0.4" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/app_bar_base.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/content_blocking_user.xml" value="0.1841880341880342" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dialog_profile_picture.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dialog_search_spinner.xml" value="0.20854700854700856" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dogs_name.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/drop_down.xml" value="0.20854700854700856" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/dropdown_item.xml" value="0.264" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/fragment_first.xml" value="0.20854700854700856" />
-        <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/fragment_second.xml" value="0.13547008547008546" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/header.xml" value="0.264" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/main_nav_drawer.xml" value="0.1841880341880342" />
         <entry key="..\:/Users/evakl/Downloads/MyPetApp/app/src/main/res/layout/main_toolbar.xml" value="0.264" />
@@ -200,6 +197,7 @@
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_main.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_main_toolbar.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_mypetapp_chat.xml" value="0.1644021739130435" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_nav_drawer_manager.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_nav_drower_pet_keeper.xml" value="0.23324275362318841" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_navigation_drawer.xml" value="0.23324275362318841" />
@@ -212,12 +210,13 @@
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_pet_keepers_tips_adapter.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_pet_owner_options_of_dog.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_reliability_form.xml" value="0.2341485507246377" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_reminder.xml" value="0.16302083333333334" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_reports.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_running_messages.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_shampo_info.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_start_work.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_technical_support.xml" value="0.264" />
-        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_technical_support2.xml" value="0.23324275362318841" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_technical_support2.xml" value="0.22772277227722773" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips.xml" value="0.2341485507246377" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips_pkadapter.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/activity_tips_pklist.xml" value="0.4" />
@@ -239,6 +238,8 @@
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_dashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_first.xml" value="0.22871376811594202" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_notifications.xml" value="0.24592391304347827" />
+        <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_second.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_select_view.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/fragment_users.xml" value="0.24010416666666667" />
         <entry key="..\:/Users/hadar/Desktop/Application/app/src/main/res/layout/header.xml" value="0.2341485507246377" />

@@ -77,6 +77,7 @@ public class BlockingUser extends AppCompatActivity {
                 list.clear();
                 for(DataSnapshot temp : snapshot.getChildren()){
                     User getUser = temp.getValue(User.class);
+
                     list.add(getUser);
                 }
                 setAdapter(list);
