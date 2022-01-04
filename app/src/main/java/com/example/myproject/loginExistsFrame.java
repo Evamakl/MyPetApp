@@ -125,7 +125,7 @@ public class loginExistsFrame extends AppCompatActivity implements View.OnClickL
     }
 
     public void openPrevActivity() {
-        Intent intent = new Intent(this, Exist_new_frame.class);
+        Intent intent = new Intent(this, firstframe.class);
         startActivity(intent);
     }
 
