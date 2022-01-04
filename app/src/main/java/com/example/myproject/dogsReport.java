@@ -36,6 +36,7 @@ public class dogsReport extends AppCompatActivity {
     DatabaseReference reference = database.getReference().child("Users");
     int NumberOfDogs = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class dogsReport extends AppCompatActivity {
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(dogsReport.this,item.getItemId(),user);
+                new ManagerNavigation(dogsReport.this,item.getItemId(),user);
                 return false;
             }
         });

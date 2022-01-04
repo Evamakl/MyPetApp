@@ -61,11 +61,14 @@ public class Calendar extends AppCompatActivity {
         BackItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if("user"=="PetKeeper")
-                    Intent intent = new Intent(Calendar.this, navigation_drawer.class);
-                    intent.putExtra("user", user);
-                    startActivity(intent);
-                    finish();
+                Intent intent = new Intent(Calendar.this, navigation_drawer.class);
+                if(user.getType().equals("Owner"))
+                    intent = new Intent(Calendar.this, Start_work.class);
+                else if(user.getType().equals("Manager"))
+                    intent = new Intent(Calendar.this, HomePageManager.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
             }
         });
 

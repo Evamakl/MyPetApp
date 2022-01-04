@@ -53,7 +53,7 @@ public class FeedbackReport extends AppCompatActivity {
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(FeedbackReport.this,item.getItemId(),user);
+                new ManagerNavigation(FeedbackReport.this,item.getItemId(),user);
                 return false;
             }
         });

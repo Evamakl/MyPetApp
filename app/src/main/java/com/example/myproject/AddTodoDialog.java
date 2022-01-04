@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,10 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class AddTodoDialog extends AppCompatDialogFragment {
     private Context Context;
@@ -41,9 +48,9 @@ public class AddTodoDialog extends AppCompatDialogFragment {
                 if(editText.getText().toString().length()>0) {
                     User.getListOfTodo().add(new TodoListClass(editText.getText().toString(),"0"));
                     reference.child(User.getUid()).setValue(User);
-                    Intent intent = new Intent(Context, ToDoList.class);
-                    intent.putExtra("user", User);
-                    startActivity(intent);
+                    Intent intent = new Intent(Context,ToDoList.class);
+                    intent.putExtra("user",User);
+                    ((Activity)Context).startActivity(intent);
                 }
             }
         });

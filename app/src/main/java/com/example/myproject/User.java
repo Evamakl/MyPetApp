@@ -9,7 +9,7 @@ public class User implements Serializable {
     private String Email;
     private String Phone;
     private String Username;
-    private String Type = "Owner";
+    private String Type;
     private ArrayList<DogPK> dogsPK;
     private ArrayList<Dog> dogs;
     private Boolean Block = false;
@@ -52,8 +52,6 @@ public class User implements Serializable {
         this.listOfTodo = new ArrayList<>();
         this.listPKtip = new ArrayList<>();
     }
-
-
     public ArrayList<DogPK> getDogsPK() {
         return dogsPK;
     }

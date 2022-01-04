@@ -46,7 +46,7 @@ public class BlockingUser extends AppCompatActivity {
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(BlockingUser.this,item.getItemId(),user);
+                new ManagerNavigation(BlockingUser.this,item.getItemId(),user);
                 return false;
             }
         });

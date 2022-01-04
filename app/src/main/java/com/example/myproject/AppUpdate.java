@@ -48,7 +48,7 @@ public class AppUpdate extends AppCompatActivity {
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(AppUpdate.this,item.getItemId(),user);
+                new ManagerNavigation(AppUpdate.this,item.getItemId(),user);
                 return false;
             }
         });
