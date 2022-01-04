@@ -53,7 +53,7 @@ public class NewsletterUpdate extends AppCompatActivity {
         navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(NewsletterUpdate.this,item.getItemId(),user);
+                new ManagerNavigation(NewsletterUpdate.this,item.getItemId(),user);
                 return false;
             }
         });

@@ -52,7 +52,7 @@ public class OwnerNavigation{
             StartActivity1(context, PetAppChat.class, user);
         else if(id == R.id.feedback_item)
             StartActivity1(context, FeedbackPage.class, user);
-        else if(id == R.id.support_item)
+        else if(id == R.id.Support_item)
             StartActivity1(context, technicalSupport.class, user);
         else if(id == R.id.logout_item) {
             //initialize alert dialog
