@@ -31,7 +31,7 @@ public class Start_work extends AppCompatActivity {
     private User user;
     private  FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Intent intent;
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    //private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_work);
