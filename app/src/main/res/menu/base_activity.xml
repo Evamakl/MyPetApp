@@ -22,32 +22,30 @@
             <menu>
                 <item
                     android:id="@+id/about_item"
+                    android:icon="@drawable/ic_book"
                     android:title=" ידיעון" />
                 <item
                     android:id="@+id/calendar_item"
+                    android:icon="@drawable/ic_calender"
                     android:title=" לוח שנה" />
                 <item
 
                     android:id="@+id/chat_item"
-                    android:title=" צ'ט" />
+                    android:icon="@drawable/ic_chat"
+                    android:title=" צ'אט" />
                 <item
-                    android:id="@+id/Technical_item"
+                    android:id="@+id/Support_item"
+                    android:icon="@drawable/ic_support"
                     android:title=" תמיכה טכנית" />
                 <item
-                    android:id="@+id/Feedback_item"
+                    android:id="@+id/feedback_item"
+                    android:icon="@drawable/ic_star2"
                     android:title=" פידבקים" />
 
-                    android:id="@+id/support_item"
-                    android:title="תמיכה טכנית" />
-                <item
-                    android:id="@+id/chat_item"
-                    android:title="צ'ט" />
-                <item
-                    android:id="@+id/feedback_item"
-                    android:title="פידבקים" />
 
                 <item
                     android:id="@+id/logout_item"
+                    android:icon="@drawable/ic_logoff"
                     android:title="התנתק"/>
 
             </menu>

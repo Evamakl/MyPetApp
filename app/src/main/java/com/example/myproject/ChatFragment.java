@@ -50,8 +50,8 @@ public class ChatFragment extends Fragment {
                     if(petAppChat.getReceiver().equals(fuser.getUid())){
                         usersList.add(petAppChat.getSender());
                     }
+                    readChats();
                 }
-                readChats();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
@@ -60,7 +60,7 @@ public class ChatFragment extends Fragment {
     }
     private void readChats(){
         mUsers = new ArrayList<>();
-        reference = FirebaseDatabase.getInstance().getReference("User");
+        reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

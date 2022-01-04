@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class ToDoList extends AppCompatActivity {
@@ -93,13 +96,21 @@ public class ToDoList extends AppCompatActivity {
         });
     }
     public void readTodo() {
-        if(user.getListOfTodo().size() >0) {
-            for (int i = 0; i < user.getListOfTodo().size(); i++)
-                list.add(user.getListOfTodo().get(i));
-            toDoListAdapter = new ToDoListAdapter(ToDoList.this, list,user);
-            recyclerView.setLayoutManager(new GridLayoutManager(ToDoList.this, 1));
-            recyclerView.setAdapter(toDoListAdapter);
-        }
+        databaseReference.child(user.getUid()).child("listOfTodo").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                list.clear();
+                for( DataSnapshot temp : snapshot.getChildren()){
+                    TodoListClass todo = temp.getValue(TodoListClass.class);
+                    list.add(todo);
+                }
+                toDoListAdapter = new ToDoListAdapter(ToDoList.this,list,user);
+                recyclerView.setLayoutManager(new GridLayoutManager(ToDoList.this, 1));
+                recyclerView.setAdapter(toDoListAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
     }
     public void goAddNewTask() {
         dialog = new AddTodoDialog(ToDoList.this,"הוספת מטלה חדשה",user);
