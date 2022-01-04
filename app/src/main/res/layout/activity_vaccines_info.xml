@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#EDE7F6"
@@ -8,40 +15,76 @@
     android:foregroundTint="#FFF3E0"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/Header"
+        layout="@layout/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/vaccines_info"
-        android:layout_width="393dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="16dp"
         android:text="מידע על חיסונים וטיפולים:"
         android:textSize="30sp"
-        android:translationY="20dp" />
+        android:translationY="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/vaccinesP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75" />
 
     <TextView
         android:id="@+id/vaccinesP"
-        android:layout_width="385dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="8dp"
         android:text="חיסון פרוו"
         android:textSize="28sp"
         android:translationX="10dp"
-        android:translationY="20dp" />
+        android:translationY="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/vaccinesPEX"
+        app:layout_constraintEnd_toEndOf="@+id/vaccines_info"
+        app:layout_constraintHorizontal_bias="0.939"
+        app:layout_constraintStart_toStartOf="@+id/vaccines_info"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/vaccinesPEX"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
         android:text="חיסון כנגד מחלת גורים שכיחה וקטלנית הניתן אך ורק לגורים בגיל 6 שבועות."
         android:textSize="22sp"
         android:translationX="10dp"
-        android:translationY="20dp" />
+        android:translationY="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/vaccinesM_EX"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/vaccinesM"
-        android:layout_width="384dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="21dp"
         android:text="חיסון משושה:"
         android:textSize="28sp"
         android:translationX="10dp"
-        android:translationY="20dp" />
+        android:translationY="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/vaccinesM_EX"
+        app:layout_constraintEnd_toEndOf="@+id/vaccinesPEX"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="@+id/vaccinesPEX"
+        app:layout_constraintTop_toTopOf="@+id/vaccinesPEX"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/vaccinesM_EX"
@@ -50,23 +93,28 @@
         android:text="חיסון המכיל הגנה ל-6 מחלות מדבקות (ביניהן גם פרוו) המסוכנות לגורים ולכלבים בוגרים. החיסון ניתן לראשונה בגיל 6-8 שבועות ויש לחזור עליו פעמיים נוספות במרווחים של שבועיים(סך הכל סדרה של 3 זריקות משושה). לאחר מכן, או כאשר מדובר בכלב מעל גיל שנה, החיסון ניתן אחת לשנה."
         android:textSize="22sp"
         android:translationX="10dp"
-        android:translationY="20dp" />
+        android:translationY="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header"
+        app:layout_constraintVertical_bias="0.657" />
 
     <Button
         android:id="@+id/continuebt"
-        android:layout_width="124dp"
-        android:layout_height="73dp"
+        android:layout_width="117dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginBottom="104dp"
         android:text="המשך..."
         android:translationX="10dp"
-        android:translationY="100dp" />
-
-    <Button
-        android:id="@+id/backbt"
-        android:layout_width="124dp"
-        android:layout_height="73dp"
-        android:text="אחורה"
-        android:translationX="270dp"
-        android:translationY="80dp" />
+        android:translationY="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/vaccinesM_EX"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/vaccinesM_EX" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

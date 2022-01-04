@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,16 +37,44 @@ public class technicalSupport extends AppCompatActivity {
     private User user = new User();
     private Intent intent;
     private ArrayList<String> list;
+    NavigationView navigation;
+    private ImageView MenuItem, BackItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_technical_support2);
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         list = new ArrayList<>();
         drawerLayout = findViewById(R.id.drawer_layout);
         recyclerView = findViewById(R.id.RecyclerView);
         addNewtip = (Button) findViewById(R.id.button_addNewTask);
+        navigation = findViewById(R.id.NavigationView);
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(technicalSupport.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(technicalSupport.this, navigation_drawer.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
         if(!user.getType().equals("Manager")){
             addNewtip.setVisibility(View.INVISIBLE);
         }
@@ -59,104 +88,7 @@ public class technicalSupport extends AppCompatActivity {
         }
         readTodo();
     }
-    public void ClickMenu(View view){
-        //open drawer
-        openDrawer(drawerLayout);
 
-    }
-
-    private static void openDrawer(DrawerLayout drawerLayout) {
-
-        //open drawer layout
-        drawerLayout.openDrawer(GravityCompat.START);
-    }
-
-    public static void closeDrawer(DrawerLayout drawerLayout){
-        //close drawer layout
-        //check condition
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            //WHEN DRAWER IS OPEN
-            //CLOSE DRAWER
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
-    }
-    public void ClickHome(View view){
-        //recreate activity
-        recreate();
-    }
-
-    public void ClickDogList(View view){
-        //redirect activity to dog list
-        redirectActivity(this,DogList.class);
-    }
-
-    public void ClickToDoList(View view){
-        //redirect activity to to do list
-        // redirectActivity(this,ToDoList.class);
-        intent = new Intent(technicalSupport.this,ToDoList.class);
-        intent.putExtra("user",user);
-        startActivity(intent);
-        finish();
-    }
-
-    public void ClickReminder(View view){
-        //redirect activity to reminder
-        redirectActivity(this,Reminder.class);
-
-    }
-    public void Clicktips(View view){
-        //redirect activity to information and tips
-        redirectActivity(this,tips.class);
-
-    }
-    public void ClickLogOut(View view){
-        //redirect activity to to do list
-        logout(this);
-    }
-    public static void logout(Activity activity) {
-        //initialize alert dialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("LogOut");
-        //set message
-        builder.setMessage("Are you sure you want to logout ?");
-        //Positive yes button
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //finish activity
-                activity.finishAffinity();
-                //exit app
-                System.exit(0);
-            }
-        });
-        //negative no button
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //Dismiss dialog
-                dialog.dismiss();
-            }
-        });
-        //show dialog
-        builder.show();
-
-
-    }
-    public static void redirectActivity(Activity activity, Class aClass) {
-        //initialize intent
-        Intent intent = new Intent(activity,aClass);
-        //set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //stat activity
-        activity.startActivity(intent);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        //close drawer
-        closeDrawer(drawerLayout);
-    }
     public void readTodo() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

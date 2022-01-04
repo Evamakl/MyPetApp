@@ -38,7 +38,15 @@
         android:id="@+id/Tips_item"
         android:icon="@drawable/ic_info"
         android:title=" מרכז מידע-טיפים" />
-        <item
+    <item
+        android:id="@+id/Chat_item"
+        android:icon="@drawable/ic_chat"
+        android:title="צ'אט" />
+    <item
+        android:id="@+id/Support_item"
+        android:icon="@drawable/ic_support"
+        android:title="תמיכה טכנית" />
+    <item
             android:id="@+id/logout_item"
             android:icon="@drawable/ic_logoff"
             android:title="התנתק"/>

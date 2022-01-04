@@ -1,13 +1,17 @@
 package com.example.myproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class search_page extends AppCompatActivity {
@@ -17,10 +21,11 @@ public class search_page extends AppCompatActivity {
     Button food_button;
     Button shampo_button;
     Button walk_button;
-    Button back_button;
-    Button logOff;
-    private User user = new User();
-    private Intent intent;
+    DrawerLayout dogList_layout;
+    NavigationView navigation;
+    User user = new User();
+    Intent intent;
+    private ImageView MenuItem, BackItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +39,11 @@ public class search_page extends AppCompatActivity {
         food_button = (Button) findViewById(R.id.food_buttonBT);
         shampo_button = (Button) findViewById(R.id.shampo_buttonBT);
         walk_button = (Button) findViewById(R.id.walk_buttonBT);
-        back_button = (Button) findViewById(R.id.back_buttonBT);
-        logOff = (Button) findViewById(R.id.backbtBT);
-        logOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-                //openNewActivityLogout();
-            }
-        });
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
+        navigation = findViewById(R.id.NavigationView);
+
+
         vaccin_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,24 +73,30 @@ public class search_page extends AppCompatActivity {
             }
 
         });
-        back_button.setOnClickListener(new View.OnClickListener() {
+        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                new PetKeeperNavigation(search_page.this,item.getItemId(),user);
+                return false;
+            }
+        });
+        MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                openNewActivityback_button();
+                dogList_layout.open();
+            }
+        });
+        BackItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(search_page.this, navigation_drawer.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
             }
         });
     }
-    public void signOut(){
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            FirebaseAuth.getInstance().signOut();
-            openNewActivityLogout();
-          //  Intent intent = new Intent(this, MainActivity.class);
-           // intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-           // intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        }
-    }
+
     public void openNewActivityLogout() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
@@ -117,8 +124,3 @@ public class search_page extends AppCompatActivity {
     }
 
 }
-
-
-/*
-
- */

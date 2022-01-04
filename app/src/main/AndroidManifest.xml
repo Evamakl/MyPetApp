@@ -65,9 +65,6 @@
             android:name=".tips"
             android:exported="false" />
         <activity
-            android:name=".Reminder"
-            android:exported="false" />
-        <activity
             android:name=".ToDoList"
             android:exported="false" />
         <activity
