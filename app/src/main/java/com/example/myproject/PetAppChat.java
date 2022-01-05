@@ -64,12 +64,12 @@ public class PetAppChat extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView = findViewById(R.id.NavigationView);
         NavigationView.getMenu().clear();
-//        if(user.getType().equals("Manager"))
-//            NavigationView.inflateMenu(R.menu.manager_menu);
-//        else if(user.getType().equals("PetKeeper"))
-//            NavigationView.inflateMenu(R.menu.pet_keeper_menu);
-//        else
-//            NavigationView.inflateMenu(R.menu.base_activity);
+        if(user.getType().equals("Manager"))
+            NavigationView.inflateMenu(R.menu.manager_menu);
+        else if(user.getType().equals("PetKeeper"))
+            NavigationView.inflateMenu(R.menu.pet_keeper_menu);
+       else
+            NavigationView.inflateMenu(R.menu.base_activity);
         menu = NavigationView.getMenu();
         tabLayout.setupWithViewPager(viewPager);
     }

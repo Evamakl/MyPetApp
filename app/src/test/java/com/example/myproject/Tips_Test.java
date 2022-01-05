@@ -7,7 +7,8 @@ import org.junit.Test;
 
 public class Tips_Test {
     @Test
-    public void isValidTip_test(String tip) {
+    public void isValidTip_test() {
+        String tip = "test";
         assertFalse(tip.length() == 0); //If the tip's length == 0 (it is empty), return False
         assertTrue(tip.length() > 0); //If the tip's length == 0 (it is empty), return False
     }

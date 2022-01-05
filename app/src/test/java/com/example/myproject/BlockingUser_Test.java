@@ -9,12 +9,15 @@ import org.junit.Test;
 
 public class BlockingUser_Test {
     @Test
-    public void isExist_test(FirebaseUser user) {
-        assertFalse(user == null); //If the user that we enter == null, return False
-        assertTrue(user != null); //If the user != null (so he is in the DataBase), return True
+    public void isExist_test() {
+        User user = new User();
+        assertTrue(user != null); //If the user != null, return False
+        assertFalse(user == null); //If the user == null, return True
     }
     @Test
-    public void isManager_test(User user) {
+    public void isManager_test() {
+        User user = new User("55","test@gmail.com","123","admin");
+        user.setType("Manager");
         assertFalse(user.getType().equals("Owner"));
         assertFalse(user.getType().equals("PetKeeper"));
         assertTrue(user.getType().equals("Manager"));

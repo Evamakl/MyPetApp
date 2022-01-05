@@ -8,9 +8,9 @@ import com.google.firebase.auth.FirebaseUser;
 import org.junit.Test;
 
 public class Sighin_Test {
-
     @Test
-    public void isSignin_test(FirebaseUser user) {
+    public void isSignin_test() {
+        User user = new User();
         assertFalse(user == null); //If the user that we enter == null, return False
         assertTrue(user != null); //If the user != null (so he is in the DataBase), return True
     }

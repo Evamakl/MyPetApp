@@ -8,9 +8,11 @@ import org.junit.Test;
 public class SighinPetKeeper_Test {
     //Check sigh in of the pet keeper
     @Test
-    public void isPetKeeper_test(User user) {
-        assertFalse(user.getType().equals("Manager")); //If the user type is manager, return False
-        assertFalse(user.getType().equals("Owner")); //If the user type is owner, return False
-        assertTrue(user.getType().equals("PetKeeper")); //If the user type is pet keeper, return True
+    public void isPetKeeper_test() {
+        User user = new User("55","test@gmail.com","123","admin");
+        user.setType("PetKeeper");
+        assertFalse(user.getType().equals("Owner"));
+        assertFalse(user.getType().equals("Manager"));
+        assertTrue(user.getType().equals("PetKeeper"));
     }
 }

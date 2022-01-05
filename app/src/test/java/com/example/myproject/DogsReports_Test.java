@@ -5,12 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class AppUpdate_Test {
-    @Test
-    public void isUpdate_test() {
-        String version = "test";
-        assertFalse(version.equals(R.id.tv_latest_version));
-    }
+public class DogsReports_Test {
+    //If the user's type is not "Manager" he can not sea this report
     @Test
     public void isManager_test() {
         User user = new User("55","test@gmail.com","123","admin");

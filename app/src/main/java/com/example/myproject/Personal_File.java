@@ -27,8 +27,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
+/*import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;*/
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -116,7 +116,7 @@ public class Personal_File extends AppCompatActivity  {
         if(dog.getImage().equals("null")){
             DogPic.setImageResource(R.mipmap.ic_launcher);
         }
-        else {
+        /*else {
             Glide.with(Personal_File.this).asBitmap().load(dog.getImage()).into(new CustomTarget<Bitmap>() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
@@ -127,7 +127,7 @@ public class Personal_File extends AppCompatActivity  {
                 @Override
                 public void onLoadCleared(@Nullable Drawable placeholder) { }
             });
-        }
+        }*/
         addDogPic = findViewById(R.id.addpicdog);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
