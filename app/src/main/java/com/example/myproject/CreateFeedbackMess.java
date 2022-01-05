@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,13 +23,15 @@ import com.google.firebase.database.ValueEventListener;
 public class CreateFeedbackMess extends AppCompatActivity {
 
     //Initialize variable
+    private DrawerLayout drawerLayout;
+    private NavigationView NavigationView;
+    private Menu menu;
+    private ImageView MenuIcon, BackIcon;
+    private User user;
+    private Intent intent;
     EditText editRank;
     Button addRank;
-    DrawerLayout drawerLayout;
-    private ImageView MenuIcon, BackIcon;
     NavigationView navigation;
-    Intent intent;
-    User user = new User();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Rank");
 
@@ -36,6 +39,38 @@ public class CreateFeedbackMess extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_feedback_mess);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(CreateFeedbackMess.this, Reports.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
+        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+
+                new ManagerNavigation(CreateFeedbackMess.this, item.getItemId(), user);
+                return false;
+            }
+        });
+
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
         intent = getIntent();

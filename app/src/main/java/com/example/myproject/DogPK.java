@@ -1,6 +1,8 @@
 package com.example.myproject;
 
-public class DogPK {
+import java.io.Serializable;
+
+public class DogPK implements Serializable {
 
     String OwnerEmail;
     Dog dog;
@@ -9,7 +11,7 @@ public class DogPK {
         OwnerEmail = ownerEmail;
         this.dog = dog;
     }
-
+    public DogPK(){ dog = new Dog();};
     public String getOwnerEmail() {
         return OwnerEmail;
     }

@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -25,51 +26,53 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class FeedbackReport extends AppCompatActivity {
-
-    DrawerLayout drawerLayout;
-    NavigationView navigation;
-    User user = new User();
-    Intent intent;
-    private ImageView MenuItem, BackItem;
     BarChart barChart;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("UsersRatings");
-    int oneStar=0, twoStar=0, threeStar=0, fourStar=0, fiveStar=0, NumberOfStars = 5;
-
+    long oneStar=0, twoStar=0, threeStar=0, fourStar=0, fiveStar=0, NumberOfStars = 5;
+    private DrawerLayout drawerLayout;
+    private NavigationView NavigationView;
+    private Menu menu;
+    private ImageView MenuIcon, BackIcon;
+    private User user;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_report);
-        drawerLayout = findViewById(R.id.drawer_layout);
         barChart = findViewById(R.id.bar_chart);
-        MenuItem = findViewById(R.id.MenuItem);
-        BackItem = findViewById(R.id.BackItem);
-        intent = getIntent();
         //initialize array list
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         GetUsersRatings();
-        user = (User) intent.getSerializableExtra("user");
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new ManagerNavigation(FeedbackReport.this,item.getItemId(),user);
-                return false;
-            }
-        });
-        MenuItem.setOnClickListener(new View.OnClickListener() {
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.open();
             }
         });
-        BackItem.setOnClickListener(new View.OnClickListener() {
+        BackIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FeedbackReport.this, navigation_drawer.class);
+                intent = new Intent(FeedbackReport.this, Reports.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
+            }
+        });
+        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+
+                new ManagerNavigation(FeedbackReport.this, item.getItemId(), user);
+                return false;
             }
         });
     }
@@ -78,22 +81,13 @@ public class FeedbackReport extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot temp : snapshot.getChildren()){
-                    String type = (String) temp.child("UsersRatings").getValue();
-                    if(type.equals("1"))
-                        oneStar++;
-                    else if(type.equals("2"))
-                        twoStar++;
-                    else if(type.equals("3"))
-                        threeStar++;
-                    else if(type.equals("4"))
-                        fourStar++;
-                    else if(type.equals("5"))
-                        fiveStar++;
-                }
+                oneStar = (long)snapshot.child("1").getValue();
+                twoStar = (long)snapshot.child("2").getValue();
+                threeStar = (long)snapshot.child("3").getValue();
+                fourStar = (long)snapshot.child("4").getValue();
+                fiveStar = (long)snapshot.child("5").getValue();
                 SetChart();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
@@ -133,10 +127,8 @@ public class FeedbackReport extends AppCompatActivity {
         //set bar data
         barChart.setData(new BarData(barDataSet));
         //set animation
-        barChart.animateY(5000);
-        //set description text and color
-        barChart.getDescription().setText("Users Ratings Chart");
-        barChart.getDescription().setTextColor(Color.BLUE);
+        barChart.animateY(300);
+
     }
 
 
