@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,18 +26,21 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
     private Intent intent;
     private DrawerLayout drawerLayout;
     private com.google.android.material.navigation.NavigationView NavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccines_and_medicines_slide);
         init();
+
     }
     private void init(){
         setID();
         MenuIcon();
         BackIcon();
         NavigationView();
-        setDogs();
+        //setDogs();
         setButtons();
     }
     private void setID(){
@@ -50,6 +54,22 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
         menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
     }
     private void setButtons(){
@@ -95,19 +115,30 @@ public class Vaccines_and_Medicines_slide extends AppCompatActivity {
         });
     }
     public void NavigationView() {
-        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
-                new OwnerNavigation(Vaccines_and_Medicines_slide.this,id,user,item);
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(Vaccines_and_Medicines_slide.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(Vaccines_and_Medicines_slide.this,id,user);
+                else
+                    new OwnerNavigation(Vaccines_and_Medicines_slide.this,id,user,item);
                 return false;
             }
         });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
+
     }
-    private void setDogs(){
+    /*private void setDogs(){
         menu = NavigationView.getMenu();
         for(int i=0; i<user.getDogs().size();i++)
             menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
-    }
+    }*/
 
 }
