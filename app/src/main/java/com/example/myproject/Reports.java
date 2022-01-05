@@ -88,16 +88,19 @@ public class Reports extends AppCompatActivity {
 
     public void openDogsReport (){
         Intent intent = new Intent(this, dogsReport.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void openUsersReport (){
         Intent intent = new Intent(this, UsersReport.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 
     public void openFeedbackReport (){
         Intent intent = new Intent(this, FeedbackReport.class);
+        intent.putExtra("user",user);
         startActivity(intent);
     }
 }

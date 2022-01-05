@@ -27,6 +27,7 @@ public class firstframe extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
   /*          if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            /*if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                 //FirebaseAuth.getInstance().signOut();
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

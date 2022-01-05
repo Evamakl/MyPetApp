@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -24,11 +25,17 @@ import java.util.ArrayList;
 public class BlockingUser extends AppCompatActivity {
 
     //Initialize variable
-    DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
+    private NavigationView NavigationView;
+    private Menu menu;
     private ImageView MenuIcon, BackIcon;
+    private User user;
+    private Intent intent;
+
+    //DrawerLayout drawerLayout;
     NavigationView navigation;
-    Intent intent;
-    User user = new User();
+    //Intent intent;
+    //User user = new User();
     RecyclerView recyclerView;
     ArrayList<User> list;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -37,6 +44,38 @@ public class BlockingUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blocking_user);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(BlockingUser.this, Reports.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
+        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+
+                new ManagerNavigation(BlockingUser.this, item.getItemId(), user);
+                return false;
+            }
+        });
+
         list = new ArrayList<>();
         //Assign variable
         drawerLayout = findViewById(R.id.drawer_layout);
