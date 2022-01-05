@@ -49,6 +49,8 @@ public class PetAppChat extends AppCompatActivity {
         MenuIcon();
         BackIcon();
         NavigationView();
+        if(user.getType().toString().equals("Owner"))
+            setDogs();
     }
     private void setID(){
         intent = getIntent();
@@ -64,12 +66,12 @@ public class PetAppChat extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView = findViewById(R.id.NavigationView);
         NavigationView.getMenu().clear();
-//        if(user.getType().equals("Manager"))
-//            NavigationView.inflateMenu(R.menu.manager_menu);
-//        else if(user.getType().equals("PetKeeper"))
-//            NavigationView.inflateMenu(R.menu.pet_keeper_menu);
-//        else
-//            NavigationView.inflateMenu(R.menu.base_activity);
+        if(user.getType().equals("Manager"))
+            NavigationView.inflateMenu(R.menu.manager_menu);
+        else if(user.getType().equals("PetKeeper"))
+            NavigationView.inflateMenu(R.menu.pet_keeper_menu);
+        else
+            NavigationView.inflateMenu(R.menu.base_activity);
         menu = NavigationView.getMenu();
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -115,5 +117,10 @@ public class PetAppChat extends AppCompatActivity {
                 return false;
             }
         });
+    }
+    private void setDogs(){
+        menu = NavigationView.getMenu();
+        for(int i=0; i<user.getDogs().size();i++)
+            menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
     }
 }
