@@ -20,25 +20,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
+            android:id="@+id/TitleReport"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/drop_down"
             android:gravity="center"
-            android:text="כמות כלבים"
+            android:text="שנה"
+            android:clickable="true"
+            android:textColor="@color/black"
             android:textSize="35sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Header" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/bar_chart"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="52dp"
             android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TitleReport" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

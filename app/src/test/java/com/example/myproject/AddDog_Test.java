@@ -7,7 +7,8 @@ import org.junit.Test;
 
 public class AddDog_Test {
     @Test
-    public void addDog_test(Dog dog) {
+    public void addDog_test() {
+        Dog dog = new Dog();
         assertFalse(dog == null); //If the dog == null, return False
         assertFalse(dog.getName().length() == 0 ); //If the dog name is null, return False
         assertTrue(dog.getName().length() > 0 ); //If the dog name length bigger than 0, return True
