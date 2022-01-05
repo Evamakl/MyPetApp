@@ -14,6 +14,12 @@ public class Dog implements Serializable {
     private String City = "null";
     private String BirthDay = "null";
     private String AddedDate = "null";
+    private String Background = "";
+    private String operation = "";
+    private String allergy = "";
+    private Boolean allergies = false;
+    private Boolean castration = false;
+    private Boolean sterilization = false;
     private ArrayList<vaccine> vaccines;
     public Dog(String type, String name, String gender, String image, String city, String birthDay) {
         Type = type;
@@ -45,7 +51,16 @@ public class Dog implements Serializable {
     public String getAddedDate() {
         return AddedDate;
     }
+    public void setDog(Dog dog){
+        this.Background = dog.getBackground();
+        this.operation = dog.getOperation();
+        this.allergy = dog.getAllergy();
+        this.allergies = dog.getAllergies();
+        this.castration = dog.getCastration();
+        this.sterilization = dog.getSterilization();
 
+
+    }
     public void setAddedDate(String addedDate) {
         AddedDate = addedDate;
     }
@@ -56,6 +71,54 @@ public class Dog implements Serializable {
 
     public boolean equals( Dog dog) {
         return this.getName().equals(dog.getName()) && this.getId().equals(dog.getId()) && this.getGender().equals(dog.getGender());
+    }
+
+    public String getAllergy() {
+        return allergy;
+    }
+
+    public void setAllergy(String allergy) {
+        this.allergy = allergy;
+    }
+
+    public Boolean getSterilization() {
+        return sterilization;
+    }
+
+    public void setSterilization(Boolean sterilization) {
+        this.sterilization = sterilization;
+    }
+
+    public String getBackground() {
+        return Background;
+    }
+
+    public void setBackground(String background) {
+        Background = background;
+    }
+
+    public String getOperation() {
+        return operation;
+    }
+
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+    public Boolean getAllergies() {
+        return allergies;
+    }
+
+    public void setAllergies(Boolean allergies) {
+        this.allergies = allergies;
+    }
+
+    public Boolean getCastration() {
+        return castration;
+    }
+
+    public void setCastration(Boolean castration) {
+        this.castration = castration;
     }
 
     public void AddVaccine(vaccine vaccine) {
