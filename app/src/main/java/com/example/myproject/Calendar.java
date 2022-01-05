@@ -5,6 +5,8 @@ package com.example.myproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +23,13 @@ public class Calendar extends AppCompatActivity {
     EditText title;
     EditText location;
     EditText description;
-    DrawerLayout drawerLayout;
-    private ImageView MenuItem, BackItem;
-    NavigationView navigation;
-    Button saveEvent;
-    Intent intent;
-
+    private DrawerLayout drawer_layout;
+    private ImageView MenuIcon, BackIcon;
+    private NavigationView navigation;
+    private Button saveEvent;
+    private Intent intent;
+    private Menu menu;
+    private com.google.android.material.navigation.NavigationView NavigationView;
     User user = new User();
     //Intent intent;
     @Override
@@ -35,30 +38,40 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         intent = getIntent();
 
-        drawerLayout =findViewById(R.id.drawer_layout) ;
-        MenuItem = findViewById(R.id.MenuItem);
-        BackItem = findViewById(R.id.BackItem);
+        drawer_layout =findViewById(R.id.drawer_layout) ;
         title = findViewById(R.id.titleEt);
         location = findViewById(R.id.locationEt);
         description = findViewById(R.id.descriptionEt);
         saveEvent = findViewById(R.id.saveEventbt);
-
-        user = (User) intent.getSerializableExtra("user");
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(Calendar.this,item.getItemId(),user);
-                return false;
-            }
-        });
-        MenuItem.setOnClickListener(new View.OnClickListener() {
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.open();
+                drawer_layout.open();
             }
         });
-        BackItem.setOnClickListener(new View.OnClickListener() {
+        BackIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Calendar.this, navigation_drawer.class);
@@ -71,9 +84,26 @@ public class Calendar extends AppCompatActivity {
                 finish();
             }
         });
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(Calendar.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(Calendar.this,id,user);
+                else
+                    new OwnerNavigation(Calendar.this,id,user,item);
+                return false;
+            }
+        });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
 
         saveEvent.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v){
                 if (!title.getText().toString().isEmpty() && !location.getText().toString().isEmpty()
