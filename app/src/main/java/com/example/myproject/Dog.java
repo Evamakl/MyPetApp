@@ -58,8 +58,13 @@ public class Dog implements Serializable {
         this.allergies = dog.getAllergies();
         this.castration = dog.getCastration();
         this.sterilization = dog.getSterilization();
-
-
+        this.Type = dog.getType();
+        this.Name=dog.getName();
+        this.Gender=dog.getGender();
+        this.Image=dog.getImage();
+        this.City=dog.getCity();
+        this.BirthDay=dog.getBirthDay();
+        this.AddedDate=dog.getAddedDate();
     }
     public void setAddedDate(String addedDate) {
         AddedDate = addedDate;

@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
@@ -113,7 +114,7 @@ public class Personal_File extends AppCompatActivity  {
         type = findViewById(R.id.TextInputLayoutType);
         type.getEditText().setText(dog.getType());
         DogPic = findViewById(R.id.DogPic);
-        if(dog.getImage().equals("null")){
+        if(dog.getImage().equals("")){
             DogPic.setImageResource(R.mipmap.ic_launcher);
         }
         else {
@@ -282,12 +283,17 @@ public class Personal_File extends AppCompatActivity  {
                 task.getResult().getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+                        int index = -1;
+                        for(int i=0;i<user.getDogs().size();i++)
+                            if(user.getDogs().get(i).equals(dog))
+                                index = i;
                         dog.setImage(uri.toString());
-                        dog.setType(type.getEditText().toString());
-                        dog.setCity(city.getEditText().toString());
-                        dog.setName(dog_name.getEditText().toString());
-                        dog.setBirthDay(BirthDay.getEditText().toString());
-                        dog.setGender(Gender.getEditText().toString());
+                        dog.setType(type.getEditText().getText().toString());
+                        dog.setCity(city.getEditText().getText().toString());
+                        dog.setName(dog_name.getEditText().getText().toString());
+                        dog.setBirthDay(BirthDay.getEditText().getText().toString());
+                        dog.setGender(Gender.getEditText().getText().toString());
+                        user.getDogs().get(index).setDog(dog);
                         updateData();
                     }
                 });
@@ -299,6 +305,7 @@ public class Personal_File extends AppCompatActivity  {
         Intent intent = new Intent(Personal_File.this, PetOwnerOptionsOfDog.class);
         intent.putExtra("dog",dog);
         intent.putExtra("user",user);
+        Toast.makeText(Personal_File.this, "Information updated!", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
     private Boolean CheckValues(){
