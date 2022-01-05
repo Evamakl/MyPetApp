@@ -26,6 +26,7 @@
             android:layout_gravity="center_vertical"
             android:gravity="center"
             android:text="דירוג פידבקים"
+            android:textColor="@color/black"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/Header" />
@@ -36,7 +37,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Header" />
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -3,46 +3,76 @@ package com.example.myproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class FeedbackPage extends Dialog {
+public class FeedbackPage extends AppCompatActivity {
 
-    private float userRate = 0;
+    private float userRate = 3;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("UsersRatings");
-
-    public FeedbackPage(@NonNull Context context) {
-        super(context);
-    }
-
-    @Override
+    private User user;
+    private Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback_page);
-
-        final AppCompatButton Submit = findViewById(R.id.Submit);
-        final RatingBar RatingBar = findViewById(R.id.RatingBar);
-        final ImageView ratingImage = findViewById(R.id.ratingImage);
-
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        AppCompatButton Submit = findViewById(R.id.Submit);
+        RatingBar RatingBar = findViewById(R.id.RatingBar);
+        ImageView ratingImage = findViewById(R.id.ratingImage);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(RatingBar.getNumStars() > 0) {
-                    reference.setValue(RatingBar.getNumStars());
+                    if(!user.getRate()) {
+                        String index = String.valueOf((int) userRate);
+                        reference.child(index).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                long cur = (long) snapshot.getValue();
+                                reference.child(index).setValue(cur + 1);
+                                Intent intent = new Intent(FeedbackPage.this, Start_work.class);
+                                if (user.getType().toString().equals("PetKeeper"))
+                                    intent = new Intent(FeedbackPage.this, navigation_drawer.class);
+                                user.setRate(true);
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+                                DatabaseReference databaseReference = firebaseDatabase.getReference().child("Users").child(user.getUid()).child("rate");
+                                databaseReference.setValue(true);
+                                Toast.makeText(FeedbackPage.this, "Rating Submitted", Toast.LENGTH_SHORT).show();
+                                intent.putExtra("user", user);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                    }
+                    else
+                        Toast.makeText(FeedbackPage.this, "You cant rate again!", Toast.LENGTH_SHORT).show();
                 }
-                //Toast.makeText(FeedbackPage.this, "Rating Submitted", Toast.LENGTH_SHORT).show();
             }
         });
 
