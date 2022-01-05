@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,29 +30,46 @@ public class ChooseDogPK extends AppCompatActivity {
     EditText dogsName;
     Button approve;
     private String op;
-    DrawerLayout chooseDog_layout;
-    ImageView MenuIcon,BackIcon;
-    User user = new User();
-    Intent intent;
+
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     DatabaseReference reference = firebaseDatabase.getReference().child("Users");
+
+    private User user = new User();
+    private DrawerLayout chooseDog_layout;
+    private ImageView MenuIcon,BackIcon;
+    private Intent intent;
     private Menu menu;
     private com.google.android.material.navigation.NavigationView NavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_dog_pk);
-        intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
-        op = (String)intent.getSerializableExtra("op");
         Email = (EditText)findViewById(R.id.editEmail);
         dogsName = (EditText)findViewById(R.id.ETdogs_name);
-        chooseDog_layout =findViewById(R.id.chooseDog_layout) ;
+        //menu from here
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         MenuIcon = findViewById(R.id.MenuItem);
         BackIcon = findViewById(R.id.BackItem);
         NavigationView = findViewById(R.id.NavigationView);
+        chooseDog_layout =findViewById(R.id.chooseDog_layout) ;
         menu = NavigationView.getMenu();
-        menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
         MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +85,30 @@ public class ChooseDogPK extends AppCompatActivity {
                 finish();
             }
         });
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(ChooseDogPK.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(ChooseDogPK.this,id,user);
+                else
+                    new OwnerNavigation(ChooseDogPK.this,id,user,item);
+                return false;
+            }
+        });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
+        //menu end  here
+
+
+
+        op = (String)intent.getSerializableExtra("op");
+
         approve = (Button)findViewById(R.id.approvedBT);
         approve.setOnClickListener(new View.OnClickListener() {
             @Override

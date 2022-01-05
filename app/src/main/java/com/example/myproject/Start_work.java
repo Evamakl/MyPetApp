@@ -55,7 +55,7 @@ public class Start_work extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
-        menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
     }
     private void setInformation(){
         editTextTextName.setText(user.getUsername());

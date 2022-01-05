@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <item android:title="שלום," android:id="@+id/hello"/>
+    <item android:title="שלום," android:id="@+id/FullName_item"/>
     <item android:title="הוסף כלב"
         android:icon="@drawable/add"
         android:id="@+id/AddDog"/>

@@ -109,6 +109,7 @@ public class search_page extends AppCompatActivity {
 
     public void openNewActivityvaccin_button() {
             Intent intent = new Intent(this, vaccines_info.class);
+            intent.putExtra("user",user);
             startActivity(intent);
     }
     public void openNewActivityfood_button() {
