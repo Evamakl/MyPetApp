@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,18 +19,20 @@ import com.google.android.material.navigation.NavigationView;
 
 public class reliability_form extends AppCompatActivity {
     Button next;
-    DrawerLayout dogList_form;
-    NavigationView navigation;
+    DrawerLayout drawer_layout;
+    //NavigationView navigation;
     CheckBox checkBox;
     private String op;
     private ImageView MenuItem, BackItem;
     User user = new User();
     Intent intent;
+    private Menu menu;
+    private com.google.android.material.navigation.NavigationView NavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reliability_form);
-        dogList_form = findViewById(R.id.reliability_form_layout);
+        drawer_layout = findViewById(R.id.drawer_layout);
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
         op = (String) intent.getSerializableExtra("op");
@@ -37,18 +40,24 @@ public class reliability_form extends AppCompatActivity {
         BackItem = findViewById(R.id.BackItem);
         next = (Button) findViewById(R.id.nextBT);
         checkBox = findViewById(R.id.checkBox);
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView = findViewById(R.id.NavigationView);
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(reliability_form.this, item.getItemId(), user);
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(reliability_form.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(reliability_form.this,id,user);
+                else
+                    new OwnerNavigation(reliability_form.this,id,user,item);
                 return false;
             }
         });
         MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dogList_form.open();
+                drawer_layout.open();
             }
         });
         BackItem.setOnClickListener(new View.OnClickListener() {
