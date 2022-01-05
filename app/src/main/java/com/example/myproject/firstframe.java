@@ -26,7 +26,7 @@ public class firstframe extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
-            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+  /*          if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                 //FirebaseAuth.getInstance().signOut();
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -46,7 +46,7 @@ public class firstframe extends AppCompatActivity {
 
                     }
                 });
-            }
+            }*/
             setContentView(R.layout.activity_firstframe);
             button_pet_keeper = (Button) findViewById(R.id.Pet_Keeper_Button);
             button_pet_keeper.setOnClickListener(new View.OnClickListener() {

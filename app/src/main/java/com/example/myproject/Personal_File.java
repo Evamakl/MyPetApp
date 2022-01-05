@@ -44,7 +44,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -66,6 +68,9 @@ public class Personal_File extends AppCompatActivity  {
     private DatePickerDialog datePickerDialog;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private com.google.android.material.navigation.NavigationView NavigationView;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -341,10 +346,22 @@ public class Personal_File extends AppCompatActivity  {
             Gender.setHelperText("");
 
 
-        if (BirthDay.getEditText().getText().length() == 0){
+        if (BirthDay.getEditText().getText().length() == 0) {
             BirthDay.setHelperText("חובה להזין את תאריך לידה של הכלב");
             return false;
-        }else
+        }/*else if(BirthDay.getEditText().getText().length() != 0)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat(BirthDay.getEditText().getText().toString());
+            Date strDate = sdf.parse();
+            boolean your_date_is_outdated;
+            if (new Date().after(strDate)) {
+                your_date_is_outdated = true;
+            }
+            else{
+                your_date_is_outdated = false;
+            }
+        }*/
+        else
             BirthDay.setHelperText("");
 
         if (city.getEditText().getText().length() == 0){
