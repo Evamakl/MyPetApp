@@ -21,6 +21,7 @@ public class reliability_form extends AppCompatActivity {
     DrawerLayout dogList_form;
     NavigationView navigation;
     CheckBox checkBox;
+    private String op;
     private ImageView MenuItem, BackItem;
     User user = new User();
     Intent intent;
@@ -31,6 +32,7 @@ public class reliability_form extends AppCompatActivity {
         dogList_form = findViewById(R.id.reliability_form_layout);
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
+        op = (String) intent.getSerializableExtra("op");
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         next = (Button) findViewById(R.id.nextBT);
@@ -64,6 +66,7 @@ public class reliability_form extends AppCompatActivity {
                 if(checkBox.isChecked()) {
                     Intent intent = new Intent(reliability_form.this, ChooseDogPK.class);
                     intent.putExtra("user", user);
+                    intent.putExtra("op", op);
                     startActivity(intent);
                     finish();
                 }

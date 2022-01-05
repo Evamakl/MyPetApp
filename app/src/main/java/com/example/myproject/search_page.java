@@ -39,6 +39,7 @@ public class search_page extends AppCompatActivity {
         food_button = (Button) findViewById(R.id.food_buttonBT);
         shampo_button = (Button) findViewById(R.id.shampo_buttonBT);
         walk_button = (Button) findViewById(R.id.walk_buttonBT);
+        dogList_layout = findViewById(R.id.drawer_layout);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         navigation = findViewById(R.id.NavigationView);

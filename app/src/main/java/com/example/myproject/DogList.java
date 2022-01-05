@@ -3,6 +3,7 @@ package com.example.myproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -24,7 +25,7 @@ public class DogList extends AppCompatActivity {
     User user = new User();
     Intent intent;
     private ImageView MenuItem, BackItem;
-    RecyclerView sa;
+    RecyclerView see_dog_RV;
     TextView addDog, removeDog;
 
 
@@ -36,12 +37,14 @@ public class DogList extends AppCompatActivity {
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         intent = getIntent();
+        see_dog_RV = findViewById(R.id.see_dog_RV);
         addDog = findViewById(R.id.add_dog);
         addDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DogList.this, reliability_form.class);
                 intent.putExtra("user", user);
+                intent.putExtra("op", "add");
                 startActivity(intent);
                 finish();
             }
@@ -50,7 +53,11 @@ public class DogList extends AppCompatActivity {
         removeDog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(DogList.this, ChooseDogPK.class);
+                intent.putExtra("user", user);
+                intent.putExtra("op", "delete");
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -79,10 +86,11 @@ public class DogList extends AppCompatActivity {
                 finish();
             }
         });
+        setDogs();
     }
-
-
-
-
-
+    private void setDogs(){
+        DogListPkAdapter dogListPkAdapter = new DogListPkAdapter(this,user.getDogs(),user);
+        see_dog_RV.setLayoutManager(new GridLayoutManager(this,1));
+        see_dog_RV.setAdapter(dogListPkAdapter);
+    }
 }

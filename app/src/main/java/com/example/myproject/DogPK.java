@@ -1,15 +1,19 @@
 package com.example.myproject;
 
-public class DogPK {
+import java.io.Serializable;
 
-    String OwnerEmail;
+public class DogPK implements Serializable {
+
+    String OwnerEmail ="";
     Dog dog;
 
     public DogPK(String ownerEmail, Dog dog) {
         OwnerEmail = ownerEmail;
         this.dog = dog;
     }
-
+    public DogPK(){
+        dog = new Dog();
+    }
     public String getOwnerEmail() {
         return OwnerEmail;
     }
