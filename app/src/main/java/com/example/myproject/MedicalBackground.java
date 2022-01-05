@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
@@ -68,11 +69,12 @@ public class MedicalBackground extends AppCompatActivity {
     private void setInfo(){
         if(dog.getAllergies()) {
             checkBoxYES.setChecked(true);
+            checkBoxNO.setChecked(false);
             TextInputLayoutAllergies.setVisibility(View.VISIBLE);
             TextInputLayoutAllergies.getEditText().setText(dog.getAllergy());
         }
         else {
-            checkBoxYES.setChecked(true);
+            checkBoxNO.setChecked(true);
             TextInputLayoutAllergies.setVisibility(View.GONE);
         }
         if(dog.getCastration())
@@ -123,7 +125,10 @@ public class MedicalBackground extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int index = user.getDogs().indexOf(dog);
+                int index = 0;
+                for(int i=0; i< user.getDogs().size();i++)
+                    if(user.getDogs().get(i).equals(dog))
+                        index = i;
                 dog.setBackground(TextInputLayoutMed_Backg.getEditText().getText().toString());
                 dog.setAllergy(TextInputLayoutAllergies.getEditText().getText().toString());
                 dog.setOperation(TextInputLayoutMed_Procedure.getEditText().getText().toString());
@@ -131,7 +136,7 @@ public class MedicalBackground extends AppCompatActivity {
                 if(checkBoxYES.isChecked())
                     dog.setAllergies(true);
                 if(checkBoxNO.isChecked())
-                    dog.setAllergies(true);
+                    dog.setAllergies(false);
                 if(checkBoxCastration.isChecked())
                     dog.setCastration(true);
                 else
@@ -142,6 +147,7 @@ public class MedicalBackground extends AppCompatActivity {
                     dog.setSterilization(false);
                 user.getDogs().get(index).setDog(dog);
                 databaseReference.child(user.getUid()).setValue(user);
+                Toast.makeText(MedicalBackground.this, "The Information saved!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -166,6 +172,7 @@ public class MedicalBackground extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MedicalBackground.this, PetOwnerOptionsOfDog.class);
                 intent.putExtra("user",user);
+                intent.putExtra("dog",dog);
                 startActivity(intent);
                 finish();
             }
