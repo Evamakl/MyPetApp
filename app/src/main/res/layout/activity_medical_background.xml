@@ -26,7 +26,7 @@
                     android:layout_height="53dp"
                     android:layout_x="21dp"
                     android:layout_y="530dp"
-                    android:checked="false"
+                    android:checked="true"
                     android:text="לא"
                     android:textColor="@color/purple_700"
                     android:textStyle="bold"
@@ -64,7 +64,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/checkBoxNO"
                     app:layout_constraintHorizontal_bias="0.553"
                     app:layout_constraintStart_toStartOf="@+id/checkBoxNO"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxNO"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutAllergies"
                     app:layout_constraintVertical_bias="0.264" />
 
                 <CheckBox
@@ -81,7 +81,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/checkBoxYES"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBoxYES"
+                    app:layout_constraintTop_toBottomOf="@+id/TextInputLayoutAllergies"
                     app:layout_constraintVertical_bias="0.266" />
 
 
@@ -112,6 +112,41 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/TextInputEditTextInputMed_Backg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="start"
+                            android:gravity="start"
+                            android:textAlignment="viewStart" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/TextInputLayoutAllergies"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="142dp"
+                    android:layout_x="8dp"
+                    android:layout_y="83dp"
+                    android:gravity="start"
+                    android:hint="אלרגיות"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="#25F4DC"
+                    app:boxStrokeWidth="3dp"
+
+                    app:boxStrokeWidthFocused="3dp"
+                    app:counterOverflowTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:counterTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:counterTextColor="@color/black"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:helperTextTextColor="#FF0000"
+                    app:hintTextColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="@+id/TextInputLayoutMed_Procedure"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/TextInputLayoutMed_Procedure"
+                    app:layout_constraintTop_toBottomOf="@+id/allergies">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/TextInputEditTextInputAllergies"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="start"
@@ -158,8 +193,6 @@
                     android:id="@+id/allergies"
                     android:layout_width="401dp"
                     android:layout_height="111dp"
-                    android:layout_x="11dp"
-                    android:layout_y="511dp"
                     android:text="     אלרגיות"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -182,6 +215,17 @@
                     app:layout_constraintTop_toTopOf="@+id/include">
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/buttonSave"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:text="עדכן פרטים"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkBoxSTERILIZATION" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
