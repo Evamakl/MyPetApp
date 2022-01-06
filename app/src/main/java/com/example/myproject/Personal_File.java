@@ -30,6 +30,8 @@ import android.widget.Toast;
 
 /*import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;*/
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -44,6 +46,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -122,7 +125,7 @@ public class Personal_File extends AppCompatActivity  {
         if(dog.getImage().equals("")){
             DogPic.setImageResource(R.mipmap.ic_launcher);
         }
-        /*else {
+        else {
             Glide.with(Personal_File.this).asBitmap().load(dog.getImage()).into(new CustomTarget<Bitmap>() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
@@ -133,7 +136,7 @@ public class Personal_File extends AppCompatActivity  {
                 @Override
                 public void onLoadCleared(@Nullable Drawable placeholder) { }
             });
-        }*/
+        }
         addDogPic = findViewById(R.id.addpicdog);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
@@ -146,8 +149,26 @@ public class Personal_File extends AppCompatActivity  {
         Done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(CheckValues()){
-                    UploadImage();
+                try {
+                    if(CheckValues()){
+                        if(uri != null)
+                            UploadImage();
+                        else{
+                            int index = -1;
+                            for(int i=0;i<user.getDogs().size();i++)
+                                if(user.getDogs().get(i).equals(dog))
+                                    index = i;
+                            dog.setType(type.getEditText().getText().toString());
+                            dog.setCity(city.getEditText().getText().toString());
+                            dog.setName(dog_name.getEditText().getText().toString());
+                            dog.setBirthDay(BirthDay.getEditText().getText().toString());
+                            dog.setGender(Gender.getEditText().getText().toString());
+                            user.getDogs().get(index).setDog(dog);
+                            updateData();
+                        }
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -208,10 +229,16 @@ public class Personal_File extends AppCompatActivity  {
         alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.show();
         Cammera.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                if(checkAndRequestPermissions())
-                    CammeraPicture();
+                if(checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+                    requestPermissions(new String[]{Manifest.permission.CAMERA}, 100);
+                }
+                else{
+                    Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(takePicture,2);
+                }
                 alertDialog.cancel();
             }
         });
@@ -223,16 +250,10 @@ public class Personal_File extends AppCompatActivity  {
             }
         });
     }
-    private void GalleryPicture(){
+    private void GalleryPicture() {
         Intent photo = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         photo.setType("image/*");
         startActivityForResult(photo, 1);
-    }
-    private void CammeraPicture(){
-        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(takePicture.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(takePicture, 2);
-        }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -249,35 +270,25 @@ public class Personal_File extends AppCompatActivity  {
                 break;
             case 2:
                 if(resultCode == RESULT_OK){
-                    Bundle bundle = data.getExtras();
-                    Bitmap bitmap = (Bitmap) bundle.get("data");
+                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                     DogPic.setBackground(new BitmapDrawable(getResources(), bitmap));
                     ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                    try {
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 500, bytes);
-                        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, user.getUid(), null);
-                        uri = Uri.parse(path);
-                    }catch (Exception e) { e.printStackTrace(); }
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+                    String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Title", null);
+                    uri = Uri.parse(path);
                 }
                 break;
         }
     }
-    private Boolean checkAndRequestPermissions(){
-        if(Build.VERSION.SDK_INT >= 23 ){
-            int cameraPermission = ActivityCompat.checkSelfPermission(Personal_File.this, Manifest.permission.CAMERA);
-            if(cameraPermission == PackageManager.PERMISSION_DENIED){
-                ActivityCompat.requestPermissions(Personal_File.this,new String[]{Manifest.permission.CAMERA},20);
-                return false;
-            }
-        }
-        return true;
-    }
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == 20 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            CammeraPicture();
-        else{ }
+        if(requestCode == 100) {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent,2);
+            }
+        }
     }
     private void UploadImage(){
         storageReference = firebaseStorage.getReference();
@@ -313,7 +324,7 @@ public class Personal_File extends AppCompatActivity  {
         Toast.makeText(Personal_File.this, "Information updated!", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
-    private Boolean CheckValues(){
+    private Boolean CheckValues() throws ParseException {
         if(dog_name.getEditText().getText().length() == 0) {
             dog_name.setHelperText("חובה להזין את שם הכלב");
             return false;
@@ -349,18 +360,16 @@ public class Personal_File extends AppCompatActivity  {
         if (BirthDay.getEditText().getText().length() == 0) {
             BirthDay.setHelperText("חובה להזין את תאריך לידה של הכלב");
             return false;
-        }/*else if(BirthDay.getEditText().getText().length() != 0)
-        {
-            SimpleDateFormat sdf = new SimpleDateFormat(BirthDay.getEditText().getText().toString());
-            Date strDate = sdf.parse();
+        }else if(BirthDay.getEditText().getText().length() != 0) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date strDate = sdf.parse(BirthDay.getEditText().getText().toString());
             boolean your_date_is_outdated;
             if (new Date().after(strDate)) {
-                your_date_is_outdated = true;
             }
             else{
-                your_date_is_outdated = false;
+                BirthDay.setHelperText("The Date is outdated!");
             }
-        }*/
+        }
         else
             BirthDay.setHelperText("");
 

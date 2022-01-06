@@ -37,6 +37,8 @@ public class search_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         info = findViewById(R.id.info);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
