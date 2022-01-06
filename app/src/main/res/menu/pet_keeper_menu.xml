@@ -47,6 +47,10 @@
         android:icon="@drawable/ic_support"
         android:title="תמיכה טכנית" />
     <item
+        android:id="@+id/feedback_item"
+        android:icon="@drawable/ic_star2"
+        android:title=" פידבקים" />
+    <item
             android:id="@+id/logout_item"
             android:icon="@drawable/ic_logoff"
             android:title="התנתק"/>
