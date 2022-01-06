@@ -77,7 +77,8 @@ public class Vaccines extends AppCompatActivity {
         addVaccine();
         MenuIcon();
         BackIcon();
-        setDogs();
+        if(user.getType().toString().equals("Owner"))
+            setDogs();
         NavigationView();
     }
     private void setID(){

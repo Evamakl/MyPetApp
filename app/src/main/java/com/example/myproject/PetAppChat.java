@@ -63,7 +63,7 @@ public class PetAppChat extends AppCompatActivity {
         viewPagerAdapter.addFragment(new ChatFragment(), "Chats");
         viewPagerAdapter.addFragment(new UsersFragment(), "Users");
         viewPager.setAdapter(viewPagerAdapter);
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView = findViewById(R.id.NavigationView);
         NavigationView.getMenu().clear();
         if(user.getType().equals("Manager"))
