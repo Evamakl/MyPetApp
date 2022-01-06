@@ -28,10 +28,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class FeedbackPage extends AppCompatActivity {
-
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Rank");
     private float userRate = 3;
+    private TextView ratingText;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference = database.getReference().child("UsersRatings");
+    //DatabaseReference reference = database.getReference().child("UsersRatings");
     private User user;
     private Intent intent;
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +41,33 @@ public class FeedbackPage extends AppCompatActivity {
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         AppCompatButton Submit = findViewById(R.id.Submit);
+        ratingText=findViewById(R.id.ratingText);
         RatingBar RatingBar = findViewById(R.id.RatingBar);
         ImageView ratingImage = findViewById(R.id.ratingImage);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //rankText.setText("");
+                String text = (String)snapshot.getValue();
+                ratingText.setText(text);
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(RatingBar.getNumStars() > 0) {
                     if(!user.getRate()) {
                         String index = String.valueOf((int) userRate);
-                        reference.child(index).addListenerForSingleValueEvent(new ValueEventListener() {
+                        databaseReference.child(index).addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 long cur = (long) snapshot.getValue();
-                                reference.child(index).setValue(cur + 1);
+                                databaseReference.child(index).setValue(cur + 1);
                                 Intent intent = new Intent(FeedbackPage.this, Start_work.class);
                                 if (user.getType().toString().equals("PetKeeper"))
                                     intent = new Intent(FeedbackPage.this, navigation_drawer.class);
@@ -70,8 +85,14 @@ public class FeedbackPage extends AppCompatActivity {
                             }
                         });
                     }
-                    else
+                    else {
                         Toast.makeText(FeedbackPage.this, "You cant rate again!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(FeedbackPage.this, Start_work.class);
+                        if (user.getType().toString().equals("PetKeeper"))
+                            intent = new Intent(FeedbackPage.this, navigation_drawer.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                    }
                 }
             }
         });
