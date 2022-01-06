@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,6 +34,8 @@ public class AppUpdate extends AppCompatActivity {
     User user = new User();
     TextView tvCurrentVersion, tvLatestVersion;
     String sCurrentVersion, sLatestVersion;
+    private Menu menu;
+    private com.google.android.material.navigation.NavigationView NavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +48,62 @@ public class AppUpdate extends AppCompatActivity {
         user = (User)intent.getSerializableExtra("user");
         tvCurrentVersion = findViewById(R.id.tv_current_version);
         tvLatestVersion = findViewById(R.id.tv_latest_version);
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        MenuIcon = findViewById(R.id.MenuItem);
+        BackIcon = findViewById(R.id.BackItem);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        MenuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.open();
+            }
+        });
+        BackIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AppUpdate.this, HomePageManager.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
+            }
+        });
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new ManagerNavigation(AppUpdate.this,item.getItemId(),user);
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(AppUpdate.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(AppUpdate.this,id,user);
+                else
+                    new OwnerNavigation(AppUpdate.this,id,user,item);
                 return false;
             }
         });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
+
         MenuIcon = findViewById(R.id.MenuItem);
         BackIcon = findViewById(R.id.BackItem);
         MenuIcon.setOnClickListener(new View.OnClickListener() {

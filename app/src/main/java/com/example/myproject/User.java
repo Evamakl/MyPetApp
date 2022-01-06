@@ -27,6 +27,7 @@ public class User implements Serializable {
         dogs = new ArrayList<>();
         listOfTodo = new ArrayList<>();
         listPKtip = new ArrayList<>();
+        dogsPK = new ArrayList<>();
     }
 
     public ArrayList<TodoListClass> getListOfTodo() {

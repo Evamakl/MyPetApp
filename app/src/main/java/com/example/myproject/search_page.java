@@ -6,125 +6,107 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class search_page extends AppCompatActivity {
-    TextView first_title;
-    TextView second_title;
-    Button vaccin_button;
-    Button food_button;
-    Button shampo_button;
-    Button walk_button;
-    DrawerLayout dogList_layout;
-    NavigationView navigation;
+    DrawerLayout drawer_layout;
+    //NavigationView navigation;
     User user = new User();
     Intent intent;
+    private TextView info;
     private ImageView MenuItem, BackItem;
+    private Menu menu;
+    private com.google.android.material.navigation.NavigationView NavigationView;
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("NewsLetter");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_page);
-        intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
-        first_title = (TextView) findViewById(R.id.first_titleTV);
-        second_title = (TextView) findViewById(R.id.second_titleTV);
-        vaccin_button = (Button) findViewById(R.id.vaccin_buttonBT);
-        food_button = (Button) findViewById(R.id.food_buttonBT);
-        shampo_button = (Button) findViewById(R.id.shampo_buttonBT);
-        walk_button = (Button) findViewById(R.id.walk_buttonBT);
+        info = findViewById(R.id.info);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
-        navigation = findViewById(R.id.NavigationView);
-
-
-        vaccin_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openNewActivityvaccin_button();
-            }
-        });
-        food_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openNewActivityfood_button();
-            }
-        });
-        shampo_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openNewActivityshampo_button();
-            }
-        });
-        walk_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                openNewActivitywalk_button();
-            }
-
-        });
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new PetKeeperNavigation(search_page.this,item.getItemId(),user);
-                return false;
-            }
-        });
+        drawer_layout = findViewById(R.id.drawer_layout);
+        MenuItem = findViewById(R.id.MenuItem);
+        BackItem = findViewById(R.id.BackItem);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
         MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dogList_layout.open();
+                drawer_layout.open();
             }
         });
         BackItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(search_page.this, navigation_drawer.class);
-                if(user.getType().equals("Owner"))
-                    intent = new Intent(search_page.this, Start_work.class);
-                else if(user.getType().equals("Manager"))
-                    intent = new Intent(search_page.this, HomePageManager.class);
+                Intent intent = new Intent(search_page.this, Start_work.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
             }
         });
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(search_page.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(search_page.this,id,user);
+                else
+                    new OwnerNavigation(search_page.this,id,user,item);
+                return false;
+            }
+        });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                info.setText("");
+                for (DataSnapshot temp : snapshot.getChildren()) {
+                    String text = (String) temp.getValue();
+                    info.setText(info.getText().toString() + "\n" + text);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
     }
-
-    public void openNewActivityLogout() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void openNewActivityvaccin_button() {
-            Intent intent = new Intent(this, vaccines_info.class);
-            startActivity(intent);
-    }
-    public void openNewActivityfood_button() {
-        Intent intent = new Intent(this, food_info.class);
-        startActivity(intent);
-    }
-    public void openNewActivityshampo_button() {
-        Intent intent = new Intent(this, shampo_info.class);
-        startActivity(intent);
-    }
-    public void openNewActivitywalk_button() {
-        Intent intent = new Intent(this, walk_info.class);
-        startActivity(intent);
-    }
-    public void openNewActivityback_button() {
-        //Intent intent = new Intent(this, new_user.class);
-        //startActivity(intent);
-    }
-
 }
+

@@ -27,7 +27,7 @@ public class OwnerNavigation {
             AddDog(context,user);
         else if( id == R.id.RemoveDog)
             RemoveDog(context,user);
-        else  if( id == R.id.hello){ }
+        else  if( id == R.id.FullName_item){ }
         else if(id == R.id.about_item)
             StartActivity(context, search_page.class, user);
         else if(id == R.id.calendar_item)

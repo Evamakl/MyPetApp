@@ -20,6 +20,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -67,6 +68,8 @@ public class Vaccines extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccines);
         init();
+
+
     }
     private void init(){
         setID();
@@ -89,7 +92,22 @@ public class Vaccines extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
-        menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
     }
     private void MenuIcon(){
         MenuItem.setOnClickListener(new View.OnClickListener() {
@@ -240,14 +258,20 @@ public class Vaccines extends AppCompatActivity {
         finish();
     }
     public void NavigationView() {
-        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
-                new OwnerNavigation(Vaccines.this,id,user,item);
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(Vaccines.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(Vaccines.this,id,user);
+                else
+                    new OwnerNavigation(Vaccines.this,id,user,item);
                 return false;
             }
         });
+
     }
     private void setDogs(){
         menu = NavigationView.getMenu();

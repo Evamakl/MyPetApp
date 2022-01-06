@@ -6,6 +6,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,9 +24,11 @@ public class Reports extends AppCompatActivity {
     Button dogsReport;
     Button feedbackReport;
     private ImageView MenuIcon, BackIcon;
-    NavigationView navigation;
     Intent intent;
     User user = new User();
+    private Menu menu;
+    private com.google.android.material.navigation.NavigationView NavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +46,25 @@ public class Reports extends AppCompatActivity {
                 openUsersReport();
             }
         });
-        navigation = findViewById(R.id.NavigationView);
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView = findViewById(R.id.NavigationView);
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                new ManagerNavigation(Reports.this,item.getItemId(),user);
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(Reports.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(Reports.this,id,user);
+                else
+                    new OwnerNavigation(Reports.this,id,user,item);
                 return false;
             }
         });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
         MenuIcon = findViewById(R.id.MenuItem);
         BackIcon = findViewById(R.id.BackItem);
         MenuIcon.setOnClickListener(new View.OnClickListener() {

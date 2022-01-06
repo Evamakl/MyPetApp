@@ -13,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,7 +39,8 @@ public class technicalSupport extends AppCompatActivity {
     private User user = new User();
     private Intent intent;
     private ArrayList<String> list;
-    NavigationView navigation;
+    //NavigationView navigation;
+    private com.google.android.material.navigation.NavigationView NavigationView;
     private ImageView MenuItem, BackItem;
     private Menu menu;
     @Override
@@ -53,21 +55,26 @@ public class technicalSupport extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         recyclerView = findViewById(R.id.RecyclerView);
         addNewtip = (Button) findViewById(R.id.button_addNewTask);
-        navigation = findViewById(R.id.NavigationView);
-        menu = navigation.getMenu();
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
         menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
-
-        navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
-                if(user.getType().equals("Manager"))
-                    new ManagerNavigation(technicalSupport.this,item.getItemId(),user);
-                else
-                    new PetKeeperNavigation(technicalSupport.this,item.getItemId(),user);
-
-                return false;
-            }
-        });
         MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,6 +94,24 @@ public class technicalSupport extends AppCompatActivity {
                 finish();
             }
         });
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(technicalSupport.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(technicalSupport.this,id,user);
+                else
+                    new OwnerNavigation(technicalSupport.this,id,user,item);
+                return false;
+            }
+        });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
         if(!user.getType().equals("Manager")){
             addNewtip.setVisibility(View.INVISIBLE);
         }

@@ -11,9 +11,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,20 +41,22 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class dogsReport extends AppCompatActivity {
+
     private DrawerLayout drawerLayout;
     private NavigationView NavigationView;
     private Menu menu;
     private ImageView MenuIcon, BackIcon;
     private User user;
     private Intent intent;
-
-
-
     TextView TitleReport;
     BarChart barChart;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Users");
     int NumberOfDogs = 0;
+    private User user = new User();
+    private Intent intent;
+    private Menu menu;
+    private com.google.android.material.navigation.NavigationView NavigationView;
     private EditText EditTextSearch;
     private TextView TextViewSearch;
     private Dialog dialog;
@@ -63,6 +66,7 @@ public class dogsReport extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_report);
+
     //menu and back from here
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
@@ -72,24 +76,59 @@ public class dogsReport extends AppCompatActivity {
         menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
         MenuIcon = findViewById(R.id.MenuItem);
         BackIcon = findViewById(R.id.BackItem);
+        NavigationView = findViewById(R.id.NavigationView);
+        menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
         MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.open();
+                drawer_layout.open();
             }
         });
         BackIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(dogsReport.this, Reports.class);
+                Intent intent = new Intent(dogsReport.this, HomePageManager.class);
+
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
             }
         });
-        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
+                int id = item.getItemId();
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(dogsReport.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(dogsReport.this,id,user);
+                else
+                    new OwnerNavigation(dogsReport.this,id,user,item);
+                return false;
+            }
+        });
+        if(user.getType().toString().equals("Owner")) {
+            menu = NavigationView.getMenu();
+            for (int i = 0; i < user.getDogs().size(); i++)
+                menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
+        }
+
 
                 new ManagerNavigation(dogsReport.this, item.getItemId(), user);
                 return false;

@@ -37,7 +37,8 @@ public class firstframe extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         User user = new User();
                         user = snapshot.getValue(User.class);
-                        Intent intent = new Intent(firstframe.this,Start_work.class);
+                        Intent intent = new Intent(firstframe.this,navigation_drawer.class);
+
                         intent.putExtra("user",user);
                         startActivity(intent);
                     }
@@ -47,7 +48,7 @@ public class firstframe extends AppCompatActivity {
 
                     }
                 });
-            }*/
+            }
             setContentView(R.layout.activity_firstframe);
             button_pet_keeper = (Button) findViewById(R.id.Pet_Keeper_Button);
             button_pet_keeper.setOnClickListener(new View.OnClickListener() {

@@ -10,7 +10,7 @@
         layout="@layout/activity_main_toolbar"/>
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/dogName"
         android:layout_width="413dp"
         android:layout_height="40dp"
         android:text="הוסף מטלה חדשה:"

@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class PetOwnerOptionsOfDog extends AppCompatActivity {
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Menu menu;
     private Intent intent;
+    private Class ret;
     private DrawerLayout drawerLayout;
     private com.google.android.material.navigation.NavigationView NavigationView;
     @Override
@@ -39,13 +41,15 @@ public class PetOwnerOptionsOfDog extends AppCompatActivity {
         MenuIcon();
         BackIcon();
         NavigationView();
-        setDogs();
+        if(user.getType().toString().equals("Owner"))
+            setDogs();
         setButtons();
     }
     private void setID(){
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
         dog = (Dog)intent.getSerializableExtra("dog");
+        ret = (Class)intent.getSerializableExtra("return");
         Med_dog_information=findViewById(R.id.Med_Info);
         Med_dog_file = findViewById(R.id.Med_F);
         Personal_Dog_File = findViewById(R.id.Personal_F);
@@ -54,7 +58,12 @@ public class PetOwnerOptionsOfDog extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
-        menu.findItem(R.id.hello).setTitle( "שלום, " + user.getUsername());
+        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
     }
     private void setButtons(){
         Personal_Dog_File.setOnClickListener(new View.OnClickListener() {
@@ -95,10 +104,20 @@ public class PetOwnerOptionsOfDog extends AppCompatActivity {
         BackItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PetOwnerOptionsOfDog.this, Start_work.class);
-                intent.putExtra("user",user);
+                Intent intent = new Intent(PetOwnerOptionsOfDog.this, DogList.class);
+                if(user.getType().equals("Owner"))
+                    intent = new Intent(PetOwnerOptionsOfDog.this, Start_work.class);
+                else if(user.getType().equals("Manager"))
+                    intent = new Intent(PetOwnerOptionsOfDog.this, HomePageManager.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
+
+               /* Intent intent = new Intent(PetOwnerOptionsOfDog.this, ret);
+                intent.putExtra("user",user);
+                intent.putExtra("dog",dog);
+                startActivity(intent);
+                finish();*/
             }
         });
     }
@@ -107,7 +126,12 @@ public class PetOwnerOptionsOfDog extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
-                new OwnerNavigation(PetOwnerOptionsOfDog.this,id,user,item);
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(PetOwnerOptionsOfDog.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(PetOwnerOptionsOfDog.this,id,user);
+                else
+                    new OwnerNavigation(PetOwnerOptionsOfDog.this,id,user,item);
                 return false;
             }
         });

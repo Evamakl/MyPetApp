@@ -1,4 +1,4 @@
-package com.example.myproject;
+/*package com.example.myproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,37 +7,51 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class vaccines_info extends AppCompatActivity {
 
-    Button cont;
-    DrawerLayout dogList_layout;
+    DrawerLayout drawer_layout;
     NavigationView navigation;
     User user = new User();
     Intent intent;
+    private TextView VaccineInfo;
     private ImageView MenuItem, BackItem;
-
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("NewsLetter");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccines_info);
-        cont = (Button) findViewById(R.id.continuebt);
+        VaccineInfo = findViewById(R.id.info);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
-        //navigation = findViewById(R.id.NavigationView);
-        cont.setOnClickListener(new View.OnClickListener() {
+        drawer_layout = findViewById(R.id.drawer_layout);
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                VaccineInfo.setText("");
+                for(DataSnapshot temp : snapshot.getChildren()){
+                    String text = (String)temp.getValue();
+                    VaccineInfo.setText(VaccineInfo.getText().toString()+"\n"+text);
+                }
+            }
 
-                openNewActivityCon();
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+        //navigation = findViewById(R.id.NavigationView);
+
         /*navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
@@ -45,10 +59,10 @@ public class vaccines_info extends AppCompatActivity {
                 return false;
             }
         });*/
-        MenuItem.setOnClickListener(new View.OnClickListener() {
+      /*  MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dogList_layout.open();
+                drawer_layout.open();
             }
         });
         BackItem.setOnClickListener(new View.OnClickListener() {
@@ -62,12 +76,5 @@ public class vaccines_info extends AppCompatActivity {
         });
 
     }
-    public void openNewActivityCon() {
-        Intent intent = new Intent(this, vaccines_info_2.class);
-        startActivity(intent);
-    }
-    public void openNewActivityBack() {
-        Intent intent = new Intent(this, search_page.class);
-        startActivity(intent);
-    }
-}
+
+}*/
