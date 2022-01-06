@@ -128,7 +128,7 @@ public class UsersReport extends AppCompatActivity {
         BackIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(UsersReport.this, HomePageManager.class);
+                intent = new Intent(UsersReport.this, Reports.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
@@ -181,7 +181,7 @@ public class UsersReport extends AppCompatActivity {
         //set bar data
         barChart.setData(new BarData(barDataSet));
         //set animation
-        barChart.animateY(5000);
+        barChart.animateY(300);
         //set description text and color
         barChart.getDescription().setText("Users Type Chart");
         barChart.getDescription().setTextColor(Color.BLUE);

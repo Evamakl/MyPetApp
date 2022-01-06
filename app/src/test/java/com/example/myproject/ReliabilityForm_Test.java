@@ -7,7 +7,8 @@ import org.junit.Test;
 public class ReliabilityForm_Test {
     @Test
     //Checks if the checkBox is marked
-    public void isChecked_test(Boolean isCheck) {
+    public void isChecked_test() {
+        Boolean isCheck = true;
         assertFalse(isCheck == false);
     }
 }

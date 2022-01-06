@@ -26,9 +26,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.CustomTarget;
+/*import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;*/
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -43,7 +44,9 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -65,6 +68,9 @@ public class Personal_File extends AppCompatActivity  {
     private DatePickerDialog datePickerDialog;
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private com.google.android.material.navigation.NavigationView NavigationView;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,10 +119,10 @@ public class Personal_File extends AppCompatActivity  {
         type = findViewById(R.id.TextInputLayoutType);
         type.getEditText().setText(dog.getType());
         DogPic = findViewById(R.id.DogPic);
-        if(dog.getImage().equals("null")){
+        if(dog.getImage().equals("")){
             DogPic.setImageResource(R.mipmap.ic_launcher);
         }
-        else {
+        /*else {
             Glide.with(Personal_File.this).asBitmap().load(dog.getImage()).into(new CustomTarget<Bitmap>() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
@@ -127,7 +133,7 @@ public class Personal_File extends AppCompatActivity  {
                 @Override
                 public void onLoadCleared(@Nullable Drawable placeholder) { }
             });
-        }
+        }*/
         addDogPic = findViewById(R.id.addpicdog);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
@@ -282,12 +288,17 @@ public class Personal_File extends AppCompatActivity  {
                 task.getResult().getStorage().getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+                        int index = -1;
+                        for(int i=0;i<user.getDogs().size();i++)
+                            if(user.getDogs().get(i).equals(dog))
+                                index = i;
                         dog.setImage(uri.toString());
-                        dog.setType(type.getEditText().toString());
-                        dog.setCity(city.getEditText().toString());
-                        dog.setName(dog_name.getEditText().toString());
-                        dog.setBirthDay(BirthDay.getEditText().toString());
-                        dog.setGender(Gender.getEditText().toString());
+                        dog.setType(type.getEditText().getText().toString());
+                        dog.setCity(city.getEditText().getText().toString());
+                        dog.setName(dog_name.getEditText().getText().toString());
+                        dog.setBirthDay(BirthDay.getEditText().getText().toString());
+                        dog.setGender(Gender.getEditText().getText().toString());
+                        user.getDogs().get(index).setDog(dog);
                         updateData();
                     }
                 });
@@ -299,6 +310,7 @@ public class Personal_File extends AppCompatActivity  {
         Intent intent = new Intent(Personal_File.this, PetOwnerOptionsOfDog.class);
         intent.putExtra("dog",dog);
         intent.putExtra("user",user);
+        Toast.makeText(Personal_File.this, "Information updated!", Toast.LENGTH_SHORT).show();
         startActivity(intent);
     }
     private Boolean CheckValues(){
@@ -334,10 +346,22 @@ public class Personal_File extends AppCompatActivity  {
             Gender.setHelperText("");
 
 
-        if (BirthDay.getEditText().getText().length() == 0){
+        if (BirthDay.getEditText().getText().length() == 0) {
             BirthDay.setHelperText("חובה להזין את תאריך לידה של הכלב");
             return false;
-        }else
+        }/*else if(BirthDay.getEditText().getText().length() != 0)
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat(BirthDay.getEditText().getText().toString());
+            Date strDate = sdf.parse();
+            boolean your_date_is_outdated;
+            if (new Date().after(strDate)) {
+                your_date_is_outdated = true;
+            }
+            else{
+                your_date_is_outdated = false;
+            }
+        }*/
+        else
             BirthDay.setHelperText("");
 
         if (city.getEditText().getText().length() == 0){

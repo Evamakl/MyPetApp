@@ -26,7 +26,8 @@ public class firstframe extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
-            if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+  /*          if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            /*if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                 //FirebaseAuth.getInstance().signOut();
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -37,6 +38,7 @@ public class firstframe extends AppCompatActivity {
                         User user = new User();
                         user = snapshot.getValue(User.class);
                         Intent intent = new Intent(firstframe.this,navigation_drawer.class);
+
                         intent.putExtra("user",user);
                         startActivity(intent);
                     }

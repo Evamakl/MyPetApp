@@ -15,7 +15,7 @@ public class User implements Serializable {
     private Boolean Block = false;
     private ArrayList<TodoListClass> listOfTodo;
     private ArrayList<tipsPKClass> listPKtip;
-
+    private Boolean rate = false;
 
 
     public User(String uid, String email, String phone, String username) {
@@ -60,6 +60,14 @@ public class User implements Serializable {
     public void setDogsPK(ArrayList<DogPK> dogsPK) {
         this.dogsPK = dogsPK;
 
+    }
+
+    public Boolean getRate() {
+        return rate;
+    }
+
+    public void setRate(Boolean rate) {
+        this.rate = rate;
     }
 
     public void setEmail(String email) { Email = email; }

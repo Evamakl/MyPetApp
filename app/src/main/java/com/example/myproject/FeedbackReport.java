@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
-
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -37,11 +36,17 @@ public class FeedbackReport extends AppCompatActivity {
     private Menu menu;
     private com.google.android.material.navigation.NavigationView NavigationView;
 
+
     BarChart barChart;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("UsersRatings");
-    int oneStar=0, twoStar=0, threeStar=0, fourStar=0, fiveStar=0, NumberOfStars = 5;
-
+    long oneStar=0, twoStar=0, threeStar=0, fourStar=0, fiveStar=0, NumberOfStars = 5;
+    private DrawerLayout drawerLayout;
+    private NavigationView NavigationView;
+    private Menu menu;
+    private ImageView MenuIcon, BackIcon;
+    private User user;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,8 @@ public class FeedbackReport extends AppCompatActivity {
         drawer_layout = findViewById(R.id.drawer_layout);
         barChart = findViewById(R.id.bar_chart);
         //initialize array list
+        intent = getIntent();
+        user = (User)intent.getSerializableExtra("user");
         GetUsersRatings();
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
@@ -73,6 +80,7 @@ public class FeedbackReport extends AppCompatActivity {
             super.onCreateOptionsMenu(menu);
         }
         menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+
         MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +91,7 @@ public class FeedbackReport extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(FeedbackReport.this, HomePageManager.class);
+
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
@@ -106,28 +115,20 @@ public class FeedbackReport extends AppCompatActivity {
             for (int i = 0; i < user.getDogs().size(); i++)
                 menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
         }
+
     }
 
     public void GetUsersRatings(){
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot temp : snapshot.getChildren()){
-                    String type = (String) temp.child("UsersRatings").getValue();
-                    if(type.equals("1"))
-                        oneStar++;
-                    else if(type.equals("2"))
-                        twoStar++;
-                    else if(type.equals("3"))
-                        threeStar++;
-                    else if(type.equals("4"))
-                        fourStar++;
-                    else if(type.equals("5"))
-                        fiveStar++;
-                }
+                oneStar = (long)snapshot.child("1").getValue();
+                twoStar = (long)snapshot.child("2").getValue();
+                threeStar = (long)snapshot.child("3").getValue();
+                fourStar = (long)snapshot.child("4").getValue();
+                fiveStar = (long)snapshot.child("5").getValue();
                 SetChart();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
@@ -167,10 +168,8 @@ public class FeedbackReport extends AppCompatActivity {
         //set bar data
         barChart.setData(new BarData(barDataSet));
         //set animation
-        barChart.animateY(5000);
-        //set description text and color
-        barChart.getDescription().setText("Users Ratings Chart");
-        barChart.getDescription().setTextColor(Color.BLUE);
+        barChart.animateY(300);
+
     }
 
 

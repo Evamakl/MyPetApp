@@ -5,7 +5,13 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class RemoveDog_Test {
+public class DogList_Test {
+    @Test
+    public void isValidName_test() {
+        String dogName = "test";
+        assertFalse(dogName.length() == 0); //If the message is empty, return False
+        assertTrue(dogName.length() > 0); //If the message bigger than 0 (so it is not empty), return True
+    }
     @Test
     public void isRemoveDog_test() {
         Dog dog = new Dog();
