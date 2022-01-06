@@ -5,9 +5,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class RemoveDog_Test {
+public class AddDog_Test2 {
     @Test
-    public void RemoveDog_DogOwner_test() {
+    public void addDog_test_Petkeeper() {
         Dog dog = new Dog("Pincher","Simba","Male","null","Beer sheva","1/1/1999");
         assertFalse(dog == null); //If the dog == null, return False
         assertFalse(dog.getName().length() == 0 ); //If the dog name is null, return False
@@ -32,11 +32,11 @@ public class RemoveDog_Test {
         assertFalse(dog.getCity().length() == 0);
         assertTrue(dog.getCity().length()  > 0);
         assertFalse(dog.getCity().contains("-") || dog.getCity().contains("."));
-        //assertTrue(dog.getCity().contains("-") || dog.getCity().contains("."));
+        // assertTrue(dog.getCity().contains("-") || dog.getCity().contains("."));
         //check dog's BirthDay
         assertFalse(dog.getBirthDay().length() == 0);
         assertTrue(dog.getBirthDay().length()  > 0);
         assertFalse(dog.getBirthDay().contains("-") || dog.getBirthDay().contains("."));
-        //assertTrue(dog.getBirthDay().contains("-") || dog.getBirthDay().contains("."));
+        // assertTrue(dog.getBirthDay().contains("-") || dog.getBirthDay().contains("."));
     }
 }

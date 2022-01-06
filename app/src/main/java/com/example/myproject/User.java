@@ -16,8 +16,6 @@ public class User implements Serializable {
     private ArrayList<TodoListClass> listOfTodo;
     private ArrayList<tipsPKClass> listPKtip;
     private Boolean rate = false;
-
-
     public User(String uid, String email, String phone, String username) {
         Uid = uid;
         Email = email;
