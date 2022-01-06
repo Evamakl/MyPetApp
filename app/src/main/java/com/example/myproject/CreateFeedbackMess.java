@@ -25,22 +25,17 @@ public class CreateFeedbackMess extends AppCompatActivity {
 
     //Initialize variable
     private DrawerLayout drawerLayout;
-    private NavigationView NavigationView;
     private Menu menu;
     private ImageView MenuIcon, BackIcon;
-    private User user;
     private Intent intent;
     EditText editRank;
     Button addRank;
     DrawerLayout drawer_layout;
-    private ImageView MenuIcon, BackIcon;
     private NavigationView navigation;
-    private Intent intent;
     private User user = new User();
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Rank");
-    private Menu menu;
     private com.google.android.material.navigation.NavigationView NavigationView;
 
 

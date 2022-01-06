@@ -1,28 +1,16 @@
 package com.example.myproject;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -37,18 +25,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class dogsReport extends AppCompatActivity {
-
-    private DrawerLayout drawerLayout;
-    private NavigationView NavigationView;
-    private Menu menu;
+    DrawerLayout drawer_layout;
     private ImageView MenuIcon, BackIcon;
-    private User user;
-    private Intent intent;
-    TextView TitleReport;
+    NavigationView navigation;
     BarChart barChart;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("Users");
@@ -57,43 +38,33 @@ public class dogsReport extends AppCompatActivity {
     private Intent intent;
     private Menu menu;
     private com.google.android.material.navigation.NavigationView NavigationView;
-    private EditText EditTextSearch;
-    private TextView TextViewSearch;
-    private Dialog dialog;
-    private ListView ListViewSearch;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dogs_report);
-
-    //menu and back from here
+        drawer_layout = findViewById(R.id.drawer_layout);
         intent = getIntent();
-        user = (User)intent.getSerializableExtra("user");
-        drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView = findViewById(R.id.NavigationView);
-        menu = NavigationView.getMenu();
-        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        user = (User) intent.getSerializableExtra("user");
         MenuIcon = findViewById(R.id.MenuItem);
         BackIcon = findViewById(R.id.BackItem);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
-        if(user.getType().toString().equals("PetKeeper")) {
+        if (user.getType().toString().equals("PetKeeper")) {
             menu.clear();
             new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
             super.onCreateOptionsMenu(menu);
-        }
-        else if(user.getType().toString().equals("Owner")) {
+        } else if (user.getType().toString().equals("Owner")) {
             menu.clear();
             new MenuInflater(this).inflate(R.menu.base_activity, menu);
             super.onCreateOptionsMenu(menu);
-        }
-        else if(user.getType().toString().equals("Manager")) {
+        } else if (user.getType().toString().equals("Manager")) {
             menu.clear();
             new MenuInflater(this).inflate(R.menu.manager_menu, menu);
             super.onCreateOptionsMenu(menu);
         }
-        menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
+        menu.findItem(R.id.FullName_item).setTitle("שלום, " + user.getUsername());
         MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,111 +75,79 @@ public class dogsReport extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(dogsReport.this, HomePageManager.class);
-
                 intent.putExtra("user", user);
                 startActivity(intent);
                 finish();
             }
+
         });
         NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
-                if(user.getType().toString().equals("Manager"))
-                    new ManagerNavigation(dogsReport.this,id,user);
-                else if(user.getType().toString().equals("PetKeeper"))
-                    new PetKeeperNavigation(dogsReport.this,id,user);
+                if (user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(dogsReport.this, id, user);
+                else if (user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(dogsReport.this, id, user);
                 else
-                    new OwnerNavigation(dogsReport.this,id,user,item);
+                    new OwnerNavigation(dogsReport.this, id, user, item);
                 return false;
             }
         });
-        if(user.getType().toString().equals("Owner")) {
+        if (user.getType().toString().equals("Owner")) {
             menu = NavigationView.getMenu();
             for (int i = 0; i < user.getDogs().size(); i++)
                 menu.findItem(R.id.Dogs).getSubMenu().add(user.getDogs().get(i).getName());
         }
 
-
-                new ManagerNavigation(dogsReport.this, item.getItemId(), user);
-                return false;
-            }
-        });
-
-        //to here
-
-
-        TitleReport = findViewById(R.id.TitleReport);
-        TitleReport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog = new Dialog(dogsReport.this);
-                dialog.setContentView(R.layout.dialog_search_spinner);
-                dialog.getWindow().setLayout(800,1500);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-                EditTextSearch = dialog.findViewById(R.id.EditTextSearch);
-                ListViewSearch = dialog.findViewById(R.id.ListViewSearch);
-                TextViewSearch = dialog.findViewById(R.id.TextViewSearch);
-                TextViewSearch.setText("בחר שנה");
-                ArrayList<String> years = new ArrayList<>();
-                java.util.Calendar calendar = java.util.Calendar.getInstance();
-                int year = calendar.get(java.util.Calendar.YEAR);
-                for(int i=0;i<year-1990;i++)
-                    years.add((year-i)+"");
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(dogsReport.this, R.layout.dropdown_item, years);
-                ListViewSearch.setAdapter(adapter);
-                EditTextSearch.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { adapter.getFilter().filter(charSequence); }
-                    @Override
-                    public void afterTextChanged(Editable editable) { }
-                });
-                ListViewSearch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        dialog.dismiss();
-                        TitleReport.setText(adapterView.getItemAtPosition(i).toString());
-                        getNumberOfDogs(Integer.valueOf(TitleReport.getText().toString()));
-                    }
-                });
-            }
-        });
         barChart = findViewById(R.id.bar_chart);
+        //initialize array list
+        GetUserStatistic();
     }
 
-    public void getNumberOfDogs(int year) {
+    public void GetUserStatistic() {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<BarEntry> barEntries = new ArrayList<>();
-                for(int k=0;k<12;k++){
-                    NumberOfDogs = 0;
-                    int month = k+1;
-                    for(DataSnapshot temp : snapshot.getChildren()){
-                        User getUser = (User) temp.getValue(User.class);
-                        for(int i=0; i < getUser.getDogs().size();i++){
-                            String Date = getUser.getDogs().get(i).getAddedDate().toString();
-                            String[] values = Date.split("/");
-                            if(Integer.valueOf(values[1]) == month && Integer.valueOf(values[2]) == year) {
-                                NumberOfDogs++;
-                            }
-                        }
-                        BarEntry barEntry = new BarEntry(month,NumberOfDogs);
-                        barEntries.add(barEntry);
-                        BarDataSet barDataSet = new BarDataSet(barEntries, "Months ");
-                        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                        barDataSet.setDrawValues(false);
-                        barChart.setData(new BarData(barDataSet));
-                        barChart.animateY(300);
+                int dogNumber = 0;
+                for (DataSnapshot temp : snapshot.getChildren()) {
+                    User getUser = (User) temp.getValue(User.class);
+                    for (int i = 0; i < getUser.getDogs().size(); i++) {
+                        NumberOfDogs++;
                     }
                 }
+                SetChart();
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
+
+    public void SetChart() {
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
+        //Add dogs statistic
+        //initialize bar chart entry
+        BarEntry barEntry = new BarEntry(0, NumberOfDogs);
+        //add value in array list
+        barEntries.add(barEntry);
+        //initialize bar data set
+        BarDataSet barDataSet = new BarDataSet(barEntries, "Dogs");
+        //set colors
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        //hide draw value
+        barDataSet.setDrawValues(false);
+        //set bar data
+        barChart.setData(new BarData(barDataSet));
+        //set animation
+        barChart.animateY(5000);
+        //set description text and color
+        barChart.getDescription().setText("Dogs Type Chart");
+        barChart.getDescription().setTextColor(Color.BLUE);
+
+
+    }
+
+
 }

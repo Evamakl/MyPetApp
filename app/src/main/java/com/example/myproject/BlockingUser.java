@@ -29,8 +29,6 @@ public class BlockingUser extends AppCompatActivity {
     //Initialize variable
     DrawerLayout drawer_layout;
 
-    private NavigationView NavigationView;
-    private Menu menu;
     private ImageView MenuIcon, BackIcon;
     private User user;
     private Intent intent;
@@ -51,7 +49,7 @@ public class BlockingUser extends AppCompatActivity {
         setContentView(R.layout.activity_blocking_user);
         intent = getIntent();
         user = (User)intent.getSerializableExtra("user");
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawer_layout = findViewById(R.id.drawer_layout);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
         menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
@@ -60,7 +58,7 @@ public class BlockingUser extends AppCompatActivity {
         MenuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.open();
+                drawer_layout.open();
             }
         });
         BackIcon.setOnClickListener(new View.OnClickListener() {

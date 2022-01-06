@@ -41,12 +41,7 @@ public class FeedbackReport extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference reference = database.getReference().child("UsersRatings");
     long oneStar=0, twoStar=0, threeStar=0, fourStar=0, fiveStar=0, NumberOfStars = 5;
-    private DrawerLayout drawerLayout;
-    private NavigationView NavigationView;
-    private Menu menu;
-    private ImageView MenuIcon, BackIcon;
-    private User user;
-    private Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
