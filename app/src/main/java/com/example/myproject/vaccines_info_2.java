@@ -26,7 +26,7 @@ public class vaccines_info_2 extends AppCompatActivity {
         });
     }
     public void openNewActivityBack() {
-        Intent intent = new Intent(this, vaccines_info.class);
+        Intent intent = new Intent(this, search_page.class);
         startActivity(intent);
     }
 }

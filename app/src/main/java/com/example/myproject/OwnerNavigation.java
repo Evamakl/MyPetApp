@@ -29,7 +29,7 @@ public class OwnerNavigation {
             RemoveDog(context,user);
         else  if( id == R.id.FullName_item){ }
         else if(id == R.id.about_item)
-            StartActivity(context, vaccines_info.class, user);
+            StartActivity(context, search_page.class, user);
         else if(id == R.id.calendar_item)
             StartActivity(context, Calendar.class, user);
         else if(id == R.id.chat_item)

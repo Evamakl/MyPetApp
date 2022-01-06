@@ -1,4 +1,4 @@
-package com.example.myproject;
+/*package com.example.myproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,8 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class vaccines_info extends AppCompatActivity {
 
@@ -34,7 +31,7 @@ public class vaccines_info extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccines_info);
-        VaccineInfo = findViewById(R.id.VaccineInfo);
+        VaccineInfo = findViewById(R.id.info);
         MenuItem = findViewById(R.id.MenuItem);
         BackItem = findViewById(R.id.BackItem);
         drawer_layout = findViewById(R.id.drawer_layout);
@@ -62,7 +59,7 @@ public class vaccines_info extends AppCompatActivity {
                 return false;
             }
         });*/
-        MenuItem.setOnClickListener(new View.OnClickListener() {
+      /*  MenuItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawer_layout.open();
@@ -80,4 +77,4 @@ public class vaccines_info extends AppCompatActivity {
 
     }
 
-}
+}*/
