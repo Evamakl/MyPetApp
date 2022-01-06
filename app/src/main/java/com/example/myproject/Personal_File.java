@@ -22,6 +22,7 @@ import android.provider.MediaStore;
 import android.transition.Transition;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -58,7 +59,7 @@ public class Personal_File extends AppCompatActivity  {
     private Menu menu;
     private DrawerLayout drawerLayout;
     private Button Done;
-    private User user;
+    //private User user;
     private Dog dog;
     private Intent intent;
     private FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
@@ -66,8 +67,9 @@ public class Personal_File extends AppCompatActivity  {
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private Uri uri = null;
     private DatePickerDialog datePickerDialog;
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
     private com.google.android.material.navigation.NavigationView NavigationView;
+    private User user = new User();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
 
@@ -81,8 +83,9 @@ public class Personal_File extends AppCompatActivity  {
         setID();
         MenuIcon();
         BackIcon();
+        if(user.getType().toString().equals("Owner"))
+            setDogs();
         NavigationView();
-        setDogs();
         setButtons();
         AddImage();
     }
@@ -140,6 +143,21 @@ public class Personal_File extends AppCompatActivity  {
         drawerLayout = findViewById(R.id.drawerLayout);
         NavigationView = findViewById(R.id.NavigationView);
         menu = NavigationView.getMenu();
+        if(user.getType().toString().equals("PetKeeper")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.pet_keeper_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Owner")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.base_activity, menu);
+            super.onCreateOptionsMenu(menu);
+        }
+        else if(user.getType().toString().equals("Manager")) {
+            menu.clear();
+            new MenuInflater(this).inflate(R.menu.manager_menu, menu);
+            super.onCreateOptionsMenu(menu);
+        }
         menu.findItem(R.id.FullName_item).setTitle( "שלום, " + user.getUsername());
     }
     private void setButtons(){
@@ -176,11 +194,16 @@ public class Personal_File extends AppCompatActivity  {
         });
     }
     public void NavigationView() {
-        NavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        NavigationView.setNavigationItemSelectedListener(new com.google.android.material.navigation.NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull android.view.MenuItem item) {
                 int id = item.getItemId();
-                new OwnerNavigation(Personal_File.this,id,user,item);
+                if(user.getType().toString().equals("Manager"))
+                    new ManagerNavigation(Personal_File.this,id,user);
+                else if(user.getType().toString().equals("PetKeeper"))
+                    new PetKeeperNavigation(Personal_File.this,id,user);
+                else
+                    new OwnerNavigation(Personal_File.this,id,user,item);
                 return false;
             }
         });
