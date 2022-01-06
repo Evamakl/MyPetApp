@@ -22,7 +22,10 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class AddDogDialog extends AppCompatDialogFragment{
     private DatePickerDialog datePickerDialog;
@@ -126,10 +129,24 @@ public class AddDogDialog extends AppCompatDialogFragment{
 
 
 
-        if (BirthDay.getEditText().getText().length() == 0){
+        if (BirthDay.getEditText().getText().length() == 0) {
             BirthDay.setHelperText("חובה להזין את תאריך לידה של הכלב");
             return false;
-        }else
+        }else if(BirthDay.getEditText().getText().length() != 0) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date strDate = null;
+            try {
+                strDate = sdf.parse(BirthDay.getEditText().getText().toString());
+            } catch (ParseException e) { e.printStackTrace(); }
+            boolean your_date_is_outdated;
+            if (new Date().after(strDate)) {
+            }
+            else{
+                BirthDay.setHelperText("The Date is outdated!");
+                return false;
+            }
+        }
+        else
             BirthDay.setHelperText("");
 
 

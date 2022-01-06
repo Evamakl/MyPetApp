@@ -5,14 +5,10 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class RemoveDog_Test {
+public class PersonalFile_Test {
     @Test
-    public void RemoveDog_test() {
+    public void PersonalFile_test() {
         Dog dog = new Dog("Pincher","Simba","Male","null","Beer sheva","1/1/1999");
-        assertFalse(dog == null); //If the dog == null, return False
-        assertFalse(dog.getName().length() == 0 ); //If the dog name is null, return False
-        assertTrue(dog.getName().length() > 0 ); //If the dog name length bigger than 0, return True
-        assertTrue(dog != null); //If the dog != null, return True
         //check dog's name
         assertFalse(dog.getName().length() == 0);
         assertTrue(dog.getName().length()  > 0);

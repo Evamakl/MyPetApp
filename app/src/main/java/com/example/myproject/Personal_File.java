@@ -123,7 +123,7 @@ public class Personal_File extends AppCompatActivity  {
         type.getEditText().setText(dog.getType());
         DogPic = findViewById(R.id.DogPic);
         if(dog.getImage().equals("")){
-            DogPic.setImageResource(R.mipmap.ic_launcher);
+            DogPic.setBackground(getDrawable(R.mipmap.ic_launcher));
         }
         else {
             Glide.with(Personal_File.this).asBitmap().load(dog.getImage()).into(new CustomTarget<Bitmap>() {
@@ -292,7 +292,7 @@ public class Personal_File extends AppCompatActivity  {
     }
     private void UploadImage(){
         storageReference = firebaseStorage.getReference();
-        StorageReference ImageRefrence = storageReference.child(firebaseAuth.getCurrentUser().getUid()+".jpg");
+        StorageReference ImageRefrence = storageReference.child(user.getUid()+".jpg");
         ImageRefrence.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
@@ -368,6 +368,7 @@ public class Personal_File extends AppCompatActivity  {
             }
             else{
                 BirthDay.setHelperText("The Date is outdated!");
+                return false;
             }
         }
         else

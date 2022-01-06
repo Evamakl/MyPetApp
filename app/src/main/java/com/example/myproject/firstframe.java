@@ -26,28 +26,8 @@ public class firstframe extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
-           if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                //FirebaseAuth.getInstance().signOut();
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference reference = firebaseDatabase.getReference().child("Users");
-                reference.child(mAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = new User();
-                        user = snapshot.getValue(User.class);
-                        Intent intent = new Intent(firstframe.this,Start_work.class);
-
-                        intent.putExtra("user",user);
-                        startActivity(intent);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
+           if (FirebaseAuth.getInstance().getCurrentUser() != null)
+                FirebaseAuth.getInstance().signOut();
             setContentView(R.layout.activity_firstframe);
             button_pet_keeper = (Button) findViewById(R.id.Pet_Keeper_Button);
             button_pet_keeper.setOnClickListener(new View.OnClickListener() {
