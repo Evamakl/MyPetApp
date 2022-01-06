@@ -60,6 +60,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ratingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -69,6 +70,11 @@
                 android:gravity="center"
                 android:text="If you enjoy our app, Would you mind rating us."
                 android:textSize="16sp" />
+
+
+
+
+
 
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/RatingBar"
