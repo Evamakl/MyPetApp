@@ -145,7 +145,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="start"
-        android:hint="תאריך לידה הכלב"
+        android:hint="תאריך לידה של הכלב"
         android:textColorHint="@color/black"
         app:boxStrokeColor="#25F4DC"
         app:boxStrokeWidth="3dp"
