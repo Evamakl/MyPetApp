@@ -112,13 +112,7 @@
             android:name=".FeedbackPage"
             android:exported="false" />
         <activity
-            android:name=".vaccines_info_2"
-            android:exported="false" />
-        <activity
             android:name=".Calendar"
-            android:exported="false" />
-        <activity
-            android:name=".walk_info"
             android:exported="false" />
         <activity
             android:name=".reliability_form"
@@ -128,9 +122,6 @@
             android:exported="false" />
         <activity
             android:name=".new_user"
-            android:exported="false" />
-        <activity
-            android:name=".food_info"
             android:exported="false" />
         <activity
             android:name=".vaccines_info"
