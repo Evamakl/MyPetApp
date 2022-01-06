@@ -70,8 +70,14 @@ public class FeedbackPage extends AppCompatActivity {
                             }
                         });
                     }
-                    else
+                    else {
                         Toast.makeText(FeedbackPage.this, "You cant rate again!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(FeedbackPage.this, Start_work.class);
+                        if (user.getType().toString().equals("PetKeeper"))
+                            intent = new Intent(FeedbackPage.this, navigation_drawer.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                    }
                 }
             }
         });
