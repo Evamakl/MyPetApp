@@ -30,7 +30,7 @@ import com.google.firebase.database.ValueEventListener;
 public class FeedbackPage extends AppCompatActivity {
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Rank");
     private float userRate = 3;
-    private TextView ratingText;
+    private TextView ratingText;                                       
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference reference = database.getReference().child("UsersRatings");
     private User user;
