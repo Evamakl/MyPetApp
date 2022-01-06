@@ -1,11 +1,10 @@
 package com.example.myproject;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class AddDog_Test {
+public class AddDog_PetKeeper_Test {
     @Test
     public void addDog_test_PetOwner() {
         Dog dog = new Dog("Pincher","Simba","Male","null","Beer sheva","1/1/1999");
